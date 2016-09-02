@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5f61a2db1ad498a3159c210f94c2b41c",
-    "content-hash": "8ff4b464cc5fcf2fbd4731d1f8d4cd00",
+    "hash": "34977ca5301cf3a0e0ea52dddc7b6cf3",
+    "content-hash": "7ec9c91bf4368ba18485ffb589cb20a9",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -125,6 +125,56 @@
                 "localization"
             ],
             "time": "2014-08-24 00:00:00"
+        },
+        {
+            "name": "blueimp/jquery-file-upload",
+            "version": "9.12.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vkhramtsov/jQuery-File-Upload.git",
+                "reference": "f60a273f69303b140c5089e5cde1c8a187a94871"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vkhramtsov/jQuery-File-Upload/zipball/f60a273f69303b140c5089e5cde1c8a187a94871",
+                "reference": "f60a273f69303b140c5089e5cde1c8a187a94871",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Tschan",
+                    "homepage": "https://blueimp.net"
+                }
+            ],
+            "description": "File Upload widget for jQuery.",
+            "homepage": "https://github.com/blueimp/jQuery-File-Upload",
+            "keywords": [
+                "bootstrap",
+                "chunk",
+                "cross-domain",
+                "cross-site",
+                "drag",
+                "drop",
+                "file",
+                "gae",
+                "go",
+                "jquery",
+                "multiple",
+                "php",
+                "preview",
+                "progress",
+                "python",
+                "resume",
+                "selection",
+                "upload",
+                "widget"
+            ],
+            "time": "2016-06-13 05:52:31"
         },
         {
             "name": "cakephp/cakephp",
@@ -343,6 +393,47 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2016-04-28 03:01:34"
+        },
+        {
+            "name": "hashmode/cakephp-jquery-file-upload",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hashmode/cakephp-jquery-file-upload.git",
+                "reference": "56c828c10679d2c94911eb8e57b1418dfa20bd08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hashmode/cakephp-jquery-file-upload/zipball/56c828c10679d2c94911eb8e57b1418dfa20bd08",
+                "reference": "56c828c10679d2c94911eb8e57b1418dfa20bd08",
+                "shasum": ""
+            },
+            "require": {
+                "blueimp/jquery-file-upload": "~9.0",
+                "cakephp/cakephp": "~3.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "CakephpJqueryFileUpload\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hashmode"
+                }
+            ],
+            "description": "Cakephp 3.x Jquery File Upload",
+            "keywords": [
+                "cakephp",
+                "file-upload",
+                "jquery"
+            ],
+            "time": "2016-08-02 08:36:45"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

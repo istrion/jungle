@@ -16,7 +16,6 @@ class BiensController extends AppController
         parent::beforeFilter($event);
         $this->viewBuilder()->layout('admin');
     }
-
     /**
      * Index method
      *
@@ -25,7 +24,7 @@ class BiensController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Secteurs', 'Towns', 'Dpes', 'Agents']
+            'contain' => ['Secteurs', 'Dpes']
         ];
         $biens = $this->paginate($this->Biens);
 
@@ -43,7 +42,7 @@ class BiensController extends AppController
     public function view($id = null)
     {
         $bien = $this->Biens->get($id, [
-            'contain' => ['Secteurs', 'Towns', 'Dpes', 'Agents']
+            'contain' => ['Secteurs', 'Dpes']
         ]);
 
         $this->set('bien', $bien);
@@ -69,9 +68,9 @@ class BiensController extends AppController
             }
         }
         $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
-        $towns = $this->Biens->Towns->find('list', ['limit' => 200]);
+        //$towns = $this->Biens->Towns->find('list', ['limit' => 200]);
         $dpes = $this->Biens->Dpes->find('list', ['limit' => 200]);
-        $agents = $this->Biens->Agents->find('list', ['limit' => 200]);
+        //$agents = $this->Biens->Agents->find('list', ['limit' => 200]);
         $this->set(compact('bien', 'secteurs', 'towns', 'dpes', 'agents'));
         $this->set('_serialize', ['bien']);
     }

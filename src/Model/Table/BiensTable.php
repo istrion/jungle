@@ -47,18 +47,18 @@ class BiensTable extends Table
             'foreignKey' => 'secteur_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Towns', [
+        /*$this->belongsTo('Towns', [
             'foreignKey' => 'town_id',
             'joinType' => 'INNER'
-        ]);
+        ]);*/
         $this->belongsTo('Dpes', [
             'foreignKey' => 'dpe_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Agents', [
+        /*$this->belongsTo('Agents', [
             'foreignKey' => 'agent_id',
             'joinType' => 'INNER'
-        ]);
+        ]);*/
     }
 
     /**
@@ -119,9 +119,9 @@ class BiensTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['secteur_id'], 'Secteurs'));
-        $rules->add($rules->existsIn(['town_id'], 'Towns'));
+        //$rules->add($rules->existsIn(['town_id'], 'Towns'));
         $rules->add($rules->existsIn(['dpe_id'], 'Dpes'));
-        $rules->add($rules->existsIn(['agent_id'], 'Agents'));
+        //$rules->add($rules->existsIn(['agent_id'], 'Agents'));
 
         return $rules;
     }

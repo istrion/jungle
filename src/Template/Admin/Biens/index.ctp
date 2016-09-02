@@ -1,67 +1,85 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<div class="btn-group">
+    <button type="button" class="btn btn-info"><?= __('Actions') ?></button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
         <li><?= $this->Html->link(__('New Bien'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Secteurs'), ['controller' => 'Secteurs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Secteur'), ['controller' => 'Secteurs', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Dpes'), ['controller' => 'Dpes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Dpe'), ['controller' => 'Dpes', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="biens index large-9 medium-8 columns content">
-    <h3><?= __('Biens') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('title') ?></th>
-                <th><?= $this->Paginator->sort('price') ?></th>
-                <th><?= $this->Paginator->sort('secteur_id') ?></th>
-                <th><?= $this->Paginator->sort('ville_id') ?></th>
-                <th><?= $this->Paginator->sort('room') ?></th>
-                <th><?= $this->Paginator->sort('kitchen') ?></th>
-                <th><?= $this->Paginator->sort('shower') ?></th>
-                <th><?= $this->Paginator->sort('parking') ?></th>
-                <th><?= $this->Paginator->sort('description') ?></th>
-                <th><?= $this->Paginator->sort('dpe_id') ?></th>
-                <th><?= $this->Paginator->sort('agent_id') ?></th>
-                <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($biens as $bien): ?>
-            <tr>
-                <td><?= $this->Number->format($bien->id) ?></td>
-                <td><?= h($bien->title) ?></td>
-                <td><?= $this->Number->format($bien->price) ?></td>
-                <td><?= $bien->has('secteur') ? $this->Html->link($bien->secteur->title, ['controller' => 'Secteurs', 'action' => 'view', $bien->secteur->id]) : '' ?></td>
-                <td><?= $this->Number->format($bien->ville_id) ?></td>
-                <td><?= $this->Number->format($bien->room) ?></td>
-                <td><?= $this->Number->format($bien->kitchen) ?></td>
-                <td><?= $this->Number->format($bien->shower) ?></td>
-                <td><?= $this->Number->format($bien->parking) ?></td>
-                <td><?= h($bien->description) ?></td>
-                <td><?= $bien->has('dpe') ? $this->Html->link($bien->dpe->title, ['controller' => 'Dpes', 'action' => 'view', $bien->dpe->id]) : '' ?></td>
-                <td><?= h($bien->agent_id) ?></td>
-                <td><?= h($bien->created) ?></td>
-                <td><?= h($bien->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $bien->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bien->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bien->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bien->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+</div>
+<div class="margin-bottom"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Liste des menus</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('id') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('title') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('price') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('secteur_id') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('created') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('modified') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= __('Actions') ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($biens as $bien): ?>
+                                    <tr role="row" class="odd">
+
+
+                                        <td><?= $this->Number->format($bien->id) ?></td>
+                                        <td><?= h($bien->title) ?></td>
+                                        <td><?= $this->Number->format($bien->price) ?></td>
+                                        <td><?= $bien->has('secteur') ? $this->Html->link($bien->secteur->title, ['controller' => 'Secteurs', 'action' => 'view', $bien->secteur->id]) : '' ?></td>
+                                        <td><?= h($bien->created) ?></td>
+                                        <td><?= h($bien->modified) ?></td>
+
+                                        <td class="actions">
+                                            <?= $this->Html->link('<i class="fa fa-eye"></i>'. __('View'),
+                                                ['action' => 'view', $bien->id],
+                                                ['class' => 'btn btn-app','escape' => false]) ?>
+                                            <?= $this->Html->link('<i class="fa fa-edit"></i>' . __('Edit'),
+                                                ['action' => 'edit', $bien->id],
+                                                ['class' => 'btn btn-app','escape' => false]) ?>
+                                            <?= $this->Form->postLink('<i class="fa fa-trash"></i>'.__('Delete'),
+                                                ['action' => 'delete', $bien->id],
+                                                ['confirm' => __('Are you sure you want to delete # {0}?', $bien->id),
+                                                    'class' => 'btn btn-app','escape' => false]) ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">
+                                <?= $this->Paginator->counter('Page {{page}} sur {{pages}}') ?></div>
+                        </div>
+                        <div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                <ul class="pagination">
+                                    <?= $this->Paginator->prev('< ' . __('previous'), ['class' => 'paginate_button previous']) ?>
+                                    <?= $this->Paginator->numbers() ?>
+                                    <?= $this->Paginator->next(__('next') . ' >', ['class' => 'paginate_button_next']) ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
     </div>
+    <!-- /.col -->
 </div>
