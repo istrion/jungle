@@ -27,7 +27,7 @@ class CreateBiens extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('ville_id', 'integer', [
+        $table->addColumn('town_id', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,
