@@ -24,6 +24,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="/admin/css/skins/skin-blue.min.css">
 
+    <?= $this->fetch('css') ?>
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -246,6 +249,7 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="/admin/menus"><i class="fa fa-link"></i> <span>Menus</span></a></li>
                 <li><a href="/admin/biens"><i class="fa fa-link"></i> <span>Biens</span></a></li>
+                <li><a href="/admin/agents"><i class="fa fa-link"></i> <span>Agents</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
@@ -326,7 +330,7 @@ desired effect
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">
                     <li>
-                        <a href="javascript::;">
+                        <a href="javascript:;">
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                 <span class="pull-right-container">
@@ -388,6 +392,12 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<?php
+    if($scriptDropzone) {
+        echo $scriptDropzone;
+        echo $activateDropzone;
+    }
+?>
 </body>
 </html>
 

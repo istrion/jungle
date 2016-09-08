@@ -47,18 +47,18 @@ class BiensTable extends Table
             'foreignKey' => 'secteur_id',
             'joinType' => 'INNER'
         ]);
-        /*$this->belongsTo('Towns', [
+        $this->belongsTo('Towns', [
             'foreignKey' => 'town_id',
             'joinType' => 'INNER'
-        ]);*/
+        ]);
         $this->belongsTo('Dpes', [
             'foreignKey' => 'dpe_id',
             'joinType' => 'INNER'
         ]);
-        /*$this->belongsTo('Agents', [
+        $this->belongsTo('Agents', [
             'foreignKey' => 'agent_id',
             'joinType' => 'INNER'
-        ]);*/
+        ]);
     }
 
     /**

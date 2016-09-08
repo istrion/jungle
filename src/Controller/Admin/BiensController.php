@@ -3,6 +3,9 @@ namespace App\Controller\admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use Cake\I18n\Time;
+
 
 /**
  * Biens Controller
@@ -16,6 +19,7 @@ class BiensController extends AppController
         parent::beforeFilter($event);
         $this->viewBuilder()->layout('admin');
     }
+
     /**
      * Index method
      *
@@ -56,6 +60,21 @@ class BiensController extends AppController
      */
     public function add()
     {
+
+        $this->set('scriptDropzone', '<script type="text/javascript" src="/admin/js/dropzone.js" ></script>');
+        $this->set('activateDropzone', '<script>$(function() {
+                                                Dropzone.autoDiscover = false;
+                                                var myDropzone = new Dropzone("#uploadImages", { url: "/admin/biens/addImage" , paramName : "image"});
+                                                    myDropzone.on("success", function(data){
+                                                        var response =  JSON.parse(data.xhr.response);
+                                                        $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
+                                                        var value = $("#list_image_id").val(),
+                                                            finalValue = (value == "") ? response.id: value +","+response.id;
+                                                        $("#list_image_id").val(finalValue);
+
+                                                    });
+                                                })</script>');
+
         $bien = $this->Biens->newEntity();
         if ($this->request->is('post')) {
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
@@ -68,10 +87,21 @@ class BiensController extends AppController
             }
         }
         $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
-        //$towns = $this->Biens->Towns->find('list', ['limit' => 200]);
+        $towns = $this->Biens->Towns->find('all', ['limit' => 200]);
+        $townSelect = array();
+        foreach ($towns as $town) {
+            $townSelect[$town->id] = $town->title;
+        }
+
         $dpes = $this->Biens->Dpes->find('list', ['limit' => 200]);
-        //$agents = $this->Biens->Agents->find('list', ['limit' => 200]);
-        $this->set(compact('bien', 'secteurs', 'towns', 'dpes', 'agents'));
+
+        $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
+        $agentSelect = array();
+        foreach ($agents as $agent) {
+            $agentSelect[$agent->id] = $agent->first_name.' '. $agent->last_name;
+        }
+
+        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect'));
         $this->set('_serialize', ['bien']);
     }
 
@@ -123,5 +153,34 @@ class BiensController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function addImage()
+    {
+        $this->viewBuilder()->layout('');
+
+        $imagesTable = TableRegistry::get('Images');
+        $image = $imagesTable->newEntity();
+        $fileName = $this->request->data['image']["name"];
+        $tmpName = $this->request->data['image']['tmp_name'];
+        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+        $fileName = pathinfo($fileName, PATHINFO_FILENAME);
+        $s = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
+        $fileNameFinal = $fileName.'_'.$s.'.'.$ext;
+        $uploadDir = WWW_ROOT.'img/biens/'.$fileNameFinal;
+
+
+        if ($this->request->is('post')) {
+
+            move_uploaded_file($tmpName, $uploadDir);
+
+            $image->name = $fileNameFinal;
+            $image->path = WWW_ROOT.'img/biens/';
+
+            if ($imagesTable->save($image)) {
+                $this->response->body('{"id":"'.$image->id.'","image":"/img/biens/'.$fileNameFinal.'"}');
+                return $this->response;
+            }
+        }
     }
 }
