@@ -183,4 +183,20 @@ class BiensController extends AppController
             }
         }
     }
+
+    private function _saveImagesBiens($bien_id, $images) {
+        $data = [
+            [
+                'title' => 'First post',
+                'published' => 1
+            ],
+            [
+                'title' => 'Second post',
+                'published' => 1
+            ],
+        ];
+        $articles = TableRegistry::get('Articles');
+        $entities = $articles->newEntities($data);
+        $result = $articles->saveMany($entities);
+    }
 }

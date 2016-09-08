@@ -83,3 +83,5 @@
     </div>
     <!-- /.col -->
 </div>
+
+<?php echo $this->Flash->render() ?>
