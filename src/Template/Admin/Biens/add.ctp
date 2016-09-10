@@ -45,6 +45,36 @@
             <?= $this->Form->label('Agents'); ?>
             <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
         </div>
+        <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+            <?= $this->Form->label('Type de bien'); ?>
+            <?= $this->Form->checkbox('type_of_bien', [
+                'id' => 'type_of_bien',
+                'data-toggle' => 'toggle',
+                'data-on' => 'Maison',
+                'data-off' => 'Appartement'
+            ]); ?>
+            <br />
+
+            <?= $this->Form->label('Offre'); ?>
+            <?= $this->Form->checkbox('offert', [
+                'id' => 'offert',
+                'data-toggle' => 'toggle',
+                'data-on' => 'A vendre',
+                'data-off' => 'A louer'
+            ]); ?>
+            <br />
+            <?= $this->Form->label('En ligne ?'); ?>
+            <?= $this->Form->checkbox('online', [
+                'id' => 'online',
+                'data-toggle' => 'toggle',
+                'data-on' => 'Visible en ligne',
+                'data-off' => 'Non visible en ligne',
+                'data-height' => '40px',
+                'data-width' => '150px',
+                'data-onstyle' => 'success',
+                'data-offstyle' => 'danger',
+            ]); ?>
+        </div>
         <div class="form-group list-img-biens">
             <?= $this->Form->hidden('list_image_id', ['id' => 'list_image_id']); ?>
             <?= $this->Form->label('Images'); ?>
@@ -53,7 +83,6 @@
             </button>
             <ul id="list-img"></ul>
         </div>
-
 
 
         <!-- /.box-body -->
@@ -92,5 +121,7 @@
     <!-- /.modal -->
 
 
-<?php echo $this->Html->css('/admin/css/dropzone.css'); ?>
-<?php echo $this->Html->css('/admin/css/custom.css'); ?>
+    <?php echo $this->Html->css('/admin/css/dropzone.css'); ?>
+    <?php echo $this->Html->css('/admin/css/custom.css'); ?>
+    <?php echo $this->Html->css('/admin/css/bootstrap2-toggle.min.css'); ?>
+<?php echo $this->Html->script('/admin/js/bootstrap/bootstrap2-toggle.min', ['block' => 'scriptBottom']); ?>

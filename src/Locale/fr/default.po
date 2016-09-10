@@ -1,0 +1,4 @@
+msgid "New Bien"
+msgstr "Nouveau bien"
+msgid "List Biens"
+msgstr "Liste des biens"

@@ -78,10 +78,9 @@ class BiensController extends AppController
         $bien = $this->Biens->newEntity();
         if ($this->request->is('post')) {
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
-            if ($this->Biens->save($bien)) {
-                $this->Flash->success(__('The bien has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $resultSave = $this->Biens->save($bien);
+            if ($resultSave) {
+                return $this->_saveImagesBiens($resultSave->id, $this->request->data['list_image_id']);
             } else {
                 $this->Flash->error(__('The bien could not be saved. Please, try again.'));
             }
@@ -98,7 +97,7 @@ class BiensController extends AppController
         $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
         $agentSelect = array();
         foreach ($agents as $agent) {
-            $agentSelect[$agent->id] = $agent->first_name.' '. $agent->last_name;
+            $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
         }
 
         $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect'));
@@ -166,8 +165,8 @@ class BiensController extends AppController
         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
         $fileName = pathinfo($fileName, PATHINFO_FILENAME);
         $s = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
-        $fileNameFinal = $fileName.'_'.$s.'.'.$ext;
-        $uploadDir = WWW_ROOT.'img/biens/'.$fileNameFinal;
+        $fileNameFinal = $fileName . '_' . $s . '.' . $ext;
+        $uploadDir = WWW_ROOT . 'img/biens/' . $fileNameFinal;
 
 
         if ($this->request->is('post')) {
@@ -175,28 +174,32 @@ class BiensController extends AppController
             move_uploaded_file($tmpName, $uploadDir);
 
             $image->name = $fileNameFinal;
-            $image->path = WWW_ROOT.'img/biens/';
+            $image->path = WWW_ROOT . 'img/biens/';
 
             if ($imagesTable->save($image)) {
-                $this->response->body('{"id":"'.$image->id.'","image":"/img/biens/'.$fileNameFinal.'"}');
+                $this->response->body('{"id":"' . $image->id . '","image":"/img/biens/' . $fileNameFinal . '"}');
                 return $this->response;
             }
         }
     }
 
-    private function _saveImagesBiens($bien_id, $images) {
-        $data = [
-            [
-                'title' => 'First post',
-                'published' => 1
-            ],
-            [
-                'title' => 'Second post',
-                'published' => 1
-            ],
-        ];
-        $articles = TableRegistry::get('Articles');
-        $entities = $articles->newEntities($data);
-        $result = $articles->saveMany($entities);
+    private function _saveImagesBiens($bien_id, $images)
+    {
+        $listImage = explode(",", $images);
+        $data = array();
+
+        foreach ($listImage as $imageId) {
+            $data[] = [
+                'bien_id' => $bien_id,
+                'image_id' => $imageId
+            ];
+        }
+        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
+        $entities = $ImagesBiensTable->newEntities($data);
+        $result = $ImagesBiensTable->saveMany($entities);
+
+        $this->Flash->success(__('The bien has been saved.'));
+
+        return $this->redirect(['action' => 'index']);
     }
 }
