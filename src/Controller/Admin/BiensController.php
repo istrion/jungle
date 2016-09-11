@@ -43,7 +43,20 @@ class BiensController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($slug = null)
+    {
+        if (!$slug) {
+            $this->Session->setFlash('Invalid id for Post.');
+            $this->redirect('/biens/');
+        }
+
+        //debug($this->Biens->findBySlug($slug));die();
+        $bien = $this->Biens->findBySlug($slug);
+        $this->set('bien', $bien->first());
+
+        $this->set('_serialize', ['bien']);
+    }
+    /*public function view($id = null)
     {
         $bien = $this->Biens->get($id, [
             'contain' => ['Secteurs', 'Dpes']
@@ -51,7 +64,7 @@ class BiensController extends AppController
 
         $this->set('bien', $bien);
         $this->set('_serialize', ['bien']);
-    }
+    }*/
 
     /**
      * Add method
@@ -60,7 +73,6 @@ class BiensController extends AppController
      */
     public function add()
     {
-
         $this->set('scriptDropzone', '<script type="text/javascript" src="/admin/js/dropzone.js" ></script>');
         $this->set('activateDropzone', '<script>$(function() {
                                                 Dropzone.autoDiscover = false;
@@ -77,6 +89,8 @@ class BiensController extends AppController
 
         $bien = $this->Biens->newEntity();
         if ($this->request->is('post')) {
+            $slug = $this->_stringToSlug($this->request->data['title']);
+            $this->request->data['slug'] = $slug;
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
             $resultSave = $this->Biens->save($bien);
             if ($resultSave) {
@@ -127,10 +141,19 @@ class BiensController extends AppController
             }
         }
         $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
-        $towns = $this->Biens->Towns->find('list', ['limit' => 200]);
+        $towns = $this->Biens->Towns->find('all', ['limit' => 200]);
+        $townSelect = array();
+        foreach ($towns as $town) {
+            $townSelect[$town->id] = $town->title;
+        }
         $dpes = $this->Biens->Dpes->find('list', ['limit' => 200]);
-        $agents = $this->Biens->Agents->find('list', ['limit' => 200]);
-        $this->set(compact('bien', 'secteurs', 'towns', 'dpes', 'agents'));
+        $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
+        $agentSelect = array();
+        foreach ($agents as $agent) {
+            $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
+        }
+
+        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect'));
         $this->set('_serialize', ['bien']);
     }
 
@@ -201,5 +224,14 @@ class BiensController extends AppController
         $this->Flash->success(__('The bien has been saved.'));
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    private function _stringToSlug($str) {
+        // trim the string
+        $str = strtolower(trim($str));
+        // replace all non valid characters and spaces with an underscore
+        $str = preg_replace('/[^a-z0-9-]/', '_', $str);
+        $str = preg_replace('/-+/', "_", $str);
+        return $str;
     }
 }

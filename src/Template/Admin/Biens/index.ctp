@@ -45,7 +45,7 @@
 
                                         <td class="actions">
                                             <?= $this->Html->link('<i class="fa fa-eye"></i>'. __('View'),
-                                                ['action' => 'view', $bien->id],
+                                                ['action' => 'view', $bien->slug],
                                                 ['class' => 'btn btn-app','escape' => false]) ?>
                                             <?= $this->Html->link('<i class="fa fa-edit"></i>' . __('Edit'),
                                                 ['action' => 'edit', $bien->id],
