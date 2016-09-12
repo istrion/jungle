@@ -40,7 +40,7 @@
 
         <!-- Header Starts -->
         <div class="header">
-            <a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/index.php">
+            <a href="/">
                 <img src="img/template/jungle_logo.png" alt="Jungle immobilier" class="logo">
             </a>
 
