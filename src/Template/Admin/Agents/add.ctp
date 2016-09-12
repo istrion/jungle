@@ -5,7 +5,7 @@
         <span class="sr-only">Menu</span>
     </button>
     <ul class="dropdown-menu" role="menu">
-        <li><?= $this->Html->link(__('List Agents'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Agents'), '/'.['action' => 'index']) ?></li>
     </ul>
 </div>
 <div class="margin-bottom"></div>

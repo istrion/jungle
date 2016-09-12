@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Admin;
-use App\Controller\AppController;
+
+use App\Controller\Admin\AppAdminController;
 use Cake\Event\Event;
 
 class MenusController extends AppAdminController {
@@ -83,6 +84,9 @@ class MenusController extends AppAdminController {
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            if($this->request->data['parent_id'] == '') {
+                $this->request->data['parent_id'] = null;
+            }
             $menu = $this->Menus->patchEntity($menu, $this->request->data);
             if ($this->Menus->save($menu)) {
                 $this->Flash->success(__('The menu has been saved.'));

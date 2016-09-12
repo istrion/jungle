@@ -11,18 +11,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="/admin/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/bootstrap.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="/admin/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/skins/skin-blue.min.css">
 
     <?= $this->fetch('css') ?>
 
@@ -82,14 +82,14 @@ desired effect
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="/admin/img/joseph.jpg" class="user-image" alt="User Image">
+                            <img src="<?= PATH_ADMIN ?>/admin/img/joseph.jpg " class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">Joseph</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="/admin/img/joseph.jpg" class="img-circle" alt="User Image">
+                                <img src="<?= PATH_ADMIN ?>/admin/img/joseph.jpg " class="img-circle" alt="User Image">
 
                                 <p>
                                     Joseph - Administrateur
@@ -134,7 +134,7 @@ desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="/admin/img/joseph.jpg" class="img-circle" alt="User Image">
+                    <img src="<?= PATH_ADMIN ?>/admin/img/joseph.jpg " class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>Jospeh</p>
@@ -148,7 +148,7 @@ desired effect
                 <li class="header">MENU</li>
                 <?php
                 foreach($adminMenus as $menu){
-                    echo '<li '.(($menu['active']) ? 'class="active"' : '').'><a href="'.$menu['link'].'"><i class="fa fa-link"></i> <span>'.$menu['title'].'</span></a></li>';
+                    echo '<li '.(($menu['active']) ? 'class="active"' : '').'><a href="'.PATH_ADMIN.$menu['link'].'"><i class="fa fa-link"></i> <span>'.$menu['title'].'</span></a></li>';
                 }
                 ?>
             </ul>
@@ -272,11 +272,11 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="/admin/js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= PATH_ADMIN ?>/admin/js/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/admin/js/bootstrap/bootstrap.min.js"></script>
+<script src="<?= PATH_ADMIN ?>/admin/js/bootstrap/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/admin/js/app.js"></script>
+<script src="<?= PATH_ADMIN ?>/admin/js/app.js"></script>
 
 <?= $this->fetch('scriptBottom') ?>
 

@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AppAdminController;
 use Cake\Event\Event;
 
 /**

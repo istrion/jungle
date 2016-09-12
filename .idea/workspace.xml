@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b88faf68-24d8-4f78-b51a-4ae6ec8ab3e7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webroot/css/fonts/din-next-condensed-regular-latin-ext-1.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controller/Admin/AppAdminController.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webroot/img/template/jungle_logo.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/css/fonts/Aquawax Black Trial.ttf" afterPath="$PROJECT_DIR$/webroot/css/fonts/Aquawax Black Trial.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/Migrations/schema-dump-default.lock" afterPath="$PROJECT_DIR$/config/Migrations/schema-dump-default.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" />
@@ -15,15 +11,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Biens/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Biens/add.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/admin.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/admin.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Biens/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Biens/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Menus/edit.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Menus/edit.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Main/header.ctp" afterPath="$PROJECT_DIR$/src/Template/Main/header.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Menus/index.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Menus/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.php" afterPath="$PROJECT_DIR$/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webroot/css/style.css" afterPath="$PROJECT_DIR$/webroot/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/bootstrap.php" afterPath="$PROJECT_DIR$/config/bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jungle.iws" />
@@ -49,59 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Biens/add.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.5" vertical-offset="60" max-vertical-offset="2235">
-              <caret line="48" column="0" selection-start-line="46" selection-start-column="8" selection-end-line="48" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Biens/edit.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.490196" vertical-offset="455" max-vertical-offset="2220">
-              <caret line="49" column="33" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Layout/admin.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28018758" vertical-offset="2551" max-vertical-offset="4545">
-              <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#aside#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1473672584000" expanded="true" signature="7271:7409" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7358:7409" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7375:7409" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7474:7616" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7700:7731" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7892:8143" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="7965:8009" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8230:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8332:8578" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8639:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8749:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8872:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8897:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="8946:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="9080:9159" placeholder="..." />
-                <marker date="1473672584000" expanded="true" signature="11772:11968" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppAdminController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AppAdminController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.125" vertical-offset="90" max-vertical-offset="990">
-              <caret line="56" column="30" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="30" />
+            <state vertical-scroll-proportion="-3.2156863" vertical-offset="1876" max-vertical-offset="4545">
+              <caret line="136" column="44" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -110,8 +51,68 @@
       <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.875" vertical-offset="0" max-vertical-offset="615">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="615">
+              <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.125" vertical-offset="180" max-vertical-offset="1170">
+              <caret line="53" column="73" selection-start-line="53" selection-start-column="73" selection-end-line="53" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenusTable.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6011364" vertical-offset="491" max-vertical-offset="1395">
+              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BiensController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Admin/BiensController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-43.882355" vertical-offset="27" max-vertical-offset="3855">
+              <caret line="151" column="70" selection-start-line="151" selection-start-column="70" selection-end-line="151" selection-end-column="70" />
+              <folding>
+                <element signature="e#39#83#0#PHP" expanded="true" />
+                <marker date="1473686867000" expanded="true" signature="1942:3039" placeholder="..." />
+                <marker date="1473686867000" expanded="true" signature="1956:3030" placeholder="{...}" />
+                <marker date="1473686867000" expanded="true" signature="2279:2978" placeholder="{...}" />
+                <marker date="1473686867000" expanded="true" signature="4844:5941" placeholder="..." />
+                <marker date="1473686867000" expanded="true" signature="4858:5932" placeholder="{...}" />
+                <marker date="1473686867000" expanded="true" signature="5181:5880" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenusController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Admin/MenusController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.607843" vertical-offset="572" max-vertical-offset="1920">
+              <caret line="98" column="20" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="20" />
+              <folding>
+                <element signature="e#39#83#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/add.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="720">
+              <caret line="27" column="72" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -120,48 +121,18 @@
       <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.75" vertical-offset="0" max-vertical-offset="720">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="119" />
+            <state vertical-scroll-proportion="-23.125" vertical-offset="0" max-vertical-offset="720">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/add.ctp">
+      <file leaf-file-name="bootstrap.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="720">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Menu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Entity/Menu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="615">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenusTable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.666666" vertical-offset="575" max-vertical-offset="1470">
-              <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/index.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.490196" vertical-offset="290" max-vertical-offset="1245">
-              <caret line="38" column="53" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="53" />
+            <state vertical-scroll-proportion="-32.916668" vertical-offset="2210" max-vertical-offset="3120">
+              <caret line="225" column="29" selection-start-line="225" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -190,14 +161,12 @@
         <option value="$PROJECT_DIR$/config/Migrations/20160902150304_CreateBiens.php" />
         <option value="$PROJECT_DIR$/src/Model/Entity/Bien.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/config/bootstrap.php" />
         <option value="$PROJECT_DIR$/src/View/AppView.php" />
         <option value="$PROJECT_DIR$/webroot/css/cake.css" />
         <option value="$PROJECT_DIR$/webroot/css/custom.css" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Agents/index.ctp" />
         <option value="$PROJECT_DIR$/src/Model/Table/BiensTable.php" />
         <option value="$PROJECT_DIR$/webroot/admin/css/custom.css" />
-        <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/src/Locale/fr/default.po" />
         <option value="$PROJECT_DIR$/config/Migrations/20160910215212_AddOptionsToBiens.php" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Biens/index.ctp" />
@@ -209,23 +178,25 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Template/Main/header.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/AppController.php" />
-        <option value="$PROJECT_DIR$/config/routes.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/MenusController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" />
         <option value="$PROJECT_DIR$/webroot/css/style.css" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Menus/edit.ctp" />
-        <option value="$PROJECT_DIR$/src/Model/Table/MenusTable.php" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Menus/index.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" />
-        <option value="$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/AppAdminController.php" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Biens/add.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Biens/edit.ctp" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/config/bootstrap.php" />
         <option value="$PROJECT_DIR$/src/Template/Layout/admin.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" />
+        <option value="$PROJECT_DIR$/config/routes.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Admin/MenusController.php" />
+        <option value="$PROJECT_DIR$/src/Model/Table/MenusTable.php" />
       </list>
     </option>
   </component>
@@ -308,6 +279,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jungle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jungle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webroot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -432,58 +425,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Biens" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Agents" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -701,18 +642,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webroot/admin/js/dropzone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="374" column="62" selection-start-line="374" selection-start-column="55" selection-end-line="374" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/css/cake.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -773,14 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="9" column="14" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="41" column="59" selection-start-line="41" selection-start-column="59" selection-end-line="41" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,56 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82954544" vertical-offset="530" max-vertical-offset="1470">
-          <caret line="84" column="49" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/TownsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17045455" vertical-offset="0" max-vertical-offset="1890">
-          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/SecteursController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17045455" vertical-offset="0" max-vertical-offset="1815">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/MenusController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06818182" vertical-offset="0" max-vertical-offset="1845">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/DpesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1875" vertical-offset="0" max-vertical-offset="1845">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding>
-            <element signature="e#39#72#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AgentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17045455" vertical-offset="0" max-vertical-offset="1830">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webroot/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37102473" vertical-offset="0" max-vertical-offset="2280">
@@ -992,30 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/BiensController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19031142" vertical-offset="0" max-vertical-offset="3600">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="48" />
-          <folding>
-            <marker date="1473666223000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1473666223000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1473666223000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Entity/Menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="904">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.666666" vertical-offset="575" max-vertical-offset="1470">
-          <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1036,42 +892,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.75" vertical-offset="0" max-vertical-offset="720">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.875" vertical-offset="0" max-vertical-offset="615">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.490196" vertical-offset="290" max-vertical-offset="1245">
           <caret line="38" column="53" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AppAdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.125" vertical-offset="90" max-vertical-offset="990">
-          <caret line="56" column="30" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1086,35 +910,141 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Admin/Biens/edit.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.490196" vertical-offset="455" max-vertical-offset="2220">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="33" />
+        <state vertical-scroll-proportion="-13.823529" vertical-offset="1380" max-vertical-offset="2220">
+          <caret line="139" column="75" selection-start-line="139" selection-start-column="75" selection-end-line="139" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/TownsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06818182" vertical-offset="0" max-vertical-offset="1905">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/SecteursController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06818182" vertical-offset="0" max-vertical-offset="1830">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/DpesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06818182" vertical-offset="0" max-vertical-offset="1845">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AgentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06818182" vertical-offset="0" max-vertical-offset="1845">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.916668" vertical-offset="4385" max-vertical-offset="5265">
+          <caret line="345" column="2" selection-start-line="345" selection-start-column="2" selection-end-line="345" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.916668" vertical-offset="2210" max-vertical-offset="3120">
+          <caret line="225" column="29" selection-start-line="225" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.125" vertical-offset="0" max-vertical-offset="720">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Layout/admin.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28018758" vertical-offset="2551" max-vertical-offset="4545">
-          <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+        <state vertical-scroll-proportion="-3.2156863" vertical-offset="1876" max-vertical-offset="4545">
+          <caret line="136" column="44" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="615">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.125" vertical-offset="180" max-vertical-offset="1170">
+          <caret line="53" column="73" selection-start-line="53" selection-start-column="73" selection-end-line="53" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Admin/Menus/add.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="720">
+          <caret line="27" column="72" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/BiensController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-43.882355" vertical-offset="27" max-vertical-offset="3855">
+          <caret line="151" column="70" selection-start-line="151" selection-start-column="70" selection-end-line="151" selection-end-column="70" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#a#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#aside#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1473672584000" expanded="true" signature="7271:7409" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7358:7409" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7375:7409" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7474:7616" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7700:7731" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7892:8143" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="7965:8009" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8230:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8332:8578" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8639:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8749:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8872:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8897:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="8946:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="9080:9159" placeholder="..." />
-            <marker date="1473672584000" expanded="true" signature="11772:11968" placeholder="..." />
+            <element signature="e#39#83#0#PHP" expanded="true" />
+            <marker date="1473686867000" expanded="true" signature="1942:3039" placeholder="..." />
+            <marker date="1473686867000" expanded="true" signature="1956:3030" placeholder="{...}" />
+            <marker date="1473686867000" expanded="true" signature="2279:2978" placeholder="{...}" />
+            <marker date="1473686867000" expanded="true" signature="4844:5941" placeholder="..." />
+            <marker date="1473686867000" expanded="true" signature="4858:5932" placeholder="{...}" />
+            <marker date="1473686867000" expanded="true" signature="5181:5880" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/AppAdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42386365" vertical-offset="2" max-vertical-offset="1005">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+          <folding>
+            <element signature="e#608#639#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Admin/MenusController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.607843" vertical-offset="572" max-vertical-offset="1920">
+          <caret line="98" column="20" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="20" />
+          <folding>
+            <element signature="e#39#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6011364" vertical-offset="491" max-vertical-offset="1395">
+          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

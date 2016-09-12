@@ -71,11 +71,6 @@ class MenusTable extends Table
             ->requirePresence('url', 'create')
             ->notEmpty('url');
 
-        $validator
-            ->integer('parent_id')
-            ->allowEmpty('parent_id', 'create')
-            ->allowEmpty('parent_id', 'update');
-
         return $validator;
     }
 

@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AppAdminController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
@@ -73,7 +73,7 @@ class BiensController extends AppAdminController
      */
     public function add()
     {
-        $this->set('scriptDropzone', '<script type="text/javascript" src="/admin/js/dropzone.js" ></script>');
+        $this->set('scriptDropzone', '<script type="text/javascript" src="'.PATH_ADMIN.'/admin/js/dropzone.js" ></script>');
         $this->set('activateDropzone', '<script>$(function() {
                                                 Dropzone.autoDiscover = false;
                                                 var myDropzone = new Dropzone("#uploadImages", { url: "/admin/biens/addImage" , paramName : "image"});
@@ -127,15 +127,29 @@ class BiensController extends AppAdminController
      */
     public function edit($id = null)
     {
+        $this->set('scriptDropzone', '<script type="text/javascript" src="'.PATH_ADMIN.'/admin/js/dropzone.js" ></script>');
+        $this->set('activateDropzone', '<script>$(function() {
+                                                Dropzone.autoDiscover = false;
+                                                var myDropzone = new Dropzone("#uploadImages", { url: "/admin/biens/addImage" , paramName : "image"});
+                                                    myDropzone.on("success", function(data){
+                                                        var response =  JSON.parse(data.xhr.response);
+                                                        $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
+                                                        var value = $("#list_image_id").val(),
+                                                            finalValue = (value == "") ? response.id: value +","+response.id;
+                                                        $("#list_image_id").val(finalValue);
+
+                                                    });
+                                                })</script>');
+
         $bien = $this->Biens->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $slug = $this->_stringToSlug($this->request->data['title']);
+            $this->request->data['slug'] = $slug;
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
             if ($this->Biens->save($bien)) {
                 $this->Flash->success(__('The bien has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The bien could not be saved. Please, try again.'));
             }

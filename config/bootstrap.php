@@ -223,3 +223,5 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Migrations');
+define("PATH_ADMIN",     "");
+
