@@ -1,0 +1,32 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-info"><?= __('Actions') ?></button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><?= $this->Html->link(__('List Sliders'), ['action' => 'index']) ?></li>
+    </ul>
+</div>
+<div class="margin-bottom"></div>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ajouter un nouveau menu</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <?= $this->Form->create($slider, array('type' => 'file')) ?>
+    <div class="box-body">
+        <div class="form-group">
+            <?= $this->Form->label('Menu parent'); ?>
+
+            <?php echo $this->Form->file('path'); ?>
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <?= $this->Form->button(__('Enregistrer'),["class" => "btn btn-primary"]) ?>
+    </div>
+    <?= $this->Form->end() ?>
+</div>

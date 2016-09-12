@@ -420,3 +420,21 @@
     max-width: 200px;
     max-height: 200px;
 }
+
+#list-img li a.trash-btn {
+    top: auto;
+    bottom: 10px;
+    position: absolute;
+    color: red;
+    font-size: 18px;
+    left: 20px;
+}
+
+#list-img li a.view-btn {
+    top: auto;
+    bottom: 10px;
+    position: absolute;
+    color: red;
+    font-size: 18px;
+    right: 20px;
+}

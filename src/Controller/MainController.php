@@ -7,11 +7,18 @@ class MainController extends AppController
 {
     public function index()
     {
+        /* chargement des menus du header*/
 
         $menus = TableRegistry::get('Menus');
 
         $queryMenus = $menus->find('all');
         $this->set(compact('queryMenus'));
+
+        /* chargement du slider de la homepage*/
+        $sliders = TableRegistry::get('Sliders');
+
+        $querySliders = $sliders->find('all');
+        $this->set(compact('querySliders'));
 
     }
 

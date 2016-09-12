@@ -27,11 +27,11 @@ $cakeDescription = 'Jungle immobilier';
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style(1).css">
     <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/lightslider.css">
+    <link rel="stylesheet" href="css/slider.css">
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/lightslider.js"></script>
+    <script src="js/slider.js"></script>
 
     <?= $this->Html->meta('icon') ?>
 
@@ -42,33 +42,14 @@ $cakeDescription = 'Jungle immobilier';
 <body>
     <?= $this->Element('../Main/header') ?>
 
-    <ul id="slider">
-        <li data-thumb="img/slider/loft.jpg">
-            <img src="img/slider/loft.jpg" />
-        </li>
-        <li data-thumb="img/slider/loft.jpg">
-            <img src="img/slider/loft.jpg" />
-        </li>
-    </ul>
+    <?= $this->Element('../Main/slider') ?>
+
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#slider').lightSlider({
-            gallery:true,
-            item:1,
-            mode: 'fade',
-            loop:true,
-            thumbItem:9,
-            enableDrag: false,
-            currentPagerPosition:'center',
-            adaptiveHeight:true,
-            adaptiveWidth:true,
-
-            onSliderLoad: function(el) {
-                el.lightGallery({
-                    selector: '#slider'
-                });
-            }
+        $('#slider').responsiveSlides({
+            speed: 800,            // Integer: Speed of the transition, in milliseconds
+            timeout: 5000
         });
     });
 </script>

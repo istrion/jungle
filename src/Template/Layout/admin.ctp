@@ -23,6 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/custom.css">
 
     <?= $this->fetch('css') ?>
 

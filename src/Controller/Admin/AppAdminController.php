@@ -67,7 +67,8 @@ class AppAdminController extends Controller
         return array(
                 ['link' => '/admin/menus', 'title' => 'Menu' , 'active' => ($activeMenu == 'Menus') ? true:false],
                 ['link' => '/admin/biens', 'title' => 'Biens' , 'active' => ($activeMenu == 'Biens') ? true:false],
-                ['link' => '/admin/agents', 'title' => 'Agents' , 'active' => ($activeMenu == 'Agents') ? true:false]
+                ['link' => '/admin/agents', 'title' => 'Agents' , 'active' => ($activeMenu == 'Agents') ? true:false],
+                ['link' => '/admin/sliders', 'title' => 'Sliders' , 'active' => ($activeMenu == 'Sliders') ? true:false]
             );
     }
 }
