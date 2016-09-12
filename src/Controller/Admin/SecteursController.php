@@ -9,7 +9,7 @@ use Cake\Event\Event;
  *
  * @property \App\Model\Table\SecteursTable $Secteurs
  */
-class SecteursController extends AppController
+class SecteursController extends AppAdminController
 {
     public function beforeFilter(Event $event)
     {

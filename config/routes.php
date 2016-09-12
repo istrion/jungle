@@ -79,7 +79,11 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 
 Router::prefix('admin', function ($routes) {
-    $routes->fallbacks();
+    // Toutes les routes ici seront préfixées avec `/admin` et auront
+    // l'élément de route prefix => admin ajouté.
+    $routes->fallbacks(DashedRoute::class);
+    $routes->connect('/', ['controller' => 'Biens', 'action' => 'index']);
+
 });
 
 /**

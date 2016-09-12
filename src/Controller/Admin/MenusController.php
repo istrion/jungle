@@ -3,7 +3,7 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Event\Event;
 
-class MenusController extends AppController {
+class MenusController extends AppAdminController {
 
     public function beforeFilter(Event $event)
     {

@@ -40,9 +40,6 @@
                                         <td><?= h($menu->created) ?></td>
                                         <td><?= h($menu->modified) ?></td>
                                         <td class="actions">
-                                            <?= $this->Html->link('<i class="fa fa-eye"></i>'. __('View'),
-                                                                    ['action' => 'view', $menu->id],
-                                                                    ['class' => 'btn btn-app','escape' => false]) ?>
                                             <?= $this->Html->link('<i class="fa fa-edit"></i>' . __('Edit'),
                                                                     ['action' => 'edit', $menu->id],
                                                                     ['class' => 'btn btn-app','escape' => false]) ?>

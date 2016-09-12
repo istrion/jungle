@@ -12,7 +12,7 @@ use Cake\I18n\Time;
  *
  * @property \App\Model\Table\BiensTable $Biens
  */
-class BiensController extends AppController
+class BiensController extends AppAdminController
 {
     public function beforeFilter(Event $event)
     {

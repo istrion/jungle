@@ -9,7 +9,7 @@ use Cake\Event\Event;
  *
  * @property \App\Model\Table\AgentsTable $Agents
  */
-class AgentsController extends AppController
+class AgentsController extends AppAdminController
 {
     public function beforeFilter(Event $event)
     {

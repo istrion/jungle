@@ -73,7 +73,8 @@ class MenusTable extends Table
 
         $validator
             ->integer('parent_id')
-            ->allowEmpty('parent_id', 'create');
+            ->allowEmpty('parent_id', 'create')
+            ->allowEmpty('parent_id', 'update');
 
         return $validator;
     }

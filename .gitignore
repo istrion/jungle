@@ -5,3 +5,4 @@
 .idea/workspace.xml
 /webroot/img/biens/*
 .idea/copyright/profiles_settings.xml
+*.DS_STORE

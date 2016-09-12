@@ -9,7 +9,7 @@ use Cake\Event\Event;
  *
  * @property \App\Model\Table\DpesTable $Dpes
  */
-class DpesController extends AppController
+class DpesController extends AppAdminController
 {
     public function beforeFilter(Event $event)
     {

@@ -35,9 +35,7 @@
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('shower', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de salles de bain', 'label' => 'Salle de bains']); ?></div>
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('parking', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de parking', 'label' => 'Parkings']); ?></div>
-        <div
-            class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('description', ['class' => 'form-control', 'placeholder' => 'Indiquez une description', 'label' => 'Description']); ?></div>
-        <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <div class="form-group col-lg-6 col-sm-6 col-sx-6">
             <?= $this->Form->label('Dpe'); ?>
             <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
         </div>
@@ -45,6 +43,10 @@
             <?= $this->Form->label('Agents'); ?>
             <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
         </div>
+
+        <div
+            class="form-group col-lg-12 col-sm-12 col-sx-12"><?= $this->Form->textarea('description', ['class' => 'form-control', 'placeholder' => 'Indiquez une description', 'label' => 'Description']); ?></div>
+
         <div class="form-group col-lg-12 col-sm-12 col-sx-12">
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Type de bien'); ?>
@@ -136,4 +138,6 @@
     <?php echo $this->Html->css('/admin/css/dropzone.css'); ?>
     <?php echo $this->Html->css('/admin/css/custom.css'); ?>
     <?php echo $this->Html->css('/admin/css/bootstrap2-toggle.min.css'); ?>
-<?php echo $this->Html->script('/admin/js/bootstrap/bootstrap2-toggle.min', ['block' => 'scriptBottom']); ?>
+    <?php echo $this->Html->script('/admin/js/bootstrap/bootstrap2-toggle.min', ['block' => 'scriptBottom']); ?>
+    <?php echo $this->Html->script('/admin/js/tinymce/tinymce.min.js', ['block' => 'scriptBottom']); ?>
+    <?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>

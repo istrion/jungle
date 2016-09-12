@@ -1,27 +1,51 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
+<div class="btn-group">
+    <button type="button" class="btn btn-info"><?= __('Actions') ?></button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>
+            <?= $this->Html->link(__('List Menus'), ['action' => 'index']) ?>
+        </li>
+        <li>
+            <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $menu->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $menu->id)]
             )
-        ?></li>
-        <li><?= $this->Html->link(__('List Menus'), ['action' => 'index']) ?></li>
+            ?>
+        </li>
+
         <li><?= $this->Html->link(__('List Parent Menus'), ['controller' => 'Menus', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Parent Menu'), ['controller' => 'Menus', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="menus form large-9 medium-8 columns content">
+</div>
+<div class="margin-bottom"></div>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ajouter un nouveau menu</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
     <?= $this->Form->create($menu) ?>
-    <fieldset>
-        <legend><?= __('Edit Menu') ?></legend>
-        <?php
-            echo $this->Form->input('title');
-            echo $this->Form->input('parent_id', ['options' => $parentMenus]);
-            echo $this->Form->input('url');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="box-body">
+        <div class="form-group">
+            <?= $this->Form->label('Menu parent'); ?>
+
+            <?php echo $this->Form->select('parent_id', $parentMenus, ['empty' => '(Pas de parent)', 'class' => 'form-control']); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->Form->input('title', ['class' => 'form-control', 'placeholder' => 'Indiquez un titre', 'label' => 'Titre']); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $this->Form->input('url', ['class' => 'form-control', 'placeholder' => 'Indiquez un lien', 'label' => 'Lien']); ?>
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <?= $this->Form->button(__('Enregistrer'),["class" => "btn btn-primary"]) ?>
+    </div>
     <?= $this->Form->end() ?>
 </div>
