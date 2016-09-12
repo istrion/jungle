@@ -21,18 +21,11 @@
                 <!-- Nav Starts -->
                 <div class="navbar-collapse  collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a
-                                href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/index.php">Accueil</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/about.php">À
-                                propos</a></li>
-                        <li>
-                            <a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/agents.php">Agents</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/blog.php">Blog</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/contact.php">Contact</a>
-                        </li>
+                        <?php
+                        foreach ($queryMenus as $menu) {
+                            echo '<li><a href="'.$menu->link.'">'.$menu->title.'</a>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- #Nav Ends -->
@@ -54,18 +47,11 @@
             <ul class="pull-right">
                 <div class="navbar-collapse  collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a
-                                href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/index.php">Accueil</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/about.php">À
-                                propos</a></li>
-                        <li>
-                            <a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/agents.php">Agents</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/blog.php">Blog</a>
-                        </li>
-                        <li><a href="http://thebootstrapthemes.com/live/thebootstrapthemes-realestate/contact.php">Contact</a>
-                        </li>
+                        <?php
+                            foreach ($queryMenus as $menu) {
+                                echo '<li><a href="'.$menu->link.'">'.$menu->title.'</a>';
+                            }
+                        ?>
                     </ul>
                 </div>
             </ul>

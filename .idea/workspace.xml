@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b88faf68-24d8-4f78-b51a-4ae6ec8ab3e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/Migrations/schema-dump-default.lock" afterPath="$PROJECT_DIR$/config/Migrations/schema-dump-default.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/AgentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/BiensController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/DpesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/MenusController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/MenusController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Table/MenusTable.php" afterPath="$PROJECT_DIR$/src/Model/Table/MenusTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/SecteursController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" afterPath="$PROJECT_DIR$/src/Controller/Admin/TownsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" afterPath="$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Layout/admin.ctp" afterPath="$PROJECT_DIR$/src/Template/Layout/admin.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/bootstrap.php" afterPath="$PROJECT_DIR$/config/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/MainController.php" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/Main/header.ctp" afterPath="$PROJECT_DIR$/src/Template/Main/header.ctp" />
     </list>
     <ignored path="jungle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,16 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Layout/admin.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2156863" vertical-offset="1876" max-vertical-offset="4545">
-              <caret line="136" column="44" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="add.ctp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/add.ctp">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,11 +48,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenusTable.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MenusTable.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6011364" vertical-offset="491" max-vertical-offset="1395">
+            <state vertical-scroll-proportion="-22.041666" vertical-offset="491" max-vertical-offset="1395">
               <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/MainController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="1095">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Layout/main.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="555">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.ctp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Template/Main/header.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27272728" vertical-offset="0" max-vertical-offset="880">
+              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.ctp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="765">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,26 +140,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.ctp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Template/Admin/Agents/edit.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.125" vertical-offset="0" max-vertical-offset="720">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.916668" vertical-offset="2210" max-vertical-offset="3120">
-              <caret line="225" column="29" selection-start-line="225" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -174,9 +176,7 @@
         <option value="$PROJECT_DIR$/src/Controller/AppController.php" />
         <option value="$PROJECT_DIR$/src/Template/Main/menu.ctp" />
         <option value="$PROJECT_DIR$/src/Template/Layout/main.ctp" />
-        <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/Template/Main/header.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/AppController.php" />
         <option value="$PROJECT_DIR$/webroot/css/style.css" />
         <option value="$PROJECT_DIR$/src/Template/Admin/Menus/edit.ctp" />
@@ -197,6 +197,8 @@
         <option value="$PROJECT_DIR$/config/routes.php" />
         <option value="$PROJECT_DIR$/src/Controller/Admin/MenusController.php" />
         <option value="$PROJECT_DIR$/src/Model/Table/MenusTable.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/src/Template/Main/header.ctp" />
       </list>
     </option>
   </component>
@@ -278,64 +280,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webroot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -355,6 +299,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jungle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jungle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -377,54 +343,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Menus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -483,28 +401,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jungle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -745,13 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Template/Layout/error.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -810,28 +699,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Layout/main.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding>
-            <element signature="e#6#591#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11945392" vertical-offset="0" max-vertical-offset="879">
           <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Main/header.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.375" vertical-offset="285" max-vertical-offset="1200">
-          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -848,14 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2215909" vertical-offset="0" max-vertical-offset="880">
           <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1042,9 +905,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Table/MenusTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6011364" vertical-offset="491" max-vertical-offset="1395">
+        <state vertical-scroll-proportion="-22.041666" vertical-offset="491" max-vertical-offset="1395">
           <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/default.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="765">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Layout/main.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="555">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="1095">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Main/header.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27272728" vertical-offset="0" max-vertical-offset="880">
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

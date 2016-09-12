@@ -1,17 +1,24 @@
 <?php
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 class MainController extends AppController
 {
     public function index()
     {
-        //echo "index";
+
+        $menus = TableRegistry::get('Menus');
+
+        $queryMenus = $menus->find('all');
+        $this->set(compact('queryMenus'));
+
     }
 
     public function view($id = null)
     {
-        $article = $this->Articles->get($id);
-        $this->set(compact('article'));
+        $menus = $this->Menus->Find('All');
+        $this->set(compact('menus'));
     }
 
     public function add()
