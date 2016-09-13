@@ -4,13 +4,15 @@ namespace App\Controller\Admin;
 use App\Controller\Admin\AppAdminController;
 use Cake\Event\Event;
 
-class MenusController extends AppAdminController {
+class MenusController extends AppAdminController
+{
 
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
         $this->viewBuilder()->layout('admin');
     }
+
     /**
      * Index method
      *
@@ -51,24 +53,8 @@ class MenusController extends AppAdminController {
      */
     public function add()
     {
-        $menu = $this->Menus->newEntity();
 
-        if ($this->request->is('post')) {
-            if($this->request->data['parent_id'] == '') {
-                $this->request->data['parent_id'] = null;
-            }
-            $menu = $this->Menus->patchEntity($menu, $this->request->data);
-            if ($this->Menus->save($menu)) {
-                $this->Flash->success(__('The menu has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The menu could not be saved. Please, try again.'));
-            }
-        }
-        $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
-        $this->set(compact('menu', 'parentMenus'));
-        $this->set('_serialize', ['menu']);
+        $this->_saveMenu();
     }
 
     /**
@@ -80,25 +66,7 @@ class MenusController extends AppAdminController {
      */
     public function edit($id = null)
     {
-        $menu = $this->Menus->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            if($this->request->data['parent_id'] == '') {
-                $this->request->data['parent_id'] = null;
-            }
-            $menu = $this->Menus->patchEntity($menu, $this->request->data);
-            if ($this->Menus->save($menu)) {
-                $this->Flash->success(__('The menu has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The menu could not be saved. Please, try again.'));
-            }
-        }
-        $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
-        $this->set(compact('menu', 'parentMenus'));
-        $this->set('_serialize', ['menu']);
+        $this->_saveMenu($id);
     }
 
     /**
@@ -119,5 +87,33 @@ class MenusController extends AppAdminController {
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    private function _saveMenu($id = null)
+    {
+        if($id) {
+            $menu = $this->Menus->get($id, [
+                'contain' => []
+            ]);
+        } else {
+            $menu = $this->Menus->newEntity();
+        }
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if ($this->request->data['parent_id'] == '') {
+                $this->request->data['parent_id'] = null;
+            }
+            $menu = $this->Menus->patchEntity($menu, $this->request->data);
+            if ($this->Menus->save($menu)) {
+                $this->Flash->success(__('The menu has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The menu could not be saved. Please, try again.'));
+            }
+        }
+        $parentMenus = $this->Menus->ParentMenus->find('list', ['limit' => 200]);
+        $this->set(compact('menu', 'parentMenus'));
+        $this->set('_serialize', ['menu']);
     }
 }

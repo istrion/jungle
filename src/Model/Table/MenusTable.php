@@ -83,7 +83,7 @@ class MenusTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['parent_id'], 'ParentMenus'));
+        //$rules->add($rules->existsIn(['parent_id'], 'ParentMenus'));
 
         return $rules;
     }
