@@ -59,6 +59,10 @@ class BiensTable extends Table
             'foreignKey' => 'agent_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('ImagesBiens', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -101,10 +105,6 @@ class BiensTable extends Table
             ->integer('parking')
             ->requirePresence('parking', 'create')
             ->notEmpty('parking');
-
-        $validator
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
 
         return $validator;
     }

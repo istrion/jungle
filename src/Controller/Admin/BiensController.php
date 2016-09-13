@@ -73,10 +73,10 @@ class BiensController extends AppAdminController
      */
     public function add()
     {
-        $this->set('scriptDropzone', '<script type="text/javascript" src="'.PATH_ADMIN.'/admin/js/dropzone.js" ></script>');
+        $this->set('scriptDropzone', '<script type="text/javascript" src="' . PATH_ADMIN . '/admin/js/dropzone.js" ></script>');
         $this->set('activateDropzone', '<script>$(function() {
                                                 Dropzone.autoDiscover = false;
-                                                var myDropzone = new Dropzone("#uploadImages", { url: "/admin/biens/addImage" , paramName : "image"});
+                                                var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
                                                     myDropzone.on("success", function(data){
                                                         var response =  JSON.parse(data.xhr.response);
                                                         $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
@@ -127,10 +127,10 @@ class BiensController extends AppAdminController
      */
     public function edit($id = null)
     {
-        $this->set('scriptDropzone', '<script type="text/javascript" src="'.PATH_ADMIN.'/admin/js/dropzone.js" ></script>');
+        $this->set('scriptDropzone', '<script type="text/javascript" src="' . PATH_ADMIN . '/admin/js/dropzone.js" ></script>');
         $this->set('activateDropzone', '<script>$(function() {
                                                 Dropzone.autoDiscover = false;
-                                                var myDropzone = new Dropzone("#uploadImages", { url: "/admin/biens/addImage" , paramName : "image"});
+                                                var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
                                                     myDropzone.on("success", function(data){
                                                         var response =  JSON.parse(data.xhr.response);
                                                         $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
@@ -148,8 +148,9 @@ class BiensController extends AppAdminController
             $slug = $this->_stringToSlug($this->request->data['title']);
             $this->request->data['slug'] = $slug;
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
-            if ($this->Biens->save($bien)) {
-                $this->Flash->success(__('The bien has been saved.'));
+            $resultSave = $this->Biens->save($bien);
+            if ($resultSave) {
+                return $this->_saveImagesBiens($id, $this->request->data['list_image_id']);
             } else {
                 $this->Flash->error(__('The bien could not be saved. Please, try again.'));
             }
@@ -160,14 +161,24 @@ class BiensController extends AppAdminController
         foreach ($towns as $town) {
             $townSelect[$town->id] = $town->title;
         }
-        $dpes = $this->Biens->Dpes->find('list', ['limit' => 200]);
+        $dpes = $this->Biens->Dpes->find('list', ['limit' => 200,]);
         $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
         $agentSelect = array();
         foreach ($agents as $agent) {
             $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
         }
 
-        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect'));
+        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
+
+        $imagesBiens = $ImagesBiensTable->find('all',
+            [
+                'limit' => 200,
+                'fields' => ['id', 'Images.name', 'Images.path'],
+                'conditions' => ['ImagesBiens.bien_id ' => $id]
+            ])
+            ->innerJoinWith('Images');
+
+        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect', 'imagesBiens'));
         $this->set('_serialize', ['bien']);
     }
 
@@ -188,12 +199,13 @@ class BiensController extends AppAdminController
             $this->Flash->error(__('The bien could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect('/admin/biens/index/');
     }
 
     public function addImage()
     {
         $this->viewBuilder()->layout('');
+        $this->render(false);
 
         $imagesTable = TableRegistry::get('Images');
         $image = $imagesTable->newEntity();
@@ -213,8 +225,14 @@ class BiensController extends AppAdminController
             $image->name = $fileNameFinal;
             $image->path = WWW_ROOT . 'img/biens/';
 
+
+
             if ($imagesTable->save($image)) {
-                $this->response->body('{"id":"' . $image->id . '","image":"/img/biens/' . $fileNameFinal . '"}');
+                $response = ["id" => $image->id, "image" => PATH_ADMIN . '/img/biens/' . $image->name];
+
+                $this->response->body(json_encode($response));
+                $this->response->type('application/json');
+
                 return $this->response;
             }
         }
@@ -237,10 +255,11 @@ class BiensController extends AppAdminController
 
         $this->Flash->success(__('The bien has been saved.'));
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect('/admin/biens/index/');
     }
 
-    private function _stringToSlug($str) {
+    private function _stringToSlug($str)
+    {
         // trim the string
         $str = strtolower(trim($str));
         // replace all non valid characters and spaces with an underscore

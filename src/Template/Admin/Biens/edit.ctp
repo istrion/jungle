@@ -5,7 +5,7 @@
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
-        <li><?= $this->Html->link(__('List Biens'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Biens'), '/admin/biens/') ?></li>
     </ul>
 </div>
 <div class="margin-bottom"></div>
@@ -95,7 +95,16 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Ajouter des images
             </button>
-            <ul id="list-img"></ul>
+            <ul id="list-img">
+
+                <?php
+                foreach ($imagesBiens as $imgBien): ?>
+                    <?php $img = $imgBien['_matchingData']['Images'];?>
+                    <?= '<li><img src="/img/biens/'.$img['name'].'">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="'.$imgBien['id'].'"></span>
+                        </li>'; ?>
+                <?php endforeach; ?>
+            </ul>
         </div>
 
 
