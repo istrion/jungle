@@ -87,35 +87,11 @@ class BiensController extends AppAdminController
                                                     });
                                                 })</script>');
 
+        //nouveau bien
         $bien = $this->Biens->newEntity();
-        if ($this->request->is('post')) {
-            $slug = $this->_stringToSlug($this->request->data['title']);
-            $this->request->data['slug'] = $slug;
-            $bien = $this->Biens->patchEntity($bien, $this->request->data);
-            $resultSave = $this->Biens->save($bien);
-            if ($resultSave) {
-                return $this->_saveImagesBiens($resultSave->id, $this->request->data['list_image_id']);
-            } else {
-                $this->Flash->error(__('The bien could not be saved. Please, try again.'));
-            }
-        }
-        $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
-        $towns = $this->Biens->Towns->find('all', ['limit' => 200]);
-        $townSelect = array();
-        foreach ($towns as $town) {
-            $townSelect[$town->id] = $town->title;
-        }
 
-        $dpes = $this->Biens->Dpes->find('list', ['limit' => 200]);
-
-        $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
-        $agentSelect = array();
-        foreach ($agents as $agent) {
-            $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
-        }
-
-        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect'));
-        $this->set('_serialize', ['bien']);
+        $this->_saveBien($bien);
+        $this->_loadAssetsBien($bien);
     }
 
     /**
@@ -140,46 +116,18 @@ class BiensController extends AppAdminController
 
                                                     });
                                                 })</script>');
-
-        $bien = $this->Biens->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $slug = $this->_stringToSlug($this->request->data['title']);
-            $this->request->data['slug'] = $slug;
-            $bien = $this->Biens->patchEntity($bien, $this->request->data);
-            $resultSave = $this->Biens->save($bien);
-            if ($resultSave) {
-                return $this->_saveImagesBiens($id, $this->request->data['list_image_id']);
-            } else {
-                $this->Flash->error(__('The bien could not be saved. Please, try again.'));
-            }
-        }
-        $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
-        $towns = $this->Biens->Towns->find('all', ['limit' => 200]);
-        $townSelect = array();
-        foreach ($towns as $town) {
-            $townSelect[$town->id] = $town->title;
-        }
-        $dpes = $this->Biens->Dpes->find('list', ['limit' => 200,]);
-        $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
-        $agentSelect = array();
-        foreach ($agents as $agent) {
-            $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
+        //Chargement ou nouveau bien
+        if($id) {
+            $bien = $this->Biens->get($id, [
+                'contain' => []
+            ]);
+        } else {
+            $bien = $this->Biens->newEntity();
         }
 
-        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
+        $this->_saveBien($bien);
+        $this->_loadAssetsBien($bien);
 
-        $imagesBiens = $ImagesBiensTable->find('all',
-            [
-                'limit' => 200,
-                'fields' => ['id', 'Images.name', 'Images.path'],
-                'conditions' => ['ImagesBiens.bien_id ' => $id]
-            ])
-            ->innerJoinWith('Images');
-
-        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect', 'imagesBiens'));
-        $this->set('_serialize', ['bien']);
     }
 
     /**
@@ -200,6 +148,61 @@ class BiensController extends AppAdminController
         }
 
         return $this->redirect('/admin/biens/index/');
+    }
+
+    private function _saveBien($bien) {
+
+
+        //Préparation du slug pour l'url
+        if ($this->request->is(['patch', 'post', 'put'])) {
+
+            $slug = $this->_stringToSlug($this->request->data['title']);
+            $this->request->data['slug'] = $slug;
+            $bien = $this->Biens->patchEntity($bien, $this->request->data);
+
+            //Sauvegarde du bien
+            if ($this->Biens->save($bien)) {
+                //Sauvegarde des images associées
+                return $this->_saveImagesBiens($bien->id, $this->request->data['list_image_id']);
+            } else {
+                $this->Flash->error(__('The bien could not be saved. Please, try again.'));
+            }
+        }
+
+    }
+
+    private function _loadAssetsBien($bien){
+
+        //Chargement des listes ( secteur, villes, dpe, agents ... )
+
+        $secteurs = $this->Biens->Secteurs->find('list', ['limit' => 200]);
+        $towns = $this->Biens->Towns->find('all', ['limit' => 200]);
+        $townSelect = array();
+        foreach ($towns as $town) {
+            $townSelect[$town->id] = $town->title;
+        }
+        $dpes = $this->Biens->Dpes->find('list', ['limit' => 200,]);
+        $agents = $this->Biens->Agents->find('all', ['limit' => 200]);
+        $agentSelect = array();
+        foreach ($agents as $agent) {
+            $agentSelect[$agent->id] = $agent->first_name . ' ' . $agent->last_name;
+        }
+
+        //Si le bien existe déja on va charger les images associées
+        if($bien->id) {
+            $ImagesBiensTable = TableRegistry::get('ImagesBiens');
+
+            $imagesBiens = $ImagesBiensTable->find('all',
+                [
+                    'limit' => 200,
+                    'fields' => ['id', 'Images.name', 'Images.path'],
+                    'conditions' => ['ImagesBiens.bien_id ' => $bien->id]
+                ])
+                ->innerJoinWith('Images');
+        }
+
+        $this->set(compact('bien', 'secteurs', 'townSelect', 'dpes', 'agentSelect', 'imagesBiens'));
+        $this->set('_serialize', ['bien']);
     }
 
     public function addImage()
@@ -224,8 +227,6 @@ class BiensController extends AppAdminController
 
             $image->name = $fileNameFinal;
             $image->path = WWW_ROOT . 'img/biens/';
-
-
 
             if ($imagesTable->save($image)) {
                 $response = ["id" => $image->id, "image" => PATH_ADMIN . '/img/biens/' . $image->name];
@@ -254,8 +255,7 @@ class BiensController extends AppAdminController
         $result = $ImagesBiensTable->saveMany($entities);
 
         $this->Flash->success(__('The bien has been saved.'));
-
-        return $this->redirect('/admin/biens/index/');
+        return $this->redirect(PATH_ADMIN.'/admin/biens/edit/'.$bien_id);
     }
 
     private function _stringToSlug($str)
