@@ -73,25 +73,6 @@ class BiensController extends AppAdminController
      */
     public function add()
     {
-        $this->set('scriptDropzone', '<script type="text/javascript" src="' . PATH_ADMIN . '/admin/js/dropzone.js" ></script>');
-        $this->set('activateDropzone', '<script>
-                $(function() {
-                    Dropzone.autoDiscover = false;
-                    var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
-                        myDropzone.on("success", function(data){
-                            var response =  JSON.parse(data.xhr.response);
-                            $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
-                            var value = $("#list_image_id").val(),
-                                finalValue = (value == "") ? response.id: value +","+response.id;
-                            $("#list_image_id").val(finalValue);
-                        });
-                    $("#type_of_bien").click(function(e){
-                        var element = $(e.target);
-                        console.log(element);
-                        $(element).find("input[type=radio]").attr("checked");
-                    });
-            });</script>');
-
         //nouveau bien
         $bien = $this->Biens->newEntity();
 
@@ -108,19 +89,6 @@ class BiensController extends AppAdminController
      */
     public function edit($id = null)
     {
-        $this->set('scriptDropzone', '<script type="text/javascript" src="' . PATH_ADMIN . '/admin/js/dropzone.js" ></script>');
-        $this->set('activateDropzone', '<script>$(function() {
-                                                Dropzone.autoDiscover = false;
-                                                var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
-                                                    myDropzone.on("success", function(data){
-                                                        var response =  JSON.parse(data.xhr.response);
-                                                        $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
-                                                        var value = $("#list_image_id").val(),
-                                                            finalValue = (value == "") ? response.id: value +","+response.id;
-                                                        $("#list_image_id").val(finalValue);
-
-                                                    });
-                                                })</script>');
         //Chargement ou nouveau bien
         if ($id) {
             $bien = $this->Biens->get($id, [
