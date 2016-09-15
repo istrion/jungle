@@ -20,6 +20,32 @@ class MainController extends AppController
         $querySliders = $sliders->find('all');
         $this->set(compact('querySliders'));
 
+        /* chargement des derniers biens */
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $biens->recursive = 3;
+        $queryBiens = $biens->find('all', [
+            'order' => ['Biens.created' => 'DESC']
+        ])
+            ->contain(['ImagesBiens'])
+            ->limit(1);
+        $biens =[];
+
+        foreach($queryBiens as $bien) {
+            $bien->images =[];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+            ->contain('Images');
+
+            foreach($images as $img){
+                array_push($bien->images,$img->image);
+            }
+
+            array_push($biens,$bien);
+        }
+        $this->set(compact('biens'));
+
     }
 
     public function view($id = null)

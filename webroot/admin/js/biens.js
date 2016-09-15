@@ -1,6 +1,6 @@
 $(function() {
     Dropzone.autoDiscover = false;
-    var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
+    var myDropzone = new Dropzone("#uploadImages", { url: PATH_ADMIN +'/admin/biens/addImage' , paramName : "image"});
     myDropzone.on("success", function(data){
         var response =  JSON.parse(data.xhr.response);
         $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");

@@ -761,3 +761,5 @@ function _init() {
     });
   };
 }(jQuery));
+
+var PATH_ADMIN = '';

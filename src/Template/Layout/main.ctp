@@ -44,6 +44,8 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/slider') ?>
 
+    <?= $this->Element('../Main/nouveautes') ?>
+
 
 <script type="text/javascript">
     $(document).ready(function() {

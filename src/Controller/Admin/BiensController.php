@@ -187,6 +187,7 @@ class BiensController extends AppAdminController
 
         $imagesTable = TableRegistry::get('Images');
         $image = $imagesTable->newEntity();
+
         $fileName = $this->request->data['image']["name"];
         $tmpName = $this->request->data['image']['tmp_name'];
         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -194,7 +195,6 @@ class BiensController extends AppAdminController
         $s = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
         $fileNameFinal = $fileName . '_' . $s . '.' . $ext;
         $uploadDir = WWW_ROOT . 'img/biens/' . $fileNameFinal;
-
 
         if ($this->request->is('post')) {
 
