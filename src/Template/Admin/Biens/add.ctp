@@ -51,30 +51,38 @@
         <div class="form-group col-lg-12 col-sm-12 col-sx-12">
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Type de bien'); ?>
-                <?= $this->Form->checkbox('type_of_bien', [
-                    'id' => 'type_of_bien',
-                    'data-toggle' => 'toggle',
-                    'data-on' => 'Maison',
-                    'data-off' => 'Appartement',
-                    'data-height' => '40px',
-                    'data-width' => '150px',
-                    'data-onstyle' => 'success',
-                    'data-offstyle' => 'warning'
-                ]); ?>
+                <div class="btn-group" data-toggle="buttons" id="type_of_bien">
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="1" type="radio" checked="checked">Maison
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="2" type="radio">Appartement
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="3" type="radio">Immeuble
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="4" type="radio">Terrain
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="5" type="radio">Propriété
+                    </label>
+                </div>
             </div>
 
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Offre'); ?>
-                <?= $this->Form->checkbox('offer', [
-                    'id' => 'offer',
-                    'data-toggle' => 'toggle',
-                    'data-on' => 'A vendre',
-                    'data-off' => 'A louer',
-                    'data-height' => '40px',
-                    'data-width' => '150px',
-                    'data-onstyle' => 'success',
-                    'data-offstyle' => 'warning'
-                ]); ?>
+                <div class="btn-group" data-toggle="buttons" id="offer">
+                    <label class="btn btn-default">
+                        <input name="offer" value="1" type="radio">A vendre
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="offer" value="2" type="radio">A louer
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="offer" value="3" type="radio">En viager
+                    </label>
+                </div>
             </div>
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('En ligne ?'); ?>
@@ -136,9 +144,13 @@
     <!-- /.modal -->
 
 
+
     <?php echo $this->Html->css('/admin/css/dropzone.css'); ?>
     <?php echo $this->Html->css('/admin/css/custom.css'); ?>
     <?php echo $this->Html->css('/admin/css/bootstrap2-toggle.min.css'); ?>
     <?php echo $this->Html->script('/admin/js/bootstrap/bootstrap2-toggle.min', ['block' => 'scriptBottom']); ?>
     <?php echo $this->Html->script('/admin/js/tinymce/tinymce.min.js', ['block' => 'scriptBottom']); ?>
+    <?php echo $this->Html->script('/admin/js/dropzone.js', ['block' => 'scriptBottom']); ?>
+    <?php echo $this->Html->script('/admin/js/biens.js', ['block' => 'scriptBottom']); ?>
+
 <?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>

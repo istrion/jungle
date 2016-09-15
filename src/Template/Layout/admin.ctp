@@ -280,17 +280,6 @@ desired effect
 <script src="<?= PATH_ADMIN ?>/admin/js/app.js"></script>
 
 <?= $this->fetch('scriptBottom') ?>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-<?php
-    if($scriptDropzone) {
-        echo $scriptDropzone;
-        echo $activateDropzone;
-    }
-?>
 </body>
 </html>
 
