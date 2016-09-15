@@ -49,8 +49,27 @@ class SlidersController extends AppAdminController
     public function add()
     {
         $slider = $this->Sliders->newEntity();
+        $this->_saveSlider($slider);
+    }
 
-        if ($this->request->is('post')) {
+    /**
+     * Edit method
+     *
+     * @param string|null $id Slider id.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $slider = $this->Sliders->get($id, [
+            'contain' => []
+        ]);
+        $this->_saveSlider($slider);
+    }
+
+    private function _saveSlider($slider){
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
             $fileName = $this->request->data['path']["name"];
             $tmpName = $this->request->data['path']['tmp_name'];
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -72,32 +91,6 @@ class SlidersController extends AppAdminController
             }
         }
 
-        $this->set(compact('slider'));
-        $this->set('_serialize', ['slider']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Slider id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $slider = $this->Sliders->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $slider = $this->Sliders->patchEntity($slider, $this->request->data);
-            if ($this->Sliders->save($slider)) {
-                $this->Flash->success(__('The slider has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The slider could not be saved. Please, try again.'));
-            }
-        }
         $this->set(compact('slider'));
         $this->set('_serialize', ['slider']);
     }
