@@ -51,16 +51,23 @@
         <div class="form-group col-lg-12 col-sm-12 col-sx-12">
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Type de bien'); ?>
-                <?= $this->Form->checkbox('type_of_bien', [
-                    'id' => 'type_of_bien',
-                    'data-toggle' => 'toggle',
-                    'data-on' => 'Maison',
-                    'data-off' => 'Appartement',
-                    'data-height' => '40px',
-                    'data-width' => '150px',
-                    'data-onstyle' => 'success',
-                    'data-offstyle' => 'warning'
-                ]); ?>
+                <div class="btn-group" data-toggle="buttons" id="type_of_bien">
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="1" type="radio" checked="checked">Maison
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="2" type="radio">Appartement
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="3" type="radio">Immeuble
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="4" type="radio">Terrain
+                    </label>
+                    <label class="btn btn-default">
+                        <input name="type_of_bien" value="5" type="radio">Propriété
+                    </label>
+                </div>
             </div>
 
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">

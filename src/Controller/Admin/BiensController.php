@@ -74,18 +74,23 @@ class BiensController extends AppAdminController
     public function add()
     {
         $this->set('scriptDropzone', '<script type="text/javascript" src="' . PATH_ADMIN . '/admin/js/dropzone.js" ></script>');
-        $this->set('activateDropzone', '<script>$(function() {
-                                                Dropzone.autoDiscover = false;
-                                                var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
-                                                    myDropzone.on("success", function(data){
-                                                        var response =  JSON.parse(data.xhr.response);
-                                                        $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
-                                                        var value = $("#list_image_id").val(),
-                                                            finalValue = (value == "") ? response.id: value +","+response.id;
-                                                        $("#list_image_id").val(finalValue);
-
-                                                    });
-                                                })</script>');
+        $this->set('activateDropzone', '<script>
+                $(function() {
+                    Dropzone.autoDiscover = false;
+                    var myDropzone = new Dropzone("#uploadImages", { url: "' . PATH_ADMIN . '/admin/biens/addImage" , paramName : "image"});
+                        myDropzone.on("success", function(data){
+                            var response =  JSON.parse(data.xhr.response);
+                            $("#list-img").append("<li><img src=\"" +response.image+ "\"/><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\" id=\"imgId_"+response.id+"\"></span></li>");
+                            var value = $("#list_image_id").val(),
+                                finalValue = (value == "") ? response.id: value +","+response.id;
+                            $("#list_image_id").val(finalValue);
+                        });
+                    $("#type_of_bien").click(function(e){
+                        var element = $(e.target);
+                        console.log(element);
+                        $(element).find("input[type=radio]").attr("checked");
+                    });
+            });</script>');
 
         //nouveau bien
         $bien = $this->Biens->newEntity();
@@ -117,7 +122,7 @@ class BiensController extends AppAdminController
                                                     });
                                                 })</script>');
         //Chargement ou nouveau bien
-        if($id) {
+        if ($id) {
             $bien = $this->Biens->get($id, [
                 'contain' => []
             ]);
@@ -150,7 +155,8 @@ class BiensController extends AppAdminController
         return $this->redirect('/admin/biens/index/');
     }
 
-    private function _saveBien($bien) {
+    private function _saveBien($bien)
+    {
 
 
         //Préparation du slug pour l'url
@@ -171,7 +177,8 @@ class BiensController extends AppAdminController
 
     }
 
-    private function _loadAssetsBien($bien){
+    private function _loadAssetsBien($bien)
+    {
 
         //Chargement des listes ( secteur, villes, dpe, agents ... )
 
@@ -189,7 +196,7 @@ class BiensController extends AppAdminController
         }
 
         //Si le bien existe déja on va charger les images associées
-        if($bien->id) {
+        if ($bien->id) {
             $ImagesBiensTable = TableRegistry::get('ImagesBiens');
 
             $imagesBiens = $ImagesBiensTable->find('all',
@@ -255,7 +262,7 @@ class BiensController extends AppAdminController
         $result = $ImagesBiensTable->saveMany($entities);
 
         $this->Flash->success(__('The bien has been saved.'));
-        return $this->redirect(PATH_ADMIN.'/admin/biens/edit/'.$bien_id);
+        return $this->redirect(PATH_ADMIN . '/admin/biens/edit/' . $bien_id);
     }
 
     private function _stringToSlug($str)
