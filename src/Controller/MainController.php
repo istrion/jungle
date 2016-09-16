@@ -7,6 +7,7 @@ class MainController extends AppController
 {
     public function index()
     {
+        $this->viewBuilder()->layout('main');
         /* chargement des menus du header*/
 
         $menus = TableRegistry::get('Menus');
@@ -27,73 +28,50 @@ class MainController extends AppController
             'order' => ['Biens.created' => 'DESC']
         ])->limit(15);
 
-        $biens =[];
+        $biens = [];
 
-        foreach($queryBiens as $bien) {
-            $bien->images =[];
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
 
             $images = $imagesBiens->find('all')
                 ->where(["ImagesBiens.bien_id" => $bien->id])
-            ->contain('Images');
+                ->contain('Images');
 
-            foreach($images as $img){
-                array_push($bien->images,$img->image);
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
             }
 
-            array_push($biens,$bien);
+            array_push($biens, $bien);
         }
         $this->set(compact('biens'));
 
     }
 
-    public function view($id = null)
+    public function liste()
     {
-        $menus = $this->Menus->Find('All');
-        $this->set(compact('menus'));
-    }
+        $this->viewBuilder()->layout('liste');
 
-    public function add()
-    {
-        $article = $this->Articles->newEntity();
-        if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->data);
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('Your article has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('Unable to add your article.'));
-        }
-        $this->set('article', $article);
+        $menus = TableRegistry::get('Menus');
 
-        // Just added the categories list to be able to choose
-        // one category for an article
-        $categories = $this->Articles->Categories->find('treeList');
-        $this->set(compact('categories'));
-    }
+        $queryMenus = $menus->find('all');
+        $this->set(compact('queryMenus'));
 
-    public function edit($id = null)
-    {
-        $article = $this->Articles->get($id);
-        if ($this->request->is(['post', 'put'])) {
-            $this->Articles->patchEntity($article, $this->request->data);
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('Votre article a été mis à jour.'));
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('Impossible de mettre à jour votre article.'));
-        }
+        $orderBy = $this->request->query('sortBy');
+        $orderBy = ($orderBy == "asc") ? $orderBy:"desc";
 
-        $this->set('article', $article);
-    }
+        $this->paginate = [
+            'maxLimit' => 12,
+            'order' => [
+                'Biens.price' => $orderBy
+            ]
+        ];
 
-    public function delete($id)
-    {
-        $this->request->allowMethod(['post', 'delete']);
+        $biens = TableRegistry::get('Biens');
+        $biens = $biens->find('all')->contain(['ImagesBiens.Images']);
+        $biens = $this->paginate($biens);
 
-        $article = $this->Articles->get($id);
-        if ($this->Articles->delete($article)) {
-            $this->Flash->success(__("L'article avec l'id: {0} a été supprimé.", h($id)));
-            return $this->redirect(['action' => 'index']);
-        }
+
+        $this->set(compact('biens'));
+        $this->set('_serialize', ['biens']);
     }
 }

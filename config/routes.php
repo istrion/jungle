@@ -52,6 +52,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     $routes->connect('/', ['controller' => 'Main', 'action' => 'index']);
+    $routes->connect('/liste/*', ['controller' => 'Main', 'action' => 'liste']);
 
 
     /**
