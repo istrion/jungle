@@ -66,15 +66,15 @@ $cakeDescription = 'Jungle immobilier';
                 {
                     breakpoint:800,
                     settings: {
-                        item:3,
+                        item:2,
                         slideMove:1,
-                        slideMargin:6,
+                        slideMargin:6
                     }
                 },
                 {
                     breakpoint:480,
                     settings: {
-                        item:2,
+                        item:1,
                         slideMove:1
                     }
                 }

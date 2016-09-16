@@ -40,7 +40,7 @@
 
         <!-- Header Starts -->
         <div class="header">
-            <a href="/">
+            <a href="/" class="link-logo">
                 <img src="img/template/jungle_logo.png" alt="Jungle immobilier" class="logo">
             </a>
 

@@ -525,39 +525,61 @@
     margin: auto;
 }
 
-.properties-listing .btn{
-    font-size:18px;
+.properties-listing .btn {
+    font-size: 18px;
 }
 
-span[data-original-title="Bed Room"] {
+.properties-listing .listing-detail span {
+    width: 32px;
+    height: 32px;
+    padding-top: 27px;
+    margin-right: 15px;
+    background-size: contain;
+}
+
+.properties-listing .listing-detail span[data-original-title="Bed Room"] {
     background: url(../img/template/bedroom.png) no-repeat;
-    width: 32px;
-    height: 32px;
-    padding-top: 27px;
-    margin-right:15px;
 }
 
-span[data-original-title="Kitchen"] {
+.properties-listing .listing-detail span[data-original-title="Kitchen"] {
     background: url(../img/template/kitchen.png) no-repeat;
-    width: 32px;
-    height: 32px;
-    padding-top: 27px;
-    margin-right:15px;
 }
 
-span[data-original-title="Parking"] {
+.properties-listing .listing-detail span[data-original-title="Parking"] {
     background: url(../img/template/parking.png) no-repeat;
-    width: 32px;
-    height: 32px;
-    padding-top: 27px;
-    margin-right:15px;
 }
 
-span[data-original-title="Shower"] {
+.properties-listing .listing-detail span[data-original-title="Shower"] {
     background: url(../img/template/shower.png) no-repeat;
-    width: 32px;
-    height: 32px;
-    padding-top: 27px;
-    margin-right:15px;
 }
 
+@media only all and (max-width:40em) {
+    #slider {
+        max-height:300px;
+    }
+
+    .header .link-logo{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 80px;
+        width: 80px;
+        display: block;
+    }
+
+    .header .link-logo img{
+        width:100%;
+    }
+
+    .properties-listing h2{
+        text-align: center;
+    }
+
+    .properties-listing a.pull-right{
+        float: none !important;
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
+
+}
