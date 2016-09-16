@@ -28,10 +28,12 @@ $cakeDescription = 'Jungle immobilier';
     <link rel="stylesheet" href="css/style(1).css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/lightslider.css">
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
     <script src="js/slider.js"></script>
+    <script src="js/lightslider.js"></script>
 
     <?= $this->Html->meta('icon') ?>
 
@@ -53,6 +55,32 @@ $cakeDescription = 'Jungle immobilier';
             speed: 800,            // Integer: Speed of the transition, in milliseconds
             timeout: 5000
         });
+
+        $('#autoWidth').lightSlider({
+            item:5,
+            loop:false,
+            slideMove:2,
+            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+            speed:600,
+            responsive : [
+                {
+                    breakpoint:800,
+                    settings: {
+                        item:3,
+                        slideMove:1,
+                        slideMargin:6,
+                    }
+                },
+                {
+                    breakpoint:480,
+                    settings: {
+                        item:2,
+                        slideMove:1
+                    }
+                }
+            ]
+        });
+
     });
 </script>
 </body>

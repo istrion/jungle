@@ -23,12 +23,10 @@ class MainController extends AppController
         /* chargement des derniers biens */
         $imagesBiens = TableRegistry::get('ImagesBiens');
         $biens = TableRegistry::get('Biens');
-        $biens->recursive = 3;
         $queryBiens = $biens->find('all', [
             'order' => ['Biens.created' => 'DESC']
-        ])
-            ->contain(['ImagesBiens'])
-            ->limit(1);
+        ])->limit(15);
+
         $biens =[];
 
         foreach($queryBiens as $bien) {
