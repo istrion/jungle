@@ -9,10 +9,15 @@
                 <li>
                     <div class="properties">
                         <div class="image-holder">
+                            <?php if(isset($bien->images[0])): ?>
                             <?= $this->Html->image(PATH_ADMIN . 'biens/' . $bien->images[0]->name, ["class"=>"img-responsive"]); ?>
+                            <?php else: ?>
+                                <?= $this->Html->image(PATH_ADMIN . 'template/default-house.png', ["class"=>"img-responsive"]); ?>
+                            <?php endif ?>
+
                             <div class="status sold">Sold</div>
                         </div>
-                        <h4><a href="detail/<?= $bien->slug; ?>"><?= $bien->title ?></a></h4>
+                        <h4><a href="details/<?= $bien->slug; ?>"><?= $bien->title ?></a></h4>
 
                         <p class="price"><?= $bien->price; ?> €</p>
 

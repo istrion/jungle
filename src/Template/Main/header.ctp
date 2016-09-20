@@ -41,7 +41,7 @@
         <!-- Header Starts -->
         <div class="header">
             <a href="/" class="link-logo">
-                <img src="img/template/jungle_logo.png" alt="Jungle immobilier" class="logo">
+                <img src="<?= PATH_ADMIN ?>/img/template/jungle_logo.png" alt="Jungle immobilier" class="logo">
             </a>
 
             <ul class="pull-right">
