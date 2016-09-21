@@ -45,6 +45,14 @@ class MainController extends AppController
     public function details($slug = null)
     {
         $this->viewBuilder()->layout('header_footer');
-        echo $slug;
+        $biens = TableRegistry::get('Biens');
+        $bien = $biens->find('all',
+            [
+                'conditions'=> ['slug' => $slug],
+                'contain' => ['Towns', 'Agents']
+            ]);
+        $bien = $bien->first();
+
+        $this->set(compact('bien'));
     }
 }

@@ -525,6 +525,10 @@
     margin: auto;
 }
 
+.properties-listing{
+    width:auto;
+}
+
 .properties-listing .btn {
     font-size: 18px;
 }
@@ -537,7 +541,7 @@
     background-size: contain;
 }
 
-.properties-listing .listing-detail span[data-original-title="Bed Room"] {
+.properties-listing .listing-detail span[data-original-title="BedRoom"] {
     background: url(../img/template/bedroom.png) no-repeat;
 }
 
