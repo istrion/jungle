@@ -7,7 +7,12 @@ class MainController extends AppController
 {
     public function index()
     {
-        $this->viewBuilder()->layout('main');
+        /* chargement des menus du header*/
+
+        $menus = TableRegistry::get('Menus');
+
+        $queryMenus = $menus->find('all');
+        $this->set(compact('queryMenus'));
 
         /* chargement du slider de la homepage*/
         $sliders = TableRegistry::get('Sliders');
@@ -22,25 +27,52 @@ class MainController extends AppController
             'order' => ['Biens.created' => 'DESC']
         ])->limit(15);
 
-        $biens =[];
+        $biens = [];
 
-        foreach($queryBiens as $bien) {
-            $bien->images =[];
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
 
             $images = $imagesBiens->find('all')
                 ->where(["ImagesBiens.bien_id" => $bien->id])
-            ->contain('Images');
+                ->contain('Images');
 
-            foreach($images as $img){
-                array_push($bien->images,$img->image);
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
             }
 
-            array_push($biens,$bien);
+            array_push($biens, $bien);
         }
         $this->set(compact('biens'));
 
     }
 
+    public function liste()
+    {
+        $this->viewBuilder()->layout('liste');
+
+        $menus = TableRegistry::get('Menus');
+
+        $queryMenus = $menus->find('all');
+        $this->set(compact('queryMenus'));
+
+        $orderBy = $this->request->query('sortBy');
+        $orderBy = ($orderBy == "asc") ? $orderBy:"desc";
+
+        $this->paginate = [
+            'maxLimit' => 12,
+            'order' => [
+                'Biens.price' => $orderBy
+            ]
+        ];
+
+        $biens = TableRegistry::get('Biens');
+        $biens = $biens->find('all')->contain(['ImagesBiens.Images']);
+        $biens = $this->paginate($biens);
+
+
+        $this->set(compact('biens'));
+        $this->set('_serialize', ['biens']);
+    }
 
     public function details($slug = null)
     {
