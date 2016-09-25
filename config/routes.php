@@ -53,6 +53,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Main', 'action' => 'index']);
     $routes->connect('/liste/*', ['controller' => 'Main', 'action' => 'liste']);
+    $routes->connect('/details/*', ['controller' => 'Main', 'action' => 'details']);
 
 
     /**

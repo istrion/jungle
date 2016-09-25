@@ -233,13 +233,19 @@ class BiensController extends AppAdminController
         return $this->redirect(PATH_ADMIN . '/admin/biens/edit/' . $bien_id);
     }
 
-    private function _stringToSlug($str)
+    private function _stringToSlug($title)
     {
-        // trim the string
-        $str = strtolower(trim($str));
-        // replace all non valid characters and spaces with an underscore
-        $str = preg_replace('/[^a-z0-9-]/', '_', $str);
-        $str = preg_replace('/-+/', "_", $str);
-        return $str;
+        $slug = preg_replace("/-$/","",preg_replace('/[^a-z0-9]+/i', "-", strtolower($title)));
+
+        $query = $this->Biens->find();
+        $query
+            ->select(['count' => $query->func()->count('*')])
+            ->where(['slug like' => '%'.$slug.'%'])
+            ->order(['created' => 'DESC']);
+        $result = $query->toList();
+        $numHits = $result[0]['count'];
+
+
+        return ($numHits > 0) ? ($slug . '-' . $numHits) : $slug;
     }
 }

@@ -7,7 +7,6 @@ class MainController extends AppController
 {
     public function index()
     {
-        $this->viewBuilder()->layout('main');
         /* chargement des menus du header*/
 
         $menus = TableRegistry::get('Menus');
@@ -73,5 +72,19 @@ class MainController extends AppController
 
         $this->set(compact('biens'));
         $this->set('_serialize', ['biens']);
+    }
+
+    public function details($slug = null)
+    {
+        $this->viewBuilder()->layout('header_footer');
+        $biens = TableRegistry::get('Biens');
+        $bien = $biens->find('all',
+            [
+                'conditions'=> ['slug' => $slug],
+                'contain' => ['Towns', 'Agents']
+            ]);
+        $bien = $bien->first();
+
+        $this->set(compact('bien'));
     }
 }
