@@ -41,7 +41,7 @@ $cakeDescription = 'Jungle immobilier';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="<?= $pageName ?>">
     <?= $this->Element('../Main/header') ?>
     <?= $this->fetch('content') ?>
 

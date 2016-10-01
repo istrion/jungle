@@ -522,10 +522,10 @@
 
 .properties-listing {
     width: 80%;
-    margin: auto;
+    margin: 40px auto;
 }
 
-.properties-listing{
+.details .properties-listing{
     width:auto;
 }
 
@@ -555,6 +555,71 @@
 
 .properties-listing .listing-detail span[data-original-title="Shower"] {
     background: url(../img/template/shower.png) no-repeat;
+}
+
+.details .properties-listing .listing-detail span[data-original-title="BedRoom"] {
+    background: url(../img/template/bedroom_w.png) no-repeat;
+}
+
+.details .properties-listing .listing-detail span[data-original-title="Kitchen"] {
+    background: url(../img/template/kitchen_w.png) no-repeat;
+}
+
+.details .properties-listing .listing-detail span[data-original-title="Parking"] {
+    background: url(../img/template/parking_w.png) no-repeat;
+}
+
+.details .properties-listing .listing-detail span[data-original-title="Shower"] {
+    background: url(../img/template/shower_w.png) no-repeat;
+}
+
+.details .detail-slider-img{
+    width:490px;
+    height:315px;
+    display:block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.details .dpe{
+    position: relative;
+}
+
+.details .dpe .indice{
+    display: block;
+    background-color: #444;
+    color: #fff;
+    position: absolute;
+    width: 40px;
+    height: 22px;
+    right: 0px;
+    text-align: center;
+    font-size: 14px;
+    border:1px solid #000;
+}
+
+.details .dpe .indice .arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 11px solid #444;
+    position: absolute;
+    left: -10px;
+}
+
+
+.details .dpe .indice.a{top:28px;}
+.details .dpe .indice.b{top:52px;}
+.details .dpe .indice.c{top:74px;}
+.details .dpe .indice.d{top:96px;}
+.details .dpe .indice.e{top:118px;}
+.details .dpe .indice.f{top:140px;}
+.details .dpe .indice.g{top:164px;}
+
+.details .enquiry{
+    padding-top:20px;
 }
 
 @media only all and (max-width:40em) {

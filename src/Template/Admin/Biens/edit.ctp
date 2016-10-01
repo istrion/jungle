@@ -8,6 +8,10 @@
         <li><?= $this->Html->link(__('List Biens'), '/admin/biens/') ?></li>
     </ul>
 </div>
+
+<?= $this->Flash->render() ?>
+
+
 <div class="margin-bottom"></div>
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -35,13 +39,24 @@
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('shower', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de salles de bain', 'label' => 'Salle de bains']); ?></div>
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('parking', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de parking', 'label' => 'Parkings']); ?></div>
-                <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-            <?= $this->Form->label('Dpe'); ?>
-            <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
+        <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->label('Dpe'); ?>
+                <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
+            </div>
+
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('dpeValue', ['class' => 'form-control', 'label' => 'Valeur du Dpe']); ?>
+            </div>
         </div>
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-            <?= $this->Form->label('Agents'); ?>
-            <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('m2', ['class' => 'form-control', 'label' => 'Superficie']); ?>
+            </div>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->label('Agents'); ?>
+                <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
+            </div>
         </div>
 
         <div
@@ -51,20 +66,25 @@
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Type de bien'); ?>
                 <div class="btn-group" data-toggle="buttons" id="type_of_bien">
-                    <label class="btn btn-default <?= ($bien->type_of_bien == 1) ? 'active':''; ?>">
-                        <input name="type_of_bien" value="1" type="radio" <?= ($bien->type_of_bien == 1) ? 'checked="true"':''; ?> >Maison
+                    <label class="btn btn-default <?= ($bien->type_of_bien == 1) ? 'active' : ''; ?>">
+                        <input name="type_of_bien" value="1"
+                               type="radio" <?= ($bien->type_of_bien == 1) ? 'checked="true"' : ''; ?> >Maison
                     </label>
-                    <label class="btn btn-default <?= ($bien->type_of_bien == 2) ? 'active':''; ?>">
-                        <input name="type_of_bien" value="2" type="radio" <?= ($bien->type_of_bien == 2) ? 'checked="true"':''; ?>>Appartement
+                    <label class="btn btn-default <?= ($bien->type_of_bien == 2) ? 'active' : ''; ?>">
+                        <input name="type_of_bien" value="2"
+                               type="radio" <?= ($bien->type_of_bien == 2) ? 'checked="true"' : ''; ?>>Appartement
                     </label>
-                    <label class="btn btn-default <?= ($bien->type_of_bien == 3) ? 'active':''; ?>">
-                        <input name="type_of_bien" value="3" type="radio" <?= ($bien->type_of_bien == 3) ? 'checked="true"':''; ?>>Immeuble
+                    <label class="btn btn-default <?= ($bien->type_of_bien == 3) ? 'active' : ''; ?>">
+                        <input name="type_of_bien" value="3"
+                               type="radio" <?= ($bien->type_of_bien == 3) ? 'checked="true"' : ''; ?>>Immeuble
                     </label>
-                    <label class="btn btn-default <?= ($bien->type_of_bien == 4) ? 'active':''; ?>">
-                        <input name="type_of_bien" value="4" type="radio" <?= ($bien->type_of_bien == 4) ? 'checked="true"':''; ?>>Terrain
+                    <label class="btn btn-default <?= ($bien->type_of_bien == 4) ? 'active' : ''; ?>">
+                        <input name="type_of_bien" value="4"
+                               type="radio" <?= ($bien->type_of_bien == 4) ? 'checked="true"' : ''; ?>>Terrain
                     </label>
-                    <label class="btn btn-default <?= ($bien->type_of_bien == 5) ? 'active':''; ?>">
-                        <input name="type_of_bien" value="5" type="radio" <?= ($bien->type_of_bien == 5) ? 'checked="true"':''; ?>>Propriété
+                    <label class="btn btn-default <?= ($bien->type_of_bien == 5) ? 'active' : ''; ?>">
+                        <input name="type_of_bien" value="5"
+                               type="radio" <?= ($bien->type_of_bien == 5) ? 'checked="true"' : ''; ?>>Propriété
                     </label>
                 </div>
             </div>
@@ -72,14 +92,17 @@
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Offre'); ?>
                 <div class="btn-group" data-toggle="buttons" id="offer">
-                    <label class="btn btn-default <?= ($bien->offer == 1) ? 'active':''; ?>">
-                        <input name="offer" value="1" type="radio" <?= ($bien->offer == 1) ? 'checked="true"':''; ?> >A vendre
+                    <label class="btn btn-default <?= ($bien->offer == 1) ? 'active' : ''; ?>">
+                        <input name="offer" value="1" type="radio" <?= ($bien->offer == 1) ? 'checked="true"' : ''; ?> >A
+                        vendre
                     </label>
-                    <label class="btn btn-default <?= ($bien->offer == 2) ? 'active':''; ?>">
-                        <input name="offer" value="2" type="radio" <?= ($bien->offer == 2) ? 'checked="true"':''; ?>>A louer
+                    <label class="btn btn-default <?= ($bien->offer == 2) ? 'active' : ''; ?>">
+                        <input name="offer" value="2" type="radio" <?= ($bien->offer == 2) ? 'checked="true"' : ''; ?>>A
+                        louer
                     </label>
-                    <label class="btn btn-default <?= ($bien->offer == 3) ? 'active':''; ?>">
-                        <input name="offer" value="3" type="radio" <?= ($bien->offer == 3) ? 'checked="true"':''; ?>>En viager
+                    <label class="btn btn-default <?= ($bien->offer == 3) ? 'active' : ''; ?>">
+                        <input name="offer" value="3" type="radio" <?= ($bien->offer == 3) ? 'checked="true"' : ''; ?>>En
+                        viager
                     </label>
                 </div>
             </div>
@@ -107,9 +130,9 @@
 
                 <?php
                 foreach ($imagesBiens as $imgBien): ?>
-                    <?php $img = $imgBien['_matchingData']['Images'];?>
-                    <?= '<li><img src="/img/biens/'.$img['name'].'">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="'.$imgBien['id'].'"></span>
+                    <?php $img = $imgBien['_matchingData']['Images']; ?>
+                    <?= '<li><img src="/img/biens/' . $img['name'] . '">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="' . $imgBien['id'] . '"></span>
                         </li>'; ?>
                 <?php endforeach; ?>
             </ul>
@@ -124,7 +147,8 @@
         <?= $this->Form->end() ?>
     </div>
 
-    <?= $this->Flash->render() ?>
+
+
     <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -160,4 +184,4 @@
     <?php echo $this->Html->script('/admin/js/dropzone.js', ['block' => 'scriptBottom']); ?>
     <?php echo $this->Html->script('/admin/js/biens.js', ['block' => 'scriptBottom']); ?>
 
-    <?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>
+<?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>

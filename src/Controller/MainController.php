@@ -7,6 +7,7 @@ class MainController extends AppController
 {
     public function index()
     {
+        $this->viewBuilder()->layout('main');
         /* chargement des menus du header*/
 
         $menus = TableRegistry::get('Menus');
@@ -81,10 +82,21 @@ class MainController extends AppController
         $bien = $biens->find('all',
             [
                 'conditions'=> ['slug' => $slug],
-                'contain' => ['Towns', 'Agents']
+                'contain' => ['Towns', 'Agents', 'Dpes']
             ]);
         $bien = $bien->first();
 
+        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
+
+        $imagesBiens = $ImagesBiensTable->find('all',
+            [
+                'limit' => 200,
+                'fields' => ['id', 'Images.name', 'Images.path'],
+                'conditions' => ['ImagesBiens.bien_id ' => $bien->id]
+            ])
+            ->innerJoinWith('Images');
+
         $this->set(compact('bien'));
+        $this->set(compact('imagesBiens'));
     }
 }

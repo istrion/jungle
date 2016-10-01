@@ -56,15 +56,6 @@ class BiensController extends AppAdminController
 
         $this->set('_serialize', ['bien']);
     }
-    /*public function view($id = null)
-    {
-        $bien = $this->Biens->get($id, [
-            'contain' => ['Secteurs', 'Dpes']
-        ]);
-
-        $this->set('bien', $bien);
-        $this->set('_serialize', ['bien']);
-    }*/
 
     /**
      * Add method
@@ -125,13 +116,13 @@ class BiensController extends AppAdminController
 
     private function _saveBien($bien)
     {
-
-
         //Préparation du slug pour l'url
         if ($this->request->is(['patch', 'post', 'put'])) {
+            if($this->request->params['action'] != "edit") {
+                $slug = $this->_stringToSlug($this->request->data['title']);
+                $this->request->data['slug'] = $slug;
+            }
 
-            $slug = $this->_stringToSlug($this->request->data['title']);
-            $this->request->data['slug'] = $slug;
             $bien = $this->Biens->patchEntity($bien, $this->request->data);
 
             //Sauvegarde du bien
@@ -229,7 +220,7 @@ class BiensController extends AppAdminController
         $entities = $ImagesBiensTable->newEntities($data);
         $result = $ImagesBiensTable->saveMany($entities);
 
-        $this->Flash->success(__('The bien has been saved.'));
+        $this->Flash->success(__('Le bien a été sauvegardé'));
         return $this->redirect(PATH_ADMIN . '/admin/biens/edit/' . $bien_id);
     }
 

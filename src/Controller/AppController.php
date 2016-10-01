@@ -55,11 +55,13 @@ class AppController extends Controller
     public function beforeRender(Event $event)
     {
         /* chargement des menus du header*/
-
         $menus = TableRegistry::get('Menus');
 
         $queryMenus = $menus->find('all');
         $this->set(compact('queryMenus'));
+
+        //Set le nom de la page courante
+        $this->set('pageName', $this->request->action);
 
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])

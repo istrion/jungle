@@ -36,12 +36,23 @@
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('parking', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de parking', 'label' => 'Parkings']); ?></div>
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-            <?= $this->Form->label('Dpe'); ?>
-            <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->label('Dpe'); ?>
+                <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
+            </div>
+
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('dpeValue', ['class' => 'form-control', 'label' => 'Valeur du Dpe']); ?>
+            </div>
         </div>
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-            <?= $this->Form->label('Agents'); ?>
-            <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('m2', ['class' => 'form-control', 'label' => 'Superficie']); ?>
+            </div>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->label('Agents'); ?>
+                <?= $this->Form->select('agent_id', $agentSelect, ['empty' => '(Sélectionnez un agent)', 'class' => 'form-control']); ?>
+            </div>
         </div>
 
         <div
@@ -142,7 +153,6 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-
 
 
     <?php echo $this->Html->css('/admin/css/dropzone.css'); ?>

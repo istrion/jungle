@@ -22,7 +22,7 @@
                         <p class="price"><?= $bien->price; ?> €</p>
 
                         <div class="listing-detail">
-                            <span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room"><?= $bien->room; ?></span> <span
+                            <span data-toggle="tooltip" data-placement="bottom" data-original-title="BedRoom"><?= $bien->room; ?></span> <span
                                 data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen"><?= $bien->kitchen; ?></span>
                             <span data-toggle="tooltip" data-placement="bottom" data-original-title="Shower"><?= $bien->shower; ?></span>
                             <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking"><?= $bien->parking; ?></span>
