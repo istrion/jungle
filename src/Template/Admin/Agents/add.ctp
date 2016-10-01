@@ -5,7 +5,7 @@
         <span class="sr-only">Menu</span>
     </button>
     <ul class="dropdown-menu" role="menu">
-        <li><?= $this->Html->link(__('List Agents'), '/'.['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Agents'), ['action' => 'index']) ?></li>
     </ul>
 </div>
 <div class="margin-bottom"></div>
@@ -17,12 +17,26 @@
     <!-- form start -->
     <?= $this->Form->create($agent, array('type' => 'file')) ?>
     <div class="box-body">
+        <div class="form-group">
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('first_name', ['class' => 'form-control', 'placeholder' => 'Nom', 'label' => 'Nom']); ?>
+            </div>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('last_name', ['class' => 'form-control', 'placeholder' => 'Prenom', 'label' => 'Prénom']); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('email', ['class' => 'form-control', 'placeholder' => 'Email', 'label' => 'Email']); ?>
+            </div>
+            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                <?= $this->Form->input('tel', ['class' => 'form-control', 'placeholder' => 'Téléphone', 'label' => 'Téléphone']); ?>
+            </div>
+        </div>
+
         <div
-            class="form-group"><?= $this->Form->input('first_name', ['class' => 'form-control', 'placeholder' => 'Nom', 'label' => 'Nom']); ?></div>
-        <div
-            class="form-group"><?= $this->Form->input('last_name', ['class' => 'form-control', 'placeholder' => 'Prenom', 'label' => 'Prénom']); ?></div>
-        <div
-            class="form-group"><?= $this->Form->textarea('description', ['class' => 'form-control', 'placeholder' => 'description', 'label' => 'Description']); ?></div>
+            class="form-group col-lg-12 col-sm-12 col-sx-12"><?= $this->Form->textarea('description', ['class' => 'form-control', 'placeholder' => 'description', 'label' => 'Description', 'required' => 'false']); ?></div>
         <div
             class="form-group"><?= $this->Form->file('photo', ['class' => 'form-control', 'placeholder' => 'photo', 'label' => 'Photo']); ?></div>
     </div>

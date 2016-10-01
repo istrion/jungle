@@ -1,7 +1,26 @@
+<?php
+    $currentLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    $offer = '';
+    if($bien->offer == 1) $offer = 'Acheter';
+    if($bien->offer == 2) $offer = 'Louer';
+    if($bien->offer == 3) $offer = 'Viager';
+?>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="##">Accueil</a> / Acheter</span>
-        <h2>Acheter</h2>
+        <span class="pull-right"><a href="##">Accueil</a> / <?= $offer ?></span>
+        <h2>
+            <?= $offer ?>
+        </h2>
     </div>
 </div>
 
@@ -78,8 +97,12 @@
 
                         </div>
                         <div class="share">
-                            Partager cette annonce sur : <img src="images/facebook-logo-button.png"> <img
-                                src="images/twitter-logo-button.png">
+                            Partager cette annonce sur :
+                            <div class="fb-share-button"
+                                 data-href="<?= $currentLink ?>"
+                                 data-layout="button_count" data-size="large"
+                                 data-mobile-iframe="false">
+                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>
                         </div>
 
                     </div>
@@ -121,12 +144,12 @@
                             <div class="enquiry">
                                 <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à <?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></h6>
                                 <form role="form">
-                                    <input type="text" class="form-control" placeholder="Full Name">
-                                    <input type="text" class="form-control" placeholder="you@yourdomain.com">
-                                    <input type="text" class="form-control" placeholder="your number">
+                                    <input type="text" class="form-control" placeholder="Votre nom complet">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" placeholder="Téléphone">
                                     <textarea rows="6" class="form-control"
-                                              placeholder="Whats on your mind?"></textarea>
-                                    <button type="submit" class="btn btn-primary" name="Submit">Send Message</button>
+                                              placeholder="Message"></textarea>
+                                    <button type="submit" class="btn btn-primary" name="Submit">Envoyer</button>
                                 </form>
                             </div>
                         </div>
@@ -163,3 +186,12 @@
         ]
     });
 </script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

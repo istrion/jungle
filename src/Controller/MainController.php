@@ -95,8 +95,15 @@ class MainController extends AppController
                 'conditions' => ['ImagesBiens.bien_id ' => $bien->id]
             ])
             ->innerJoinWith('Images');
+        //https://developers.facebook.com/docs/plugins/share-button
+        $metasFB = [
+            'title' => $bien->title,
+            'description' => $bien->description,
+            'image' => 'http://jungle.local/img/biens/1424169825-112082_7sdcm.jpg'
+        ];
 
         $this->set(compact('bien'));
         $this->set(compact('imagesBiens'));
+        $this->set(compact('metasFB'));
     }
 }
