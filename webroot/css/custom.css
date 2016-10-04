@@ -633,6 +633,8 @@
     overflow: hidden;
 }
 
+
+
 @media only all and (max-width:40em) {
     #slider {
         max-height:300px;
@@ -661,5 +663,18 @@
         text-align: center;
         font-size: 14px;
     }
+}
 
+@media (min-width: 1200px) {
+    .banner-search {
+        position: absolute;
+        top: 515px;
+        z-index: 10;
+        left: 50%;
+        margin-left: -585px;
+    }
+
+    .properties-listing{
+        margin: 90px auto 40px auto;
+    }
 }

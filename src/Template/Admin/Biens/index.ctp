@@ -8,13 +8,13 @@
         <li><?= $this->Html->link(__('New Bien'), ['action' => 'add']) ?></li>
     </ul>
 </div>
-<div class="margin-bottom"></div>
+<hr />
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Liste des menus</h3>
+                <h3 class="box-title">Liste des biens</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

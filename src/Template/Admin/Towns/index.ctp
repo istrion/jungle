@@ -1,49 +1,90 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Town'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Secteurs'), ['controller' => 'Secteurs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Secteur'), ['controller' => 'Secteurs', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Biens'), ['controller' => 'Biens', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Bien'), ['controller' => 'Biens', 'action' => 'add']) ?></li>
+<div class="btn-group">
+    <button type="button" class="btn btn-info"><?= __('Actions') ?></button>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><?= $this->Html->link(__('Nouvelle ville'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Liste des secteurs'), ['controller' => 'Secteurs', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nouveau secteur'), ['controller' => 'Secteurs', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List des biens'), ['controller' => 'Biens', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nouveau Bien'), ['controller' => 'Biens', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="towns index large-9 medium-8 columns content">
-    <h3><?= __('Towns') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('title') ?></th>
-                <th><?= $this->Paginator->sort('secteur_id') ?></th>
-                <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($towns as $town): ?>
-            <tr>
-                <td><?= $this->Number->format($town->id) ?></td>
-                <td><?= h($town->title) ?></td>
-                <td><?= $town->has('secteur') ? $this->Html->link($town->secteur->title, ['controller' => 'Secteurs', 'action' => 'view', $town->secteur->id]) : '' ?></td>
-                <td><?= h($town->created) ?></td>
-                <td><?= h($town->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $town->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $town->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $town->id], ['confirm' => __('Are you sure you want to delete # {0}?', $town->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
-    </div>
 </div>
+<hr />
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Liste des villes</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('id') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('title') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('secteur_id') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('created') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('modified') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= __('Actions') ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($towns as $town): ?>
+                                    <tr role="row" class="odd">
+
+
+                                        <td><?= $this->Number->format($town->id) ?></td>
+                                        <td><?= h($town->title) ?></td>
+                                        <td><?= $town->has('secteur') ? $this->Html->link($town->secteur->title, ['controller' => 'Secteurs', 'action' => 'view', $town->secteur->id]) : '' ?></td>
+                                        <td><?= h($town->created) ?></td>
+                                        <td><?= h($town->modified) ?></td>
+
+                                        <td class="actions">
+                                            <?= $this->Html->link('<i class="fa fa-eye"></i>'. __('View'),
+                                                ['action' => 'view', $town->id],
+                                                ['class' => 'btn btn-app','escape' => false]) ?>
+                                            <?= $this->Html->link('<i class="fa fa-edit"></i>' . __('Edit'),
+                                                ['action' => 'edit', $town->id],
+                                                ['class' => 'btn btn-app','escape' => false]) ?>
+                                            <?= $this->Form->postLink('<i class="fa fa-trash"></i>'.__('Delete'),
+                                                ['action' => 'delete', $town->id],
+                                                ['confirm' => __('Are you sure you want to delete # {0}?', $town->id),
+                                                    'class' => 'btn btn-app','escape' => false]) ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">
+                                <?= $this->Paginator->counter('Page {{page}} sur {{pages}}') ?></div>
+                        </div>
+                        <div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                <ul class="pagination">
+                                    <?= $this->Paginator->prev('< ' . __('previous'), ['class' => 'paginate_button previous']) ?>
+                                    <?= $this->Paginator->numbers() ?>
+                                    <?= $this->Paginator->next(__('next') . ' >', ['class' => 'paginate_button_next']) ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<?php echo $this->Flash->render() ?>

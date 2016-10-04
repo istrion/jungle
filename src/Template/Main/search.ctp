@@ -4,8 +4,9 @@
         <h3>Acheter, Vendre &amp; Louer</h3>
         <div class="searchbar">
             <div class="row">
+                <form action="<?= PATH_ADMIN ?>/liste/" method="get">
                 <div class="col-lg-6 col-sm-6">
-                    <input type="text" class="form-control" placeholder="Lieu">
+                    <input type="text" name="town" class="form-control" placeholder="Lieu">
                     <div class="row">
                         <div class="col-lg-3 col-sm-3 ">
                             <select class="form-control">
@@ -44,6 +45,7 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
                     <p>Inscrivez vous et profiter d'offres exclusives</p>
                     <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>        </div>
+                </form>
             </div>
         </div>
     </div>
