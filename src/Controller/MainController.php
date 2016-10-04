@@ -49,12 +49,7 @@ class MainController extends AppController
 
     public function liste()
     {
-        $this->viewBuilder()->layout('liste');
-
-        $menus = TableRegistry::get('Menus');
-
-        $queryMenus = $menus->find('all');
-        $this->set(compact('queryMenus'));
+        $this->viewBuilder()->layout('header_footer');
 
         $orderBy = $this->request->query('sortBy');
         $orderBy = ($orderBy == "asc") ? $orderBy:"desc";

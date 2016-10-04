@@ -23,7 +23,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <?php
                         foreach ($queryMenus as $menu) {
-                            echo '<li><a href="'.$menu->link.'">'.$menu->title.'</a>';
+                            echo '<li><a href="'.$menu->url.'">'.$menu->title.'</a>';
                         }
                         ?>
                     </ul>
@@ -40,7 +40,7 @@
 
         <!-- Header Starts -->
         <div class="header">
-            <a href="/" class="link-logo">
+            <a href="<?= PATH_ADMIN ?>/" class="link-logo">
                 <img src="<?= PATH_ADMIN ?>/img/template/jungle_logo.png" alt="Jungle immobilier" class="logo">
             </a>
 
@@ -49,7 +49,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <?php
                             foreach ($queryMenus as $menu) {
-                                echo '<li><a href="'.$menu->link.'">'.$menu->title.'</a>';
+                                echo '<li><a href="'.$menu->url.'">'.$menu->title.'</a>';
                             }
                         ?>
                     </ul>

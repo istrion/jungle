@@ -46,6 +46,8 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/slider') ?>
 
+    <?= $this->Element('../Main/search') ?>
+
     <?= $this->Element('../Main/nouveautes') ?>
 
 

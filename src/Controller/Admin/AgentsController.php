@@ -56,6 +56,10 @@ class AgentsController extends AppAdminController
     {
         $agent = $this->Agents->newEntity();
         if ($this->request->is('post')) {
+            if($this->request->data['photo']['tmp_name']) {
+                $photo = $this->_addPhoto();
+                $this->request->data['photo'] = $photo;
+            }
             $agent = $this->Agents->patchEntity($agent, $this->request->data);
             if ($this->Agents->save($agent)) {
                 $this->Flash->success(__('The agent has been saved.'));
@@ -82,6 +86,14 @@ class AgentsController extends AppAdminController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if($this->request->data['photo']['tmp_name']) {
+                $photo = $this->_addPhoto();
+                $this->request->data['photo'] = $photo;
+            } else if($this->request->data['currentPhoto'] != '') {
+                $this->request->data['photo'] = $this->request->data['currentPhoto'];
+            }
+
             $agent = $this->Agents->patchEntity($agent, $this->request->data);
             if ($this->Agents->save($agent)) {
                 $this->Flash->success(__('The agent has been saved.'));
@@ -113,5 +125,21 @@ class AgentsController extends AppAdminController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    private function _addPhoto()
+    {
+
+        $fileName = $this->request->data['photo']["name"];
+        $tmpName = $this->request->data['photo']['tmp_name'];
+        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+        $fileName = pathinfo($fileName, PATHINFO_FILENAME);
+        $s = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
+        $fileNameFinal = $fileName . '_' . $s . '.' . $ext;
+        $uploadDir = WWW_ROOT . 'img/agents/' . $fileNameFinal;
+        move_uploaded_file($tmpName, $uploadDir);
+
+        return $fileNameFinal;
+
     }
 }

@@ -14,7 +14,7 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Liste des menus</h3>
+                <h3 class="box-title">Liste des agents</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -38,7 +38,7 @@
                                         <td><?= $this->Number->format($agent->id) ?></td>
                                         <td><?= h($agent->first_name) ?></td>
                                         <td><?= h($agent->last_name) ?></td>
-                                        <td><?= h($agent->description) ?></td>
+                                        <td><?= $agent->description ?></td>
                                         <td><?= h($agent->photo) ?></td>
                                         <td><?= h($agent->created) ?></td>
                                         <td><?= h($agent->modified) ?></td>

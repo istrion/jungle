@@ -521,16 +521,15 @@
 }
 
 .properties-listing {
-    width: 80%;
     margin: 40px auto;
 }
 
-.details .properties-listing{
+.details .properties-listing, .liste .properties-listing{
     width:auto;
 }
 
 .properties-listing .btn {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .properties-listing .listing-detail span {
@@ -539,6 +538,12 @@
     padding-top: 27px;
     margin-right: 15px;
     background-size: contain;
+}
+.properties-listing h4 a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 20px;
+    display: block;
 }
 
 .properties-listing .listing-detail span[data-original-title="BedRoom"] {
@@ -620,6 +625,12 @@
 
 .details .enquiry{
     padding-top:20px;
+}
+
+.liste .properties h4 {
+    max-height:40px;
+    height: 40px;
+    overflow: hidden;
 }
 
 @media only all and (max-width:40em) {

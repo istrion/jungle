@@ -131,7 +131,7 @@
                 <?php
                 foreach ($imagesBiens as $imgBien): ?>
                     <?php $img = $imgBien['_matchingData']['Images']; ?>
-                    <?= '<li><img src="/img/biens/' . $img['name'] . '">
+                    <?= '<li><img src="'.PATH_ADMIN.'/img/biens/' . $img['name'] . '">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="' . $imgBien['id'] . '"></span>
                         </li>'; ?>
                 <?php endforeach; ?>

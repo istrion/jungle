@@ -69,10 +69,6 @@ class AgentsTable extends Table
             ->requirePresence('description', 'create')
             ->notEmpty('description');
 
-        $validator
-            ->requirePresence('photo', 'create')
-            ->notEmpty('photo');
-
         return $validator;
     }
 }

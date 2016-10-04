@@ -443,3 +443,8 @@
     background-color: #00a65a;
     color:#fff;
 }
+
+.profil-agent img{
+    max-width: 200px;
+    max-height: 200px;
+}

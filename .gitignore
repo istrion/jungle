@@ -7,4 +7,5 @@
 .idea/copyright/profiles_settings.xml
 *.DS_STORE
 /webroot/img/slider/*
+/webroot/img/agents/*
 .idea

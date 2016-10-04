@@ -221,7 +221,8 @@ class BiensController extends AppAdminController
         $result = $ImagesBiensTable->saveMany($entities);
 
         $this->Flash->success(__('Le bien a été sauvegardé'));
-        return $this->redirect(PATH_ADMIN . '/admin/biens/edit/' . $bien_id);
+
+        return $this->redirect('/admin/biens/edit/' . $bien_id);
     }
 
     private function _stringToSlug($title)

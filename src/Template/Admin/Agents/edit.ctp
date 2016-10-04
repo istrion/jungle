@@ -40,8 +40,20 @@
                 <?= $this->Form->input('tel', ['class' => 'form-control', 'placeholder' => 'Téléphone', 'label' => 'Téléphone']); ?>
             </div>
         </div>
-        <div
-            class="form-group"><?= $this->Form->textarea('description', ['class' => 'form-control', 'placeholder' => 'description', 'label' => 'Description', 'required' => 'false']); ?></div>
+        <div class="form-group col-lg-12 col-sm-12 col-sx-12">
+            <?= $this->Form->textarea('description', ['class' => 'form-control', 'placeholder' => 'description', 'label' => 'Description', 'required' => 'false']); ?>
+
+        </div>
+
+        <?php
+            if($agent->photo != '') {
+                echo '<div class="profil-agent">';
+                echo $this->Html->image('/img/agents/' . $agent->photo);
+                echo '</div>';
+                echo '<input type="hidden" value="'.$agent->photo.'" name="currentPhoto"/>';
+            }
+        ?>
+
         <div
             class="form-group"><?= $this->Form->file('photo', ['class' => 'form-control', 'placeholder' => 'photo', 'label' => 'Photo']); ?></div>
     </div>
@@ -50,6 +62,7 @@
 </div>
 
 <?php echo $this->Html->script('/admin/js/tinymce/tinymce.min.js', ['block' => 'scriptBottom']); ?>
-<?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>
+<?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']);
+?>
 
 
