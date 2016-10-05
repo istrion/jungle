@@ -50,19 +50,30 @@ class MainController extends AppController
     public function liste()
     {
         $this->viewBuilder()->layout('header_footer');
+        $town = '';
+        $town_id = '';
+        $offer = '';
+        $type_of_bien = '';
+        $price = '';
+
         $queryParams = [];
 
-        if($this->request->query['town'] && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
+        if(isset($this->request->query['town']) && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
             $queryParams[] = ['Biens.town_id = ' => $this->request->query['town_id']];
+            $town_id = $this->request->query['town_id'];
+            $town = $this->request->query['town'];
         }
-        if($this->request->query['offer'] && is_numeric($this->request->query['offer'])) {
+        if(isset($this->request->query['offer']) && is_numeric($this->request->query['offer'])) {
             $queryParams[] = ['Biens.offer = ' => $this->request->query['offer']];
+            $offer = $this->request->query['offer'];
         }
-        if($this->request->query['type_of_bien'] && is_numeric($this->request->query['type_of_bien'])) {
+        if(isset($this->request->query['type_of_bien']) && is_numeric($this->request->query['type_of_bien'])) {
             $queryParams[] = ['Biens.type_of_bien = ' => $this->request->query['type_of_bien']];
+            $type_of_bien = $this->request->query['type_of_bien'];
         }
-        if($this->request->query['price'] && is_numeric($this->request->query['price'])) {
+        if(isset($this->request->query['price']) && is_numeric($this->request->query['price'])) {
             $queryParams[] = ['Biens.price <=' => $this->request->query['price']];
+            $price = $this->request->query['price'];
         }
 
 
@@ -84,6 +95,7 @@ class MainController extends AppController
         $biens = $this->paginate($biens);
 
         $this->set(compact('biens'));
+        $this->set(compact('town','town_id','offer','type_of_bien','price'));
         $this->set('_serialize', ['biens']);
     }
 

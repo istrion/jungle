@@ -107,7 +107,7 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 color-white">
                         <div class="col-lg-12  col-sm-6">
                             <div class="property-info">
                                 <p class="price"><?= $bien->price ?> €</p>
@@ -141,9 +141,9 @@
 
                         </div>
                         <div class="col-lg-12 col-sm-6 ">
-
                             <div class="enquiry">
                                 <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à <?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></h6>
+                                <div class="photo-agent text-center"><?= $this->Html->image('/img/agents/'.$bien->agent->photo) ?></div>
                                 <form role="form">
                                     <input type="text" class="form-control" placeholder="Votre nom complet">
                                     <input type="text" class="form-control" placeholder="Email">

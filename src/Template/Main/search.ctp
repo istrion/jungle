@@ -8,7 +8,7 @@
                 <form action="<?= PATH_ADMIN ?>/liste/" method="get">
                     <div class="col-lg-6 col-sm-6">
                         <input type="text" name="town" class="form-control" placeholder="Lieu">
-                        <input type="hidden" name="town_id" value="" >
+                        <input type="hidden" name="town_id" value="">
 
                         <div class="row">
                             <div class="col-lg-3 col-sm-3 ">
@@ -39,9 +39,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-3 col-sm-4">
-                                <button class="btn btn-success" onclick="window.location.href='buysalerent.php'">
-                                    Rechercher
-                                </button>
+                                <button class="btn btn-primary">Rechercher</button>
                             </div>
                         </div>
 
@@ -49,8 +47,16 @@
                     </div>
                 </form>
                 <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
-                    <p>Inscrivez vous et profiter d'offres exclusives</p>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <p>Déposer une offre en ligne rapidement</p>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Déposer</button>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <p>Recevoir des offres en exclusivité</p>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">S'inscrire</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
