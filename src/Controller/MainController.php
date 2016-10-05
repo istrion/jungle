@@ -50,6 +50,22 @@ class MainController extends AppController
     public function liste()
     {
         $this->viewBuilder()->layout('header_footer');
+        $queryParams = [];
+
+        if($this->request->query['town'] && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
+            $queryParams[] = ['Biens.town_id = ' => $this->request->query['town_id']];
+        }
+        if($this->request->query['offer'] && is_numeric($this->request->query['offer'])) {
+            $queryParams[] = ['Biens.offer = ' => $this->request->query['offer']];
+        }
+        if($this->request->query['type_of_bien'] && is_numeric($this->request->query['type_of_bien'])) {
+            $queryParams[] = ['Biens.type_of_bien = ' => $this->request->query['type_of_bien']];
+        }
+        if($this->request->query['price'] && is_numeric($this->request->query['price'])) {
+            $queryParams[] = ['Biens.price <=' => $this->request->query['price']];
+        }
+
+
 
         $orderBy = $this->request->query('sortBy');
         $orderBy = ($orderBy == "asc") ? $orderBy:"desc";
@@ -62,9 +78,10 @@ class MainController extends AppController
         ];
 
         $biens = TableRegistry::get('Biens');
-        $biens = $biens->find('all')->contain(['ImagesBiens.Images']);
+        $biens = $biens->find('all')
+            ->where($queryParams)
+            ->contain(['ImagesBiens.Images']);
         $biens = $this->paginate($biens);
-
 
         $this->set(compact('biens'));
         $this->set('_serialize', ['biens']);

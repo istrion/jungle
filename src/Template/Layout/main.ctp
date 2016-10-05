@@ -34,6 +34,7 @@ $cakeDescription = 'Jungle immobilier';
     <script src="js/script.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/lightslider.js"></script>
+    <script src="js/jquery.auto-complete.js"></script>
 
     <?= $this->Html->meta('icon') ?>
 
@@ -81,6 +82,23 @@ $cakeDescription = 'Jungle immobilier';
                     }
                 }
             ]
+        });
+
+        $('input[name=town]').autoComplete({
+            minChars: 2,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                var choices = [{'rouen': 1}, {'sotteville': 2}];
+                var matches = [];
+                for (i=0; i<choices.length; i++) {
+                    for (var key in choices[i]) {
+                        //console.log("key " + key + " has value " + choices[i][key]);
+                        if (~key.toLowerCase().indexOf(term)) matches.push(choices[i]);
+                    }
+                }
+
+                suggest(matches);
+            }
         });
 
     });
