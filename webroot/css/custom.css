@@ -699,3 +699,40 @@
         margin: 90px auto 40px auto;
     }
 }
+
+/* details agents */
+.agent {
+    width:240px;
+    height:350px;
+    max-height: 350px;
+    display: inline-block;
+    background-color: #ddd;
+    vertical-align: top;
+    border:1px solid #75787f;
+    margin:20px;
+}
+.agent .agent-title{
+    background-color:#000;
+    color:#fff;
+    font-size:1.3em;
+    padding:5px;
+}
+.agent .agent-content{
+    padding:10px;
+}
+.agent .agent-photo img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    border-radius: 50%;
+}
+.agent .agent-description {
+    color:#75787f;
+    text-align: left;
+    overflow: hidden;
+    height: 104px;
+}
+.agent .agent-information{
+    background-color: #f4f5f7;
+    color:#75787f;
+}

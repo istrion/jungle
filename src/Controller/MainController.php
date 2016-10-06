@@ -58,28 +58,27 @@ class MainController extends AppController
 
         $queryParams = [];
 
-        if(isset($this->request->query['town']) && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
+        if (isset($this->request->query['town']) && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
             $queryParams[] = ['Biens.town_id = ' => $this->request->query['town_id']];
             $town_id = $this->request->query['town_id'];
             $town = $this->request->query['town'];
         }
-        if(isset($this->request->query['offer']) && is_numeric($this->request->query['offer'])) {
+        if (isset($this->request->query['offer']) && is_numeric($this->request->query['offer'])) {
             $queryParams[] = ['Biens.offer = ' => $this->request->query['offer']];
             $offer = $this->request->query['offer'];
         }
-        if(isset($this->request->query['type_of_bien']) && is_numeric($this->request->query['type_of_bien'])) {
+        if (isset($this->request->query['type_of_bien']) && is_numeric($this->request->query['type_of_bien'])) {
             $queryParams[] = ['Biens.type_of_bien = ' => $this->request->query['type_of_bien']];
             $type_of_bien = $this->request->query['type_of_bien'];
         }
-        if(isset($this->request->query['price']) && is_numeric($this->request->query['price'])) {
+        if (isset($this->request->query['price']) && is_numeric($this->request->query['price'])) {
             $queryParams[] = ['Biens.price <=' => $this->request->query['price']];
             $price = $this->request->query['price'];
         }
 
 
-
         $orderBy = $this->request->query('sortBy');
-        $orderBy = ($orderBy == "asc") ? $orderBy:"desc";
+        $orderBy = ($orderBy == "asc") ? $orderBy : "desc";
 
         $this->paginate = [
             'maxLimit' => 12,
@@ -95,7 +94,7 @@ class MainController extends AppController
         $biens = $this->paginate($biens);
 
         $this->set(compact('biens'));
-        $this->set(compact('town','town_id','offer','type_of_bien','price'));
+        $this->set(compact('town', 'town_id', 'offer', 'type_of_bien', 'price'));
         $this->set('_serialize', ['biens']);
     }
 
@@ -105,7 +104,7 @@ class MainController extends AppController
         $biens = TableRegistry::get('Biens');
         $bien = $biens->find('all',
             [
-                'conditions'=> ['slug' => $slug],
+                'conditions' => ['slug' => $slug],
                 'contain' => ['Towns', 'Agents', 'Dpes']
             ]);
         $bien = $bien->first();
@@ -129,5 +128,13 @@ class MainController extends AppController
         $this->set(compact('bien'));
         $this->set(compact('imagesBiens'));
         $this->set(compact('metasFB'));
+    }
+
+    public function agents()
+    {
+        $this->viewBuilder()->layout('header_footer');
+        $agents = TableRegistry::get('Agents');
+        $resultsAgents = $agents->find('all');
+        $this->set(compact('resultsAgents'));
     }
 }
