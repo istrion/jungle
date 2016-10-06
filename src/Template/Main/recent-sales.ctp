@@ -1,12 +1,10 @@
 <div class="container">
     <div class="properties-listing spacer">
-        <a href="<?= PATH_ADMIN ?>/liste/" class="pull-right viewall">Voir tous nos biens</a>
+        <h2>Nos dernieres ventes</h2>
 
-        <h2>Nos derniers biens</h2>
-
-        <div id="new-properties">
-            <ul id="autoWidth" class="cs-hidden">
-                <?php foreach ($biens as $bien): ?>
+        <div id="recent-sales">
+            <ul class="cs-hidden">
+                <?php foreach ($recentSales as $bien): ?>
                     <li>
                         <div class="properties">
                             <div class="image-holder">
@@ -16,7 +14,7 @@
                                     <?= $this->Html->image('/img/template/default-house.png', ["class" => "img-responsive"]); ?>
                                 <?php endif ?>
 
-                                <!--<div class="status sold">Sold</div>-->
+                                <div class="status sold">Vendu</div>
                             </div>
                             <h4><a href="details/<?= $bien->slug; ?>"><?= $bien->title ?></a></h4>
 

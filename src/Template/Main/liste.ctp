@@ -103,7 +103,7 @@
                         ); ?>
                     </div>
                     <div class="pull-right">
-                        <?= $this->Form->create('', ["type" => "get", "id" => "sortBy", "url" => $_SERVER["REQUEST_URI"]]) ?>
+                        <?= $this->Form->create('', ["type" => "get", "id" => "sortBy", "url" => PATH_ADMIN.$_SERVER["REQUEST_URI"]]) ?>
                         <input type="hidden" name="town_id" value="<?= $town_id ?>"/>
                         <input type="hidden" name="offer" value="<?= $offer ?>"/>
                         <input type="hidden" name="type_of_bien" value="<?= $type_of_bien ?>"/>
@@ -128,7 +128,7 @@
                                     <?= $this->Html->image('/img/biens/' . $bien->images_bien->image->name, ["class" => "img-responsive"]); ?>
                                     <div class="status sold">Sold</div>
                                 </div>
-                                <h4><a href="#"><?= h($bien->title) ?></a></h4>
+                                <h4><a href="<?= PATH_ADMIN . '/details/' . $bien->slug ?>"><?= h($bien->title) ?></a></h4>
 
                                 <p class="price"><?= $this->Number->format($bien->price) ?></p>
 

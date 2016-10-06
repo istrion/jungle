@@ -106,13 +106,26 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group col-lg-4 col-sm-4 col-sx-4">
+            <div class="form-group col-lg-2 col-sm-2 col-sx-2">
                 <?= $this->Form->label('En ligne ?'); ?>
                 <?= $this->Form->checkbox('online', [
                     'id' => 'online',
                     'data-toggle' => 'toggle',
                     'data-on' => 'Visible en ligne',
                     'data-off' => 'Non visible en ligne',
+                    'data-height' => '40px',
+                    'data-width' => '150px',
+                    'data-onstyle' => 'success',
+                    'data-offstyle' => 'danger',
+                ]); ?>
+            </div>
+            <div class="form-group col-lg-2 col-sm-2 col-sx-2">
+                <?= $this->Form->label('Vendu ?'); ?>
+                <?= $this->Form->checkbox('sold', [
+                    'id' => 'sold',
+                    'data-toggle' => 'toggle',
+                    'data-on' => 'Oui',
+                    'data-off' => 'Non',
                     'data-height' => '40px',
                     'data-width' => '150px',
                     'data-onstyle' => 'success',

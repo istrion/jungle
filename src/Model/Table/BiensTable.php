@@ -5,6 +5,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Biens Model
@@ -124,5 +126,59 @@ class BiensTable extends Table
         //$rules->add($rules->existsIn(['agent_id'], 'Agents'));
 
         return $rules;
+    }
+
+    public function getLastBiens() {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all', [
+            'order' => ['Biens.created' => 'DESC']
+        ])->limit(15);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+        return $biens;
+    }
+
+    public function getRecentSales()
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+
+        $queryBiens = $this->find('all', [
+            'order' => ['Biens.modified' => 'DESC']
+        ])
+        ->where(['sold' => 1])
+        ->limit(15);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+
+        return $biens;
     }
 }
