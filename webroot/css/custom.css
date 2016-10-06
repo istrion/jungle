@@ -653,7 +653,20 @@
 .autocomplete-suggestion b { font-weight: normal; color: #1f8dd6; }
 .autocomplete-suggestion.selected { background: #f0f0f0; }
 
+.properties-listing div.properties .image-holder .like{
+    -webkit-border-radius: 100px 100px 100px 100px;
+    -moz-border-radius: 100px 100px 100px 100px;
+    border-radius: 100px 100px 100px 100px;
+    background:rgba(255,255,255,0.5);
+    position:absolute;
+    right: 10px;
+    top:10px;
+}
 
+.properties-listing div.properties .image-holder .like img{
+    width:32px;
+    height:32px;
+}
 
 @media only all and (max-width:40em) {
     #slider {

@@ -125,10 +125,11 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="properties">
                                 <div class="image-holder">
+                                    <a href="#" class="like"><?= $this->Html->image('/img/template/like.png') ?></a>
                                     <?= $this->Html->image('/img/biens/' . $bien->images_bien->image->name, ["class" => "img-responsive"]); ?>
                                     <div class="status sold">Sold</div>
                                 </div>
-                                <h4><a href="#"><?= h($bien->title) ?></a></h4>
+                                <h4><a href="<?= PATH_ADMIN.'/details/'.$bien->slug?>"><?= h($bien->title) ?></a></h4>
 
                                 <p class="price"><?= $this->Number->format($bien->price) ?></p>
 
