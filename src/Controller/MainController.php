@@ -109,9 +109,9 @@ class MainController extends AppController
             'image' => 'http://jungle.local/img/biens/1424169825-112082_7sdcm.jpg'
         ];
 
-        $this->set(compact('bien'));
-        $this->set(compact('imagesBiens'));
-        $this->set(compact('metasFB'));
+        $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien,$bien->price,$bien->secteur_id, $bien->id);
+
+        $this->set(compact('bien','identicalBiens','imagesBiens', 'metasFB'));
     }
 
     public function agents()

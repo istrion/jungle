@@ -17,7 +17,7 @@
 
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="##">Accueil</a> / <?= $offer ?></span>
+        <span class="pull-right"><a href="<?= PATH_ADMIN ?>">Accueil</a> / <?= $offer ?></span>
         <h2>
             <?= $offer ?>
         </h2>
@@ -28,52 +28,11 @@
     <div class="properties-listing spacer normal">
 
         <div class="row">
-            <div class="col-lg-4 col-sm-5 hidden-xs">
-
-                <div class="hot-properties hidden-xs">
-                    <h4>Biens similaires</h4>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-5"><img src="/img/template/default-house.png"
-                                                            class="img-responsive img-circle" alt="properties"></div>
-                        <div class="col-lg-6 col-sm-7">
-                            <h5><a href="#">Integer sed porta quam</a></h5>
-                            <p class="price">200 000€</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-5"><img src="/img/template/default-house.png"
-                                                            class="img-responsive img-circle" alt="properties"></div>
-                        <div class="col-lg-6 col-sm-7">
-                            <h5><a href="#">Integer sed porta quam</a></h5>
-                            <p class="price">200 000€</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-5"><img src="/img/template/default-house.png"
-                                                            class="img-responsive img-circle" alt="properties"></div>
-                        <div class="col-lg-6 col-sm-7">
-                            <h5><a href="#">Integer sed porta quam</a></h5>
-                            <p class="price">200 000€</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-5"><img src="/img/template/default-house.png"
-                                                            class="img-responsive img-circle" alt="properties"></div>
-                        <div class="col-lg-6 col-sm-7">
-                            <h5><a href="#">Integer sed porta quam</a></h5>
-                            <p class="price">200 000€</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-5"><img src="/img/template/default-house.png"
-                                                            class="img-responsive img-circle" alt="properties"></div>
-                        <div class="col-lg-6 col-sm-7">
-                            <h5><a href="#">Integer sed porta quam</a></h5>
-                            <p class="price">200 000€</p></div>
-                    </div>
-
-
-                </div>
-
+            <div class="col-lg-3 col-sm-4 hidden-xs">
+                <?= $this->Element('../Main/identical-biens') ?>
             </div>
 
-            <div class="col-lg-8 col-sm-7 ">
+            <div class="col-lg-9 col-sm-8 ">
 
                 <h2><?= $bien->title ?> (<?= $bien->m2 ?>m2) </h2>
                 <div class="row">
@@ -142,8 +101,9 @@
                         </div>
                         <div class="col-lg-12 col-sm-6 ">
                             <div class="enquiry">
-                                <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à <?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></h6>
+                                <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à </h6>
                                 <div class="photo-agent text-center"><?= $this->Html->image('/img/agents/'.$bien->agent->photo) ?></div>
+                                <div class="agent-name"><?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></div>
                                 <form role="form">
                                     <input type="text" class="form-control" placeholder="Votre nom complet">
                                     <input type="text" class="form-control" placeholder="Email">
