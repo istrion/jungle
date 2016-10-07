@@ -540,6 +540,10 @@
     background-size: contain;
     color: #fff;
 }
+.index .properties-listing .listing-detail span, .liste .properties-listing .listing-detail span{
+    color: #666;
+}
+
 .properties-listing h4 a {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -548,8 +552,14 @@
 }
 
 .properties-listing .photo-agent img{
-    max-width:150px;
-    border-radius: 50%
+    max-width:90%;
+    margin:10px;
+}
+
+.properties-listing .agent-name{
+    font-size:1.4em;
+    text-align: center;
+    margin-bottom:10px;
 }
 
 .color-white{
@@ -716,8 +726,8 @@
 /* details agents */
 .agent {
     width:240px;
-    height:350px;
-    max-height: 350px;
+    height:380px;
+    max-height: 380px;
     display: inline-block;
     background-color: #ddd;
     vertical-align: top;
@@ -736,16 +746,24 @@
 .agent .agent-photo img{
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 150px;
-    border-radius: 50%;
+    max-width: 180px;
 }
 .agent .agent-description {
     color:#75787f;
     text-align: left;
     overflow: hidden;
-    height: 104px;
+    height: 134px;
 }
 .agent .agent-information{
     background-color: #f4f5f7;
     color:#75787f;
+}
+
+.hot-properties img {
+    max-width: 90px;
+    max-height: 90px;
+}
+
+.hot-properties a:hover{
+    color:#fff;
 }

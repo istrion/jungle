@@ -35,6 +35,7 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 <body class="<?= $pageName ?>">
     <?= $this->Element('../Main/header') ?>
@@ -45,6 +46,9 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/nouveautes') ?>
 
+    <?= $this->Element('../Main/recent-sales') ?>
+
+
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
@@ -53,7 +57,7 @@ $cakeDescription = 'Jungle immobilier';
     <script src="js/jquery.auto-complete.js"></script>
     <?= $this->fetch('script') ?>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function() {
         $('#slider').responsiveSlides({
             speed: 800,            // Integer: Speed of the transition, in milliseconds
@@ -61,6 +65,31 @@ $cakeDescription = 'Jungle immobilier';
         });
 
         $('#autoWidth').lightSlider({
+            item:5,
+            loop:false,
+            slideMove:2,
+            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+            speed:600,
+            responsive : [
+                {
+                    breakpoint:800,
+                    settings: {
+                        item:2,
+                        slideMove:1,
+                        slideMargin:6
+                    }
+                },
+                {
+                    breakpoint:480,
+                    settings: {
+                        item:1,
+                        slideMove:1
+                    }
+                }
+            ]
+        });
+
+        $('#recent-sales ul').lightSlider({
             item:5,
             loop:false,
             slideMove:2,

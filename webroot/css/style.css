@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'din-next';
-    src: url('fonts/din-next.ttf') format('truetype');
+    src: url('fonts/din-next-condensed-regular-latin-ext-1.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -85,7 +85,7 @@ table{background-color: #fff;}
 .properties-listing div.properties .image-holder{position: relative;}
 .properties-listing div.properties .image-holder img{width:280px;height:175px;}
 .properties-listing div.properties .status{position: absolute;bottom: 0;z-index: 100;display: block;width: 100%;color: #fff;padding:0 3px;text-align: right; font-size: 12px;}
-.properties-listing div.properties p{margin-bottom: 10px; font-size: 14px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding: 5px 0;font-family: din-next;}
+.properties-listing div.properties p{margin-bottom: 10px; font-size: 14px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding: 5px 0;font-family: din-next;color: #666;}
 
 .listing-detail{margin-bottom: 15px;margin-top:15px;}
 .listing-detail span{color: #666;display: inline-block;text-align: center; font-size: 14px;margin-right: 10px;}

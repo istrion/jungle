@@ -22,28 +22,12 @@ class MainController extends AppController
         $this->set(compact('querySliders'));
 
         /* chargement des derniers biens */
-        $imagesBiens = TableRegistry::get('ImagesBiens');
-        $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all', [
-            'order' => ['Biens.created' => 'DESC']
-        ])->limit(15);
+        $tableBiens = TableRegistry::get('Biens');
+        $biens = $tableBiens->getLastBiens();
+        /* derniers biens vendus */
+        $recentSales = $tableBiens->getRecentSales();
 
-        $biens = [];
-
-        foreach ($queryBiens as $bien) {
-            $bien->images = [];
-
-            $images = $imagesBiens->find('all')
-                ->where(["ImagesBiens.bien_id" => $bien->id])
-                ->contain('Images');
-
-            foreach ($images as $img) {
-                array_push($bien->images, $img->image);
-            }
-
-            array_push($biens, $bien);
-        }
-        $this->set(compact('biens'));
+        $this->set(compact('biens','recentSales'));
 
     }
 
@@ -125,9 +109,9 @@ class MainController extends AppController
             'image' => 'http://jungle.local/img/biens/1424169825-112082_7sdcm.jpg'
         ];
 
-        $this->set(compact('bien'));
-        $this->set(compact('imagesBiens'));
-        $this->set(compact('metasFB'));
+        $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien,$bien->price,$bien->secteur_id, $bien->id);
+
+        $this->set(compact('bien','identicalBiens','imagesBiens', 'metasFB'));
     }
 
     public function agents()

@@ -5,6 +5,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Biens Model
@@ -124,5 +126,106 @@ class BiensTable extends Table
         //$rules->add($rules->existsIn(['agent_id'], 'Agents'));
 
         return $rules;
+    }
+
+    public function getLastBiens()
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all', [
+            'order' => ['Biens.created' => 'DESC']
+        ])
+            ->where([
+                'sold' => 0,
+                'online' => true,
+            ])
+            ->limit(15);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+        return $biens;
+    }
+
+    public function getRecentSales()
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+
+        $queryBiens = $this->find('all', [
+            'order' => ['Biens.modified' => 'DESC']
+        ])
+            ->where([
+                'sold' => 1,
+                'online' => true,
+            ])
+            ->limit(15);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+
+        return $biens;
+    }
+
+    public function getIdenticalBiens($type_of_bien, $price, $secteur_id, $exclude_id)
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+
+        $priceMin = $price - (20 * $price) / 100;
+        $priceMax = $price + (20 * $price) / 100;
+
+        $queryBiens = $this->find('all', [
+            'order' => ['Biens.modified' => 'DESC']
+        ])
+            ->where([
+                'type_of_bien' => $type_of_bien,
+                'price BETWEEN ' . $priceMin . ' and ' . $priceMax,
+                'secteur_id' => $secteur_id,
+                'online' => true,
+                'id != ' . $exclude_id
+            ])
+            ->limit(5);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+
+        return $biens;
     }
 }
