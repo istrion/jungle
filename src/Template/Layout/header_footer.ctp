@@ -19,11 +19,11 @@ $cakeDescription = 'Jungle immobilier';
 <html lang="fr" class=" js no-touch csstransforms3d csstransitions">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Realestate Bootstrap Theme </title>
+    <title>Jungle immobilier</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+    <?= $this->fetch('meta') ?>
+    <?= $this->Html->meta('icon') ?>
 
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/bootstrap.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/style.css">
@@ -31,21 +31,22 @@ $cakeDescription = 'Jungle immobilier';
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/custom.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/slider.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/lightslider.css">
+
+    <?= $this->fetch('css') ?>
+</head>
+<body class="<?= $pageName ?>">
+    <?= $this->Element('../Main/header') ?>
+    <?= $this->fetch('content') ?>
+
     <script src="<?= PATH_ADMIN ?>/js/jquery-1.9.1.min.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/bootstrap.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/script.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/slider.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/lightslider.js"></script>
 
-    <?= $this->Html->meta('icon') ?>
-
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-</head>
-<body class="<?= $pageName ?>">
-    <?= $this->Element('../Main/header') ?>
-    <?= $this->fetch('content') ?>
+    <?= $this->fetch('scriptBottom') ?>
+
 
 </body>
 </html>

@@ -161,33 +161,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $('#myCarousel').lightSlider({
-        item:1,
-        loop:false,
-        slideMove:1,
-        easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-        speed:600,
-        responsive : [
-            {
-                breakpoint:800,
-                settings: {
-                    item:1,
-                    slideMove:1,
-                    slideMargin:6
-                }
-            },
-            {
-                breakpoint:480,
-                settings: {
-                    item:1,
-                    slideMove:1
-                }
-            }
-        ]
-    });
-</script>
-
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -196,3 +169,5 @@
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+
+<?php echo $this->Html->script('/js/details.js', ['block' => 'scriptBottom']); ?>

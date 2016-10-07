@@ -29,18 +29,12 @@ $cakeDescription = 'Jungle immobilier';
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/lightslider.css">
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/slider.js"></script>
-    <script src="js/lightslider.js"></script>
-    <script src="js/jquery.auto-complete.js"></script>
+
 
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body class="<?= $pageName ?>">
     <?= $this->Element('../Main/header') ?>
@@ -51,8 +45,15 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/nouveautes') ?>
 
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/lightslider.js"></script>
+    <script src="js/jquery.auto-complete.js"></script>
+    <?= $this->fetch('script') ?>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function() {
         $('#slider').responsiveSlides({
             speed: 800,            // Integer: Speed of the transition, in milliseconds

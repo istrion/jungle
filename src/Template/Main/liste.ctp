@@ -165,9 +165,4 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $("#sortBy").change(function () {
-        $(this).submit();
-    });
-</script>
+<?php echo $this->Html->script('/js/liste.js', ['block' => 'scriptBottom']); ?>
