@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="col-md-6 text-center">
                             <p>Déposer une offre en ligne rapidement</p>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Déposer</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#addBien">Déposer</button>
                         </div>
                         <div class="col-md-6 text-center">
                             <p>Recevoir des offres en exclusivité</p>

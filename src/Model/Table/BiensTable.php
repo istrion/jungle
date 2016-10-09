@@ -195,8 +195,8 @@ class BiensTable extends Table
     {
         $imagesBiens = TableRegistry::get('ImagesBiens');
 
-        $priceMin = $price - (20 * $price) / 100;
-        $priceMax = $price + (20 * $price) / 100;
+        $priceMin = $price - (10 * $price) / 100;
+        $priceMax = $price + (10 * $price) / 100;
 
         $queryBiens = $this->find('all', [
             'order' => ['Biens.modified' => 'DESC']

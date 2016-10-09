@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="properties-listing spacer">
+    <div class="properties-listing recent-sales spacer">
         <h2>Nos dernieres ventes</h2>
 
         <div id="recent-sales">
