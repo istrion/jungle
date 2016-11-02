@@ -4,6 +4,7 @@ $('#myCarousel').lightSlider({
     slideMove:1,
     easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
     speed:600,
+    enableDrag: false,
     responsive : [
         {
             breakpoint:800,
@@ -22,3 +23,9 @@ $('#myCarousel').lightSlider({
         }
     ]
 });
+
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'albumLabel': 'Image %1 sur %2'
+})

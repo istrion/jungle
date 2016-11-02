@@ -83,7 +83,6 @@
                                 <div class="image-holder">
                                     <a href="#" class="like"><?= $this->Html->image('/img/template/like.png') ?></a>
                                     <?= $this->Html->image('/img/biens/' . $bien->images_bien->image->name, ["class" => "img-responsive"]); ?>
-                                    <div class="status sold">Sold</div>
                                 </div>
                                 <h4><a href="<?= PATH_ADMIN . '/details/' . $bien->slug ?>"><?= h($bien->title) ?></a></h4>
 

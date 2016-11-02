@@ -46,18 +46,15 @@
 
                     </div>
                 </form>
-                <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
+                <div class="col-lg-5 col-sm-6 content-btn-popup">
                     <div class="row">
                         <div class="col-md-6 text-center">
-                            <p>Trouvez avant les autres !!</p>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">S'inscrire</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Trouvez avant <br /> les autres !!</button>
                         </div>
                         <div class="col-md-6 text-center">
-                            <p>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#addBien">
                                 Éxigez le bon prix ! <br />
-                               Faite estimer votre bien en 3 clicks</p>
-
-                            <button class="btn btn-info" data-toggle="modal" data-target="#addBien">Estimer</button>
+                               Faite estimer votre <br />bien en 3 clicks</button>
                         </div>
                     </div>
                 </div>

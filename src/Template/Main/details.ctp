@@ -43,7 +43,7 @@
                                 <?php
                                 foreach ($imagesBiens as $imgBien): ?>
                                     <?php $img = $imgBien['_matchingData']['Images']; ?>
-                                    <?= '<div><span class="detail-slider-img" style="background-image:url(\''.PATH_ADMIN.'/img/biens/' . $img['name'].'\');"></span></div>'; ?>
+                                    <?= '<div><a href="'.PATH_ADMIN.'/img/biens/' . $img['name'].'" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\''.PATH_ADMIN.'/img/biens/' . $img['name'].'\');"></span></a></div>'; ?>
                                 <?php endforeach; ?>
                             </div>
                             <!-- #Slider Ends -->
@@ -137,4 +137,6 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+<?php echo $this->Html->script('/js/lightbox.js', ['block' => 'scriptBottom']); ?>
 <?php echo $this->Html->script('/js/details.js', ['block' => 'scriptBottom']); ?>
+<?php echo $this->Html->css('lightbox.min', array('block' => 'css')); ?>

@@ -1,3 +1,6 @@
+*:focus {
+    outline: none;
+}
 .sl-slider-wrapper {
     width: 100%;
     height: 500px;
@@ -612,12 +615,13 @@
 }
 
 .details .detail-slider-img{
-    width:490px;
-    height:315px;
+    width:520px;
+    height:330px;
     display:block;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    margin: auto;
 }
 
 .details .dpe{
@@ -876,6 +880,60 @@
 
 .already-sold{
     text-align: center;
-    color:red;
+    color:#E32D2A;
     font-size: 1.5em;
 }
+.content-btn-popup{
+    margin-top: -50px;
+}
+
+.btn-info{
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    text-align: center;
+    transition:all 0.3s ease;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.btn-info:hover{
+    transition:all 0.3s ease;
+    -webkit-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+    border-color:#E32D2A;
+    background-color: #333 ;
+}
+
+.cadres .equipe .cadre {
+    margin-right: 22px;
+    margin-bottom: 50px;
+    width: 170px;
+    height: 200px;
+}
+
+.cadres .equipe .cadre .information {
+    position: absolute;
+    width: 170px;
+    height: 200px;
+    background-color: #E32D2A;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    padding: 60px 12px 0 12px;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+
+.cadres .equipe .cadre:hover .information {
+    opacity: 0.9;
+}
+
+.cadre img {
+    max-width:170px;
+}
+
