@@ -64,7 +64,7 @@
                 <?= $this->Form->label('Type de bien'); ?>
                 <div class="btn-group" data-toggle="buttons" id="type_of_bien">
                     <label class="btn btn-default">
-                        <input name="type_of_bien" value="1" type="radio" checked="checked">Maison
+                        <input name="type_of_bien" value="1" type="radio">Maison
                     </label>
                     <label class="btn btn-default">
                         <input name="type_of_bien" value="2" type="radio">Appartement
@@ -109,6 +109,15 @@
                 ]); ?>
             </div>
         </div>
+
+        <div class="form-group col-lg-12 col-sm-12 col-sx-12">
+            <div class="form-group col-lg-12 col-sm-12 col-sx-12">
+                <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                    <?= $this->Form->input('etage', ['class' => 'form-control', 'label' => 'Etage :']); ?>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group list-img-biens">
             <?= $this->Form->hidden('list_image_id', ['id' => 'list_image_id']); ?>
             <?= $this->Form->label('Images'); ?>

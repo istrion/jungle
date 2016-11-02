@@ -49,12 +49,15 @@
                 <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
                     <div class="row">
                         <div class="col-md-6 text-center">
-                            <p>Déposer une offre en ligne rapidement</p>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#addBien">Déposer</button>
+                            <p>Trouvez avant les autres !!</p>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">S'inscrire</button>
                         </div>
                         <div class="col-md-6 text-center">
-                            <p>Recevoir des offres en exclusivité</p>
-                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">S'inscrire</button>
+                            <p>
+                                Éxigez le bon prix ! <br />
+                               Faite estimer votre bien en 3 clicks</p>
+
+                            <button class="btn btn-info" data-toggle="modal" data-target="#addBien">Estimer</button>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
+
 
 class MainController extends AppController
 {
@@ -61,14 +63,16 @@ class MainController extends AppController
         }
 
 
-        $orderBy = $this->request->query('sortBy');
-        $orderBy = ($orderBy == "asc") ? $orderBy : "desc";
+        if($this->request->query('sortBy')) {
+            $orderBy = $this->request->query('sortBy');
+            $orderBy = ($orderBy == "asc") ? ['Biens.price' => 'asc'] : ['Biens.price' => 'desc'];
+        } else {
+            $orderBy = ['Biens.created' => 'DESC'];
+        }
 
         $this->paginate = [
             'maxLimit' => 12,
-            'order' => [
-                'Biens.price' => $orderBy
-            ]
+            'order' => $orderBy
         ];
 
         $biens = TableRegistry::get('Biens');
@@ -120,5 +124,28 @@ class MainController extends AppController
         $agents = TableRegistry::get('Agents');
         $resultsAgents = $agents->find('all');
         $this->set(compact('resultsAgents'));
+    }
+
+    public function sendEstimation(){
+
+
+        $this->viewBuilder()->layout(false);
+        $this->render(false);
+        $this->autoRender = false;
+
+        $message = '';
+        $message .= $this->request->data['civility'] .' '. $this->request->data['name'] . '<br />';
+        $message .= 'de ' . $this->request->data['town']. '<br />';
+        $message .= 'pour ' . $this->request->data['type-bien']. '<br />';
+        $message .= 'Email : '.$this->request->data['email']. '<br />';
+        $message .= 'Téléphone : '. $this->request->data['tel']. '<br />';
+
+        $email = new Email('default');
+
+        $email->from(['mickael.poulachon@gmail.com' => 'My Site'])
+            ->to('mickael.poulachon@gmail.com')
+            ->subject('About')
+            ->emailFormat('html')
+            ->send($message);
     }
 }

@@ -582,6 +582,13 @@
     background: url(../img/template/shower.png) no-repeat;
 }
 
+.properties-listing .listing-detail span[data-original-title="superficie"] {
+    background: url(../img/template/surface.png) no-repeat;
+}
+.properties-listing .listing-detail span[data-original-title="etage"] {
+    background: url(../img/template/etage.png) no-repeat;
+}
+
 .details .properties-listing .listing-detail span[data-original-title="BedRoom"] {
     background: url(../img/template/bedroom_w.png) no-repeat;
 }
@@ -596,6 +603,12 @@
 
 .details .properties-listing .listing-detail span[data-original-title="Shower"] {
     background: url(../img/template/shower_w.png) no-repeat;
+}
+.details .properties-listing .listing-detail span[data-original-title="superficie"] {
+    background: url(../img/template/surface_w.png) no-repeat;
+}
+.details .properties-listing .listing-detail span[data-original-title="etage"] {
+    background: url(../img/template/etage_w.png) no-repeat;
 }
 
 .details .detail-slider-img{
@@ -707,6 +720,15 @@
         text-align: center;
         font-size: 14px;
     }
+
+    .details{
+        text-align:center;
+    }
+
+
+    #addBien .modal-content{
+        width:100% !important;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -720,7 +742,7 @@
     }
 
     .properties-listing{
-        margin: 90px auto 40px auto;
+        margin: 120px auto 40px auto;
     }
 }
 
@@ -842,4 +864,18 @@
     background-color:#fff;
     color:#666;
     padding:5px;
+}
+
+.accroche{
+    font-size: 16px;
+}
+
+#msg-estimation{
+    display: none;
+}
+
+.already-sold{
+    text-align: center;
+    color:red;
+    font-size: 1.5em;
 }

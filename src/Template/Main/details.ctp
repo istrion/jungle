@@ -74,7 +74,7 @@
                                         class="glyphicon glyphicon-map-marker"></span> <?= $bien->town->title ?></p>
 
                                 <div class="profile">
-                                    <span class="glyphicon glyphicon-user"></span> Agent à contacter
+                                    <span class="glyphicon glyphicon-user"></span> Contact
                                     <p><?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?><br>0235742076</p>
                                 </div>
                             </div>
@@ -87,8 +87,15 @@
                                       data-original-title="Shower"><?= $bien->shower ?></span>
                                 <span data-toggle="tooltip" data-placement="bottom"
                                       data-original-title="Parking"><?= $bien->parking ?></span>
-                                <span data-toggle="tooltip" data-placement="bottom"
-                                      data-original-title="Kitchen"><?= $bien->kitchen ?></span>
+                                <?php if ($bien->type_of_bien == 2): ?>
+                                    <span data-toggle="tooltip" data-placement="bottom"
+                                          data-original-title="etage"><?= $bien->etage; ?>
+                                </span>
+                                <?php else: ?>
+                                    <span
+                                        data-toggle="tooltip" data-placement="bottom"
+                                        data-original-title="superficie"><?= $bien->m2; ?>m2</span>
+                                <?php endif; ?>
                             </div>
 
                             <h6><span class="glyphicon glyphicon-home"></span> DPE</h6>

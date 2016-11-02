@@ -24,7 +24,8 @@ class TownsController extends AppAdminController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Secteurs']
+            'contain' => ['Secteurs'],
+            'order' => ['title' => 'asc']
         ];
         $towns = $this->paginate($this->Towns);
 

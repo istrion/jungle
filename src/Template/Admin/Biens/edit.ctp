@@ -133,6 +133,15 @@
                 ]); ?>
             </div>
         </div>
+
+        <div class="form-group col-lg-12 col-sm-12 col-sx-12" id="etage-block">
+            <div class="form-group col-lg-12 col-sm-12 col-sx-12">
+                <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+                    <?= $this->Form->input('etage', ['class' => 'form-control', 'label' => 'Etage :', 'style' => "width:50px;"]); ?>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group list-img-biens">
             <?= $this->Form->hidden('list_image_id', ['id' => 'list_image_id']); ?>
             <?= $this->Form->label('Images'); ?>

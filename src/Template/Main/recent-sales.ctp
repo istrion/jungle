@@ -16,22 +16,27 @@
 
                                 <div class="status sold">Vendu</div>
                             </div>
-                            <h4><a href="details/<?= $bien->slug; ?>"><?= $bien->title ?></a></h4>
+                            <h4 style="color:#666;"><?= $bien->title ?></h4>
 
                             <p class="price"><?= $bien->price; ?> €</p>
 
                             <div class="listing-detail">
                                 <span data-toggle="tooltip" data-placement="bottom"
-                                      data-original-title="BedRoom"><?= $bien->room; ?></span> <span
-                                    data-toggle="tooltip" data-placement="bottom"
-                                    data-original-title="Kitchen"><?= $bien->kitchen; ?></span>
+                                      data-original-title="BedRoom"><?= $bien->room; ?></span>
+                                <?php if ($bien->type_of_bien == 2): ?>
+                                    <span data-toggle="tooltip" data-placement="bottom"
+                                          data-original-title="etage"><?= $bien->etage; ?>
+                                </span>
+                                <?php else: ?>
+                                    <span
+                                        data-toggle="tooltip" data-placement="bottom"
+                                        data-original-title="superficie"><?= $bien->m2; ?>m2</span>
+                                <?php endif; ?>
                                 <span data-toggle="tooltip" data-placement="bottom"
                                       data-original-title="Shower"><?= $bien->shower; ?></span>
                                 <span data-toggle="tooltip" data-placement="bottom"
                                       data-original-title="Parking"><?= $bien->parking; ?></span>
                             </div>
-                            <a class="btn btn-primary" href="<?= PATH_ADMIN . '/details/' . $bien->slug ?>">Voir en
-                                détail</a>
                         </div>
                     </li>
                 <?php endforeach; ?>

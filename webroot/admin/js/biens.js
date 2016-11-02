@@ -1,4 +1,9 @@
 $(function() {
+    if($('input[name="type_of_bien"]:checked').val() != 2){
+        $('#etage-block').hide();
+    }
+
+
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("#uploadImages", { url: PATH_ADMIN +'/admin/biens/addImage' , paramName : "image"});
     myDropzone.on("success", function(data){
@@ -10,7 +15,12 @@ $(function() {
     });
     $("#type_of_bien").click(function(e){
         var element = $(e.target);
-        console.log(element);
         $(element).find("input[type=radio]").prop("checked", true);
+
+        if($(element).find("input[type=radio]").val() == 2) {
+            $('#etage-block').show();
+        } else {
+            $('#etage-block').hide();
+        }
     });
 });

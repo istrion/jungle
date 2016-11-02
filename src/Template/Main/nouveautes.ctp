@@ -1,6 +1,6 @@
 <div class="container">
     <div class="properties-listing spacer">
-        <a href="<?= PATH_ADMIN ?>/liste/" class="pull-right viewall">Voir tous nos biens</a>
+        <a href="<?= PATH_ADMIN ?>/liste/" class="pull-right viewall">Tout voir</a>
 
         <h2>Nos derniers biens</h2>
 
@@ -24,9 +24,17 @@
 
                             <div class="listing-detail">
                                 <span data-toggle="tooltip" data-placement="bottom"
-                                      data-original-title="BedRoom"><?= $bien->room; ?></span> <span
-                                    data-toggle="tooltip" data-placement="bottom"
-                                    data-original-title="Kitchen"><?= $bien->kitchen; ?></span>
+                                      data-original-title="BedRoom"><?= $bien->room; ?></span>
+
+                                <?php if ($bien->type_of_bien == 2): ?>
+                                    <span data-toggle="tooltip" data-placement="bottom"
+                                          data-original-title="etage"><?= $bien->etage; ?>
+                                </span>
+                                    <?php else: ?>
+                                    <span
+                                        data-toggle="tooltip" data-placement="bottom"
+                                        data-original-title="superficie"><?= $bien->m2; ?>m2</span>
+                                <?php endif; ?>
                                 <span data-toggle="tooltip" data-placement="bottom"
                                       data-original-title="Shower"><?= $bien->shower; ?></span>
                                 <span data-toggle="tooltip" data-placement="bottom"

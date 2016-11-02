@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-sm-4 ">
 
                 <div class="search-form">
-                    <h4><span class="glyphicon glyphicon-search"></span> Rercherche</h4>
+                    <h4><span class="glyphicon glyphicon-search"></span> Recherche</h4>
                     <form action="<?= PATH_ADMIN ?>/liste/" method="get">
                         <input type="text" name="town" class="form-control" placeholder="Lieu" value="<?= $town ?>">
                         <input type="hidden" name="town_id" value="<?= $town_id ?>">
@@ -46,53 +46,9 @@
                     </form>
                 </div>
 
-
-                <div class="hot-properties hidden-xs">
-                    <h4>Hot Properties</h4>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg"
-                                                            class="img-responsive img-circle"
-                                                            alt="properties"></div>
-                        <div class="col-lg-8 col-sm-7">
-                            <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-
-                            <p class="price">$300,000</p></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg"
-                                                            class="img-responsive img-circle"
-                                                            alt="properties"></div>
-                        <div class="col-lg-8 col-sm-7">
-                            <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-
-                            <p class="price">$300,000</p></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg"
-                                                            class="img-responsive img-circle"
-                                                            alt="properties"></div>
-                        <div class="col-lg-8 col-sm-7">
-                            <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-
-                            <p class="price">$300,000</p></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg"
-                                                            class="img-responsive img-circle"
-                                                            alt="properties"></div>
-                        <div class="col-lg-8 col-sm-7">
-                            <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-
-                            <p class="price">$300,000</p></div>
-                    </div>
-
-                </div>
-
-
             </div>
+
+            <?php if(count($biens) > 0) : ?>
 
             <div class="col-lg-9 col-sm-8">
                 <div class="sortby clearfix">
@@ -136,9 +92,15 @@
                                 <div class="listing-detail">
                             <span data-toggle="tooltip" data-placement="bottom"
                                   data-original-title="BedRoom"><?= $bien->room; ?></span>
-                                    <span
-                                        data-toggle="tooltip" data-placement="bottom"
-                                        data-original-title="Kitchen"><?= $bien->kitchen; ?></span>
+                                    <?php if ($bien->type_of_bien == 2): ?>
+                                        <span data-toggle="tooltip" data-placement="bottom"
+                                              data-original-title="etage"><?= $bien->etage; ?>
+                                </span>
+                                    <?php else: ?>
+                                        <span
+                                            data-toggle="tooltip" data-placement="bottom"
+                                            data-original-title="superficie"><?= $bien->m2; ?>m2</span>
+                                    <?php endif; ?>
                                     <span data-toggle="tooltip" data-placement="bottom"
                                           data-original-title="Shower"><?= $bien->shower; ?></span>
                                     <span data-toggle="tooltip" data-placement="bottom"
@@ -162,6 +124,24 @@
                     </div>
                 </div>
             </div>
+            <?php else: ?>
+                <?php
+                $term = '';
+                    switch($offer) {
+                        case 1:
+                            $term = 'vendu';
+                            break;
+                        case 2:
+                            $term = 'loué';
+                            break;
+                        case 3:
+                            $term = 'vendu';
+                            break;
+                    }
+                ?>
+                <p class="already-sold">Oups tout est déja <?= $term ?> !</p>
+
+            <?php endif; ?>
         </div>
     </div>
 </div>
