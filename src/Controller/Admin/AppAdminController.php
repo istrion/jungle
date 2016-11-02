@@ -65,11 +65,12 @@ class AppAdminController extends Controller
 
     private function _getMenu($activeMenu) {
         return array(
-                ['link' => '/admin/menus', 'title' => 'Menu' , 'active' => ($activeMenu == 'Menus') ? true:false],
-                ['link' => '/admin/biens', 'title' => 'Biens' , 'active' => ($activeMenu == 'Biens') ? true:false],
+                ['link' => '/admin/menus', 'title' => 'Menu' , 'active' => ($activeMenu == 'menus') ? true:false],
+                ['link' => '/admin/biens', 'title' => 'Biens' , 'active' => ($activeMenu == 'biens') ? true:false],
                 ['link' => '/admin/agents', 'title' => 'Agents' , 'active' => ($activeMenu == 'Agents') ? true:false],
                 ['link' => '/admin/sliders', 'title' => 'Sliders' , 'active' => ($activeMenu == 'Sliders') ? true:false],
-                ['link' => '/admin/towns', 'title' => 'Villes' , 'active' => ($activeMenu == 'Villes') ? true:false]
+                ['link' => '/admin/towns', 'title' => 'Villes' , 'active' => ($activeMenu == 'towns') ? true:false],
+                ['link' => '/admin/testimonies', 'title' => 'Témoignages' , 'active' => ($activeMenu == 'testimonies') ? true:false]
             );
     }
 }
