@@ -58,6 +58,15 @@ class TestimoniesTable extends Table
         return $validator;
     }
 
+    public function getLastTestimonies()
+    {
+        $queryTestimonies = $this->find('all', [
+            'order' => ['Testimonies.created' => 'DESC']
+        ])->limit(4);
+
+        return $queryTestimonies;
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

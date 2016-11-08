@@ -7,7 +7,8 @@
             <div class="row">
                 <form action="<?= PATH_ADMIN ?>/liste/" method="get">
                     <div class="col-lg-6 col-sm-6">
-                        <input type="text" name="town" class="form-control" placeholder="Lieu">
+                        <input type="text" name="town" class="form-control" placeholder="Lieu" data-toggle="modal"
+                               data-target="#selectSectors" readonly="readonly" id="inputTownSelect">
                         <input type="hidden" name="town_id" value="">
 
                         <div class="row">
@@ -49,12 +50,15 @@
                 <div class="col-lg-5 col-sm-6 content-btn-popup">
                     <div class="row">
                         <div class="col-md-6 text-center">
-                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Trouvez avant <br /> les autres !!</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Trouvez avant <br/>
+                                les autres !!
+                            </button>
                         </div>
                         <div class="col-md-6 text-center">
                             <button class="btn btn-info" data-toggle="modal" data-target="#addBien">
-                                Éxigez le bon prix ! <br />
-                               Faite estimer votre <br />bien en 3 clicks</button>
+                                Éxigez le bon prix ! <br/>
+                                Faites estimer votre <br/>bien en 3 clicks
+                            </button>
                         </div>
                     </div>
                 </div>

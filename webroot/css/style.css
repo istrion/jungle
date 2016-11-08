@@ -26,6 +26,16 @@
     font-weight: 300;
 }
 
+
+@font-face {font-family: "din-next";
+    src: url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.eot");
+    src: url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/9ae5e19516bc6428f1327ff3311b2617.svg#DINNextW01-Light") format("svg");
+}
+
 body {	color:#ccc;	font:normal 13px/22px Arial;	background:url(../images/bgmain.png) #222;}
 
 h1,h2,h3,h4,h5 { font-weight:normal; font-family: din-next;margin: 0;padding: 0;color: #fff}

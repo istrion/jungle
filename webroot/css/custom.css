@@ -896,10 +896,12 @@
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
+    font-size:15px;
+    background-color: #E32D2A;
 }
 
 .btn-info:hover{
-    transition:all 0.3s ease;
+    transition:all 0.2s ease;
     -webkit-transform: scale(1.3);
     -ms-transform: scale(1.3);
     transform: scale(1.3);
@@ -937,3 +939,42 @@
     max-width:170px;
 }
 
+.citation {
+    font-size: 2.75em;
+    padding-top: 45px;
+    line-height: 1.2em;
+    text-align: center;
+}
+
+.citation span {
+    font-size: 16px;
+    color: #737373;
+    padding-top: 0.7em;
+}
+
+#footer{
+    margin-top: 20px;
+}
+
+#page-footer .inner #footer-copyright a {
+    font-size: 14px;
+    color: #dadada;
+    opacity: 0.5;
+    padding: 10px;
+}
+
+#selectSectors, #selectSectors h4{
+    color:#000;
+}
+
+#selectSectors .modal-footer, #selectSectors .modal-body{
+    text-align: center;
+}
+
+#selectSectors .modal-body svg{
+    cursor: pointer;
+}
+
+#inputTownSelect{
+    cursor: pointer;
+}

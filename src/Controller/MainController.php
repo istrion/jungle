@@ -28,8 +28,13 @@ class MainController extends AppController
         $biens = $tableBiens->getLastBiens();
         /* derniers biens vendus */
         $recentSales = $tableBiens->getRecentSales();
+        /* derniers témoignages */
+        $tableTestimonies = TableRegistry::get('Testimonies');
+        $testimonies = $tableTestimonies->getLastTestimonies();
 
-        $this->set(compact('biens','recentSales'));
+
+
+        $this->set(compact('biens','recentSales', 'testimonies'));
 
     }
 
