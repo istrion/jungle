@@ -8,6 +8,10 @@
         <li><?= $this->Html->link(__('List Biens'), ['action' => 'index']) ?></li>
     </ul>
 </div>
+
+<?= $this->Flash->render() ?>
+
+
 <div class="margin-bottom"></div>
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -110,10 +114,10 @@
             </div>
         </div>
 
-        <div class="form-group col-lg-12 col-sm-12 col-sx-12">
+        <div class="form-group col-lg-12 col-sm-12 col-sx-12" id="etage-block">
             <div class="form-group col-lg-12 col-sm-12 col-sx-12">
                 <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-                    <?= $this->Form->input('etage', ['class' => 'form-control', 'label' => 'Etage :']); ?>
+                    <?= $this->Form->input('etage', ['class' => 'form-control', 'label' => 'Etage :', 'style' => "width:50px;"]); ?>
                 </div>
             </div>
         </div>

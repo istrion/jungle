@@ -50,27 +50,16 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/temoignages') ?>
 
-    <?= $this->Element('../Main/modals/add-bien') ?>
-    <?= $this->Element('../Main/modals/select-sectors') ?>
+    <?= $this->Element('../Main/footer') ?>
 
-    <div id="footer">
-        <footer id="page-footer">
-            <div class="inner">
-                <section id="footer-copyright">
-                    <div class="container">
-                        <a href="#" target="blank">© Réalisé par Mickaël</a>
-                    </div>
-                </section>
-            </div><!-- /.inner -->
-        </footer>
-    </div>
+    <?= $this->Element('../Main/modals/add-bien') ?>
+    <?= $this->Element('../Main/modals/select-Sectors') ?>
 
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/lightslider.js"></script>
-    <script src="js/jquery.auto-complete.js"></script>
     <script src="js/search.js"></script>
     <?= $this->fetch('script') ?>
 

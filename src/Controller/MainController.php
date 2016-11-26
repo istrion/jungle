@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Cake\Mailer\Email;
+use Cake\I18n\Time;
 
 
 class MainController extends AppController
@@ -33,8 +34,7 @@ class MainController extends AppController
         $testimonies = $tableTestimonies->getLastTestimonies();
 
 
-
-        $this->set(compact('biens','recentSales', 'testimonies'));
+        $this->set(compact('biens', 'recentSales', 'testimonies'));
 
     }
 
@@ -68,7 +68,7 @@ class MainController extends AppController
         }
 
 
-        if($this->request->query('sortBy')) {
+        if ($this->request->query('sortBy')) {
             $orderBy = $this->request->query('sortBy');
             $orderBy = ($orderBy == "asc") ? ['Biens.price' => 'asc'] : ['Biens.price' => 'desc'];
         } else {
@@ -93,6 +93,8 @@ class MainController extends AppController
 
     public function details($slug = null)
     {
+        $this->saveStats();
+
         $this->viewBuilder()->layout('header_footer');
         $biens = TableRegistry::get('Biens');
         $bien = $biens->find('all',
@@ -118,9 +120,9 @@ class MainController extends AppController
             'image' => 'http://jungle.local/img/biens/1424169825-112082_7sdcm.jpg'
         ];
 
-        $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien,$bien->price,$bien->secteur_id, $bien->id);
+        $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien, $bien->price, $bien->secteur_id, $bien->id);
 
-        $this->set(compact('bien','identicalBiens','imagesBiens', 'metasFB'));
+        $this->set(compact('bien', 'identicalBiens', 'imagesBiens', 'metasFB'));
     }
 
     public function agents()
@@ -131,7 +133,8 @@ class MainController extends AppController
         $this->set(compact('resultsAgents'));
     }
 
-    public function sendEstimation(){
+    public function sendEstimation()
+    {
 
 
         $this->viewBuilder()->layout(false);
@@ -139,11 +142,11 @@ class MainController extends AppController
         $this->autoRender = false;
 
         $message = '';
-        $message .= $this->request->data['civility'] .' '. $this->request->data['name'] . '<br />';
-        $message .= 'de ' . $this->request->data['town']. '<br />';
-        $message .= 'pour ' . $this->request->data['type-bien']. '<br />';
-        $message .= 'Email : '.$this->request->data['email']. '<br />';
-        $message .= 'Téléphone : '. $this->request->data['tel']. '<br />';
+        $message .= $this->request->data['civility'] . ' ' . $this->request->data['name'] . '<br />';
+        $message .= 'de ' . $this->request->data['town'] . '<br />';
+        $message .= 'pour ' . $this->request->data['type-bien'] . '<br />';
+        $message .= 'Email : ' . $this->request->data['email'] . '<br />';
+        $message .= 'Téléphone : ' . $this->request->data['tel'] . '<br />';
 
         $email = new Email('default');
 
@@ -152,5 +155,33 @@ class MainController extends AppController
             ->subject('About')
             ->emailFormat('html')
             ->send($message);
+    }
+
+    private function saveStats()
+    {
+        $ip = $_SERVER['REMOTE_ADDR']; // L'adresse IP du visiteur
+        $date = date('Y-M-d');
+        $date = Time::parseDate($date, 'Y-M-d');
+
+        $statsTable = TableRegistry::get('Stats');
+        $stats = $statsTable->newEntity();
+        $result = $statsTable->find('all', [
+            'conditions' => [
+                'ip' => $ip,
+                'date_visited' => $date
+            ]
+        ]);
+
+        debug($result);
+
+        $stats = $statsTable->patchEntity($stats, [
+            'ip' => $ip,
+            'date_visited' => $date
+        ]);
+
+        debug($stats);
+        debug($statsTable->save($stats));
+
+
     }
 }

@@ -56,7 +56,7 @@ class TestimoniesController extends AppAdminController
         if ($this->request->is('post')) {
             $testimony = $this->Testimonies->patchEntity($testimony, $this->request->data);
             if ($this->Testimonies->save($testimony)) {
-                $this->Flash->success(__('The testimony has been saved.'));
+                $this->Flash->success(__('Le témoignage a bien été sauvegardé'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -82,7 +82,7 @@ class TestimoniesController extends AppAdminController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $testimony = $this->Testimonies->patchEntity($testimony, $this->request->data);
             if ($this->Testimonies->save($testimony)) {
-                $this->Flash->success(__('The testimony has been saved.'));
+                $this->Flash->success(__('Le témoignage a bien été sauvegardé'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -105,7 +105,7 @@ class TestimoniesController extends AppAdminController
         $this->request->allowMethod(['post', 'delete']);
         $testimony = $this->Testimonies->get($id);
         if ($this->Testimonies->delete($testimony)) {
-            $this->Flash->success(__('The town has been deleted.'));
+            $this->Flash->success(__('Le témoignage a bien été supprimé'));
         } else {
             $this->Flash->error(__('The town could not be deleted. Please, try again.'));
         }

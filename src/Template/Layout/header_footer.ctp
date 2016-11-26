@@ -38,6 +38,7 @@ $cakeDescription = 'Jungle immobilier';
     <?= $this->Element('../Main/header') ?>
     <?= $this->fetch('content') ?>
 
+
     <script src="<?= PATH_ADMIN ?>/js/jquery-1.9.1.min.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/bootstrap.js"></script>
     <script src="<?= PATH_ADMIN ?>/js/script.js"></script>
