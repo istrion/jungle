@@ -25,6 +25,8 @@ $cakeDescription = 'Jungle immobilier';
     <?= $this->fetch('meta') ?>
     <?= $this->Html->meta('icon') ?>
 
+    <?= $this->Element('../Main/fbHeader') ?>
+
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/bootstrap.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/style.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/css/style(1).css">
