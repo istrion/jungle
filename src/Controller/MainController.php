@@ -161,6 +161,26 @@ class MainController extends AppController
             ->send($message);
     }
 
+    public function sendAgentEmail() {
+        $this->viewBuilder()->layout(false);
+        $this->render(false);
+        $this->autoRender = false;
+
+        $message = '';
+        $message .= 'de : ' . $this->request->data['clientName'] . '<br />';
+        $message .= 'email : ' . $this->request->data['clientEmail'] . '<br />';
+        $message .= 'Téléphone : ' . $this->request->data['clientTel'] . '<br />';
+        $message .= 'Message : <br /> ---------------------------------------------<br/>' . $this->request->data['clientMessage'] . '<br />---------------------------------------------';
+
+        $email = new Email('default');
+
+        $email->from(['mickael.poulachon@gmail.com' => 'My Site'])
+            ->to('mickael.poulachon@gmail.com')
+            ->subject('Demande de renseignement')
+            ->emailFormat('html')
+            ->send($message);
+    }
+
     private function saveStats($bienId)
     {
         $ip = $_SERVER['REMOTE_ADDR']; // L'adresse IP du visiteur

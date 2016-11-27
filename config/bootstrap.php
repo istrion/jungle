@@ -223,5 +223,5 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('Migrations');
-define("PATH_ADMIN",     "");
+define("PATH_ADMIN",     "http://jungle.local");
 

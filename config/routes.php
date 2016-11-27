@@ -56,6 +56,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/details/*', ['controller' => 'Main', 'action' => 'details']);
     $routes->connect('/agents/*', ['controller' => 'Main', 'action' => 'agents']);
     $routes->connect('/sendEstimation/*', ['controller' => 'Main', 'action' => 'sendEstimation']);
+    $routes->connect('/sendAgentEmail/*', ['controller' => 'Main', 'action' => 'sendAgentEmail']);
 
 
     /**

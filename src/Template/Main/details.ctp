@@ -34,7 +34,7 @@
 
             <div class="col-lg-9 col-sm-8 ">
 
-                <h2><?= $bien->title ?> (<?= $bien->m2 ?>m2) </h2>
+                <h2><?= $bien->title ?> (<?= $bien->m2 ?>m2) REF : <?= $bien->mandat ?> </h2>
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="property-images">
@@ -116,13 +116,16 @@
                                 <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à </h6>
                                 <div class="photo-agent text-center"><?= $this->Html->image('/img/agents/'.$bien->agent->photo) ?></div>
                                 <div class="agent-name"><?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></div>
-                                <form role="form">
-                                    <input type="text" class="form-control" placeholder="Votre nom complet">
-                                    <input type="text" class="form-control" placeholder="Email">
-                                    <input type="text" class="form-control" placeholder="Téléphone">
+                                <form role="form" id="sendMessage">
+                                    <input type="text" class="form-control" placeholder="Votre nom complet" name="clientName" id="clientName">
+                                    <input type="text" class="form-control" placeholder="Email" name="clientEmail" id="clientEmail">
+                                    <input type="text" class="form-control" placeholder="Téléphone" name="clientTel" id="clientTel">
                                     <textarea rows="6" class="form-control"
-                                              placeholder="Message"></textarea>
-                                    <button type="submit" class="btn btn-primary" name="Submit">Envoyer</button>
+                                              placeholder="Message" id="clientMessage" name="clientMessage"></textarea>
+                                    <input type="hidden" name="agentEmail" value="<?= $bien->agent->email ?>">
+                                    <input type="hidden" name="mandat" value="<?= $bien->mandat ?>">
+                                    <p style="color: red;text-align: center;display: none;" id="sendError">Veuillez remplir tous les champs</p>
+                                    <button type="submit" class="btn btn-primary" name="Submit" id="sendEmailAgent">Envoyer</button>
                                 </form>
                             </div>
                         </div>

@@ -28,4 +28,38 @@ lightbox.option({
     'resizeDuration': 200,
     'wrapAround': true,
     'albumLabel': 'Image %1 sur %2'
-})
+});
+
+$(document).ready(function () {
+    $('#sendEmailAgent').click(function(e){
+        e.preventDefault();
+
+        $('#sendError').hide();
+
+        var empty = $(this).parent().find("input[type=text], textarea").filter(function() {
+            return this.value === "";
+        });
+
+        if(empty.length > 0) {
+            $("#sendError").show();
+            return;
+        }
+
+        var data = $('#sendMessage').serializeArray(),
+        datas = {};
+
+        $.each(data, function(index, value){
+            datas[value.name] = value.value;
+        });
+
+        $.ajax({
+            url :'/sendAgentEmail',
+            data : data,
+            method: 'POST'
+        }).done(function(retu){
+            console.log(retu)
+        });
+
+        console.log(datas);
+    });
+});
