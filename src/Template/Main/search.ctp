@@ -5,11 +5,11 @@
 
         <div class="searchbar">
             <div class="row">
-                <form action="<?= PATH_ADMIN ?>/liste/" method="get">
+                <form action="<?= PATH_ADMIN ?>/liste/" method="post">
                     <div class="col-lg-6 col-sm-6">
-                        <input type="text" name="town" class="form-control" placeholder="Lieu" data-toggle="modal"
+                        <input type="text" name="sectors" class="form-control" placeholder="Lieu" data-toggle="modal"
                                data-target="#selectSectors" readonly="readonly" id="inputTownSelect">
-                        <input type="hidden" name="town_id" value="">
+                        <input type="hidden" name="sectors_id" value="">
 
                         <div class="row">
                             <div class="col-lg-3 col-sm-3 ">

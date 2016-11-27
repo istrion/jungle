@@ -9,7 +9,16 @@ $(document).ready(function () {
             'Rive_Droite' : 'Rive droite',
             'Secteur_Sud_Ouest' : 'Secteur sud ouest',
             'Rive_Gauche' : 'Rive gauche'
-        }, arraySelection = {};
+        }, arraySelection = {},
+        arrayId = {
+            'Secteur_Sud_Est' : 5,
+            'Plateau_Nord' : 3,
+            'Plateau_Est' : 4,
+            'Secteur_Nord_Ouest' : 7,
+            'Rive_Droite' : 1,
+            'Secteur_Sud_Ouest' : 6,
+            'Rive_Gauche' : 2
+        };
 
     for (i = 0; i < secteursName.length; i++) {
         $elementTemp = $('#' + secteursName[i]);
@@ -58,12 +67,18 @@ $(document).ready(function () {
     }
 
     $('#selectSectors').on('hide.bs.modal', function () {
-        var $town = $('input[name=town]'), separator;
+        var $town = $('input[name=sectors]'),
+            $sectors_id= $('input[name=sectors_id]'),
+            separator,
+            i = 1;
         $town.val('');
+        $sectors_id.val('');
 
         $.each(arraySelection, function (index, value) {
             separator = $town.val() == '' ? '':', ';
             $town.val($town.val()+ separator + value);
+            $sectors_id.val($sectors_id.val()+ separator + arrayId[index]);
+            i++
         })
 
     })

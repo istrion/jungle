@@ -56,23 +56,6 @@ $(document).ready(function() {
         ]
     });
 
-    $('input[name=town]').autoComplete({
-        minChars: 2,
-        source: function(term, suggest){
-            term = term.toLowerCase();
-            var choices = [{'rouen': 1}, {'sotteville': 2}];
-            var matches = [];
-            for (i=0; i<choices.length; i++) {
-                for (var key in choices[i]) {
-                    //console.log("key " + key + " has value " + choices[i][key]);
-                    if (~key.toLowerCase().indexOf(term)) matches.push(choices[i]);
-                }
-            }
-
-            suggest(matches);
-        }
-    });
-
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');

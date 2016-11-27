@@ -41,30 +41,31 @@ class MainController extends AppController
     public function liste()
     {
         $this->viewBuilder()->layout('header_footer');
-        $town = '';
-        $town_id = '';
+        $sectors = '';
+        $sectors_id = '';
         $offer = '';
         $type_of_bien = '';
         $price = '';
 
         $queryParams = [];
 
-        if (isset($this->request->query['town']) && $this->request->query['town_id'] != '' && is_numeric($this->request->query['town_id'])) {
-            $queryParams[] = ['Biens.town_id = ' => $this->request->query['town_id']];
-            $town_id = $this->request->query['town_id'];
-            $town = $this->request->query['town'];
+        if (isset($this->request->data['sectors']) && $this->request->data['sectors_id'] != '') {
+            $sectors_id_array = explode(',', $this->request->data['sectors_id']);
+            $queryParams[] = ['Biens.secteur_id in ' => $sectors_id_array];
+            $sectors_id = $this->request->data['sectors_id'];
+            $sectors = $this->request->data['sectors'];
         }
-        if (isset($this->request->query['offer']) && is_numeric($this->request->query['offer'])) {
-            $queryParams[] = ['Biens.offer = ' => $this->request->query['offer']];
-            $offer = $this->request->query['offer'];
+        if (isset($this->request->data['offer']) && is_numeric($this->request->data['offer'])) {
+            $queryParams[] = ['Biens.offer = ' => $this->request->data['offer']];
+            $offer = $this->request->data['offer'];
         }
-        if (isset($this->request->query['type_of_bien']) && is_numeric($this->request->query['type_of_bien'])) {
-            $queryParams[] = ['Biens.type_of_bien = ' => $this->request->query['type_of_bien']];
-            $type_of_bien = $this->request->query['type_of_bien'];
+        if (isset($this->request->data['type_of_bien']) && is_numeric($this->request->data['type_of_bien'])) {
+            $queryParams[] = ['Biens.type_of_bien = ' => $this->request->data['type_of_bien']];
+            $type_of_bien = $this->request->data['type_of_bien'];
         }
-        if (isset($this->request->query['price']) && is_numeric($this->request->query['price'])) {
-            $queryParams[] = ['Biens.price <=' => $this->request->query['price']];
-            $price = $this->request->query['price'];
+        if (isset($this->request->data['price']) && is_numeric($this->request->data['price'])) {
+            $queryParams[] = ['Biens.price <=' => $this->request->data['price']];
+            $price = $this->request->data['price'];
         }
 
 
@@ -81,19 +82,20 @@ class MainController extends AppController
         ];
 
         $biens = TableRegistry::get('Biens');
-        $biens = $biens->find('all')
-            ->where($queryParams)
+        $biens = $biens->find('all',
+            array('conditions' => $queryParams))
             ->contain(['ImagesBiens.Images']);
         $biens = $this->paginate($biens);
 
+
         $this->set(compact('biens'));
-        $this->set(compact('town', 'town_id', 'offer', 'type_of_bien', 'price'));
+        $this->set(compact('sectors', 'sectors_id', 'offer', 'type_of_bien', 'price'));
         $this->set('_serialize', ['biens']);
     }
 
     public function details($slug = null)
     {
-        $this->saveStats();
+
 
         $this->viewBuilder()->layout('header_footer');
         $biens = TableRegistry::get('Biens');
@@ -123,6 +125,8 @@ class MainController extends AppController
         $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien, $bien->price, $bien->secteur_id, $bien->id);
 
         $this->set(compact('bien', 'identicalBiens', 'imagesBiens', 'metasFB'));
+
+        $this->saveStats($bien->id);
     }
 
     public function agents()
@@ -157,7 +161,7 @@ class MainController extends AppController
             ->send($message);
     }
 
-    private function saveStats()
+    private function saveStats($bienId)
     {
         $ip = $_SERVER['REMOTE_ADDR']; // L'adresse IP du visiteur
         $date = date('Y-M-d');
@@ -165,22 +169,14 @@ class MainController extends AppController
 
         $statsTable = TableRegistry::get('Stats');
         $stats = $statsTable->newEntity();
-        $result = $statsTable->find('all', [
-            'conditions' => [
-                'ip' => $ip,
-                'date_visited' => $date
-            ]
-        ]);
-
-        debug($result);
 
         $stats = $statsTable->patchEntity($stats, [
             'ip' => $ip,
-            'date_visited' => $date
+            'date_visited' => $date,
+            'biens_id' => $bienId
         ]);
 
-        debug($stats);
-        debug($statsTable->save($stats));
+        $statsTable->save($stats);
 
 
     }

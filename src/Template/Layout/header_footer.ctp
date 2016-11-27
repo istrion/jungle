@@ -37,6 +37,10 @@ $cakeDescription = 'Jungle immobilier';
 <body class="<?= $pageName ?>">
     <?= $this->Element('../Main/header') ?>
     <?= $this->fetch('content') ?>
+    <?= $this->Element('../Main/footer') ?>
+
+
+    <?= $this->Element('../Main/modals/select-Sectors') ?>
 
 
     <script src="<?= PATH_ADMIN ?>/js/jquery-1.9.1.min.js"></script>

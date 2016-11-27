@@ -40,13 +40,17 @@
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('parking', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de parking', 'label' => 'Parkings']); ?></div>
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">
-            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+            <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Dpe'); ?>
                 <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
             </div>
 
-            <div class="form-group col-lg-6 col-sm-6 col-sx-6">
+            <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->input('dpeValue', ['class' => 'form-control', 'label' => 'Valeur du Dpe']); ?>
+            </div>
+
+            <div class="form-group col-lg-4 col-sm-4 col-sx-4">
+                <?= $this->Form->input('mandat', ['class' => 'form-control', 'label' => 'Numéro de mandat']); ?>
             </div>
         </div>
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">

@@ -41,10 +41,15 @@
                             <!-- Slider Starts -->
                             <div id="myCarousel" class="carousel slide">
                                 <?php
-                                foreach ($imagesBiens as $imgBien): ?>
-                                    <?php $img = $imgBien['_matchingData']['Images']; ?>
-                                    <?= '<div><a href="'.PATH_ADMIN.'/img/biens/' . $img['name'].'" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\''.PATH_ADMIN.'/img/biens/' . $img['name'].'\');"></span></a></div>'; ?>
-                                <?php endforeach; ?>
+                                if(iterator_count($imagesBiens)) {
+                                    foreach ($imagesBiens as $imgBien) {
+                                        $img = $imgBien['_matchingData']['Images'];
+                                        echo '<div><a href="' . PATH_ADMIN . '/img/biens/' . $img['name'] . '" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\'' . PATH_ADMIN . '/img/biens/' . $img['name'] . '\');"></span></a></div>';
+                                    }
+                                } else {
+                                    echo '<div><a href="#"><span class="detail-slider-img" style="background-image:url(\'' . PATH_ADMIN . '/img/template/default-house.png\');"></span></a></div>';
+                                }
+                                ?>
                             </div>
                             <!-- #Slider Ends -->
 
