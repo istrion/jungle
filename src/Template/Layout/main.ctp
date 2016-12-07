@@ -19,7 +19,7 @@ $cakeDescription = 'Jungle immobilier';
 <html lang="fr" class=" js no-touch csstransforms3d csstransitions">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Realestate Bootstrap Theme </title>
+    <title>JunGle Immobilier</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -53,7 +53,7 @@ $cakeDescription = 'Jungle immobilier';
     <?= $this->Element('../Main/footer') ?>
 
     <?= $this->Element('../Main/modals/add-bien') ?>
-    <?= $this->Element('../Main/modals/select-Sectors') ?>
+    <?= $this->Element('../Main/modals/selectsectors') ?>
 
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>

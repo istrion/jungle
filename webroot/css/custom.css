@@ -518,6 +518,17 @@
     }
 }
 
+
+@media (max-width: 600px) {
+    .header ul {
+        display:none;
+    }
+}
+
+.navbar-inverse {
+    background-color: #000;
+}
+
 .content-header {
     background-color: #000;
     border-bottom: 1px solid #E32D2A;
@@ -550,7 +561,7 @@
 .properties-listing h4 a {
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 20px;
+    height: 40px;
     display: block;
 }
 
@@ -901,7 +912,7 @@
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
-    font-size:16px;
+    font-size:14px;
     background-color: #E32D2A;
     text-transform: uppercase;
 }
@@ -943,6 +954,7 @@
 
 .cadre img {
     max-width:170px;
+    max-height: 200px;
 }
 
 .citation {
@@ -983,4 +995,21 @@
 
 #inputTownSelect{
     cursor: pointer;
+}
+
+#twitter-widget-0{
+    vertical-align:bottom
+}
+
+@media (max-width: 600px) {
+    .content-btn-popup{
+        margin-top: -25px;
+    }
+
+    .footer .followUs{
+        text-align:center;
+    }
+    .footer h4{
+        text-align: left;
+    }
 }

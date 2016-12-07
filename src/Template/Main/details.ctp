@@ -29,7 +29,7 @@
 
         <div class="row">
             <div class="col-lg-3 col-sm-4 hidden-xs">
-                <?= $this->Element('../Main/identical-biens') ?>
+                <?= $this->Element('../Main/identicalbiens') ?>
             </div>
 
             <div class="col-lg-9 col-sm-8 ">
@@ -41,10 +41,9 @@
                             <!-- Slider Starts -->
                             <div id="myCarousel" class="carousel slide">
                                 <?php
-                                if(iterator_count($imagesBiens)) {
-                                    foreach ($imagesBiens as $imgBien) {
-                                        $img = $imgBien['_matchingData']['Images'];
-                                        echo '<div><a href="' . PATH_ADMIN . '/img/biens/' . $img['name'] . '" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\'' . PATH_ADMIN . '/img/biens/' . $img['name'] . '\');"></span></a></div>';
+                                if(count($bien->images) > 0) {
+                                    foreach ($bien->images as $imgBien) {
+                                        echo '<div><a href="' . PATH_ADMIN . '/img/biens/' . $imgBien->name . '" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\'' . PATH_ADMIN . '/img/biens/thumbnails/' . $imgBien->name . '\');"></span></a></div>';
                                     }
                                 } else {
                                     echo '<div><a href="#"><span class="detail-slider-img" style="background-image:url(\'' . PATH_ADMIN . '/img/template/default-house.png\');"></span></a></div>';
@@ -65,9 +64,9 @@
                             <div class="fb-share-button"
                                  data-href="<?= $currentLink ?>"
                                  data-layout="button_count" data-size="large"
-                                 data-mobile-iframe="false">
-                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div><br />
-                            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                 data-mobile-iframe="false" style="margin-right:20px;vertical-align:bottom;">
+                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>
+                            <a href="https://twitter.com/share" class="twitter-share-button" style="vertical-align:bottom;">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                         </div>
 
                     </div>
@@ -80,7 +79,7 @@
 
                                 <div class="profile">
                                     <span class="glyphicon glyphicon-user"></span> Contact
-                                    <p><?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?><br>0235742076</p>
+                                    <p><?= $bien->agent->last_name . ' ' .  $bien->agent->first_name?><br><?= $bien->agent->telephone ?></p>
                                 </div>
                             </div>
 
@@ -115,7 +114,7 @@
                             <div class="enquiry">
                                 <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à </h6>
                                 <div class="photo-agent text-center"><?= $this->Html->image('/img/agents/'.$bien->agent->photo) ?></div>
-                                <div class="agent-name"><?= $bien->agent->first_name . ' ' . $bien->agent->last_name ?></div>
+                                <div class="agent-name"><?= $bien->agent->last_name . ' ' .  $bien->agent->first_name ?></div>
                                 <form role="form" id="sendMessage">
                                     <input type="text" class="form-control" placeholder="Votre nom complet" name="clientName" id="clientName">
                                     <input type="text" class="form-control" placeholder="Email" name="clientEmail" id="clientEmail">

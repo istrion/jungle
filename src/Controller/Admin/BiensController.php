@@ -83,7 +83,7 @@ class BiensController extends AppAdminController
         //Chargement ou nouveau bien
         if ($id) {
             $bien = $this->Biens->get($id, [
-                'contain' => []
+                'contain' => ['Images']
             ]);
         } else {
             $bien = $this->Biens->newEntity();
@@ -118,7 +118,7 @@ class BiensController extends AppAdminController
     {
         //Préparation du slug pour l'url
         if ($this->request->is(['patch', 'post', 'put'])) {
-            if($this->request->params['action'] != "edit") {
+            if ($this->request->params['action'] != "edit") {
                 $slug = $this->_stringToSlug($this->request->data['title']);
                 $this->request->data['slug'] = $slug;
             }
@@ -188,6 +188,7 @@ class BiensController extends AppAdminController
         $uploadDir = WWW_ROOT . 'img/biens/' . $fileNameFinal;
 
         if ($this->request->is('post')) {
+            $this->_createThumbnail($tmpName,$fileNameFinal);
 
             move_uploaded_file($tmpName, $uploadDir);
 
@@ -205,34 +206,71 @@ class BiensController extends AppAdminController
         }
     }
 
+    public function removeImage() {
+        $this->viewBuilder()->layout('');
+        $this->render(false);
+
+        $imageId = $this->request->data['imageId'];
+        $imagesTable = TableRegistry::get('Images');
+        $entity = $imagesTable->get($imageId);
+        $result = $imagesTable->delete($entity);
+
+        if($result) {
+            $response = ["id" => $imageId, "deleted" => true];
+
+            $this->response->body(json_encode($response));
+            $this->response->type('application/json');
+
+            return $this->response;
+        }
+    }
+
+    private function _createThumbnail($path, $name){
+
+        $source = imagecreatefromjpeg($path); // La photo est la source
+        $destination = imagecreatetruecolor(520, 330); // On crée la miniature vide
+
+        // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+        $largeur_source = imagesx($source);
+        $hauteur_source = imagesy($source);
+        $largeur_destination = imagesx($destination);
+        $hauteur_destination = imagesy($destination);
+
+        // On crée la miniature
+        imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+
+        // On enregistre la miniature sous le nom "mini_couchersoleil.jpg"
+        imagejpeg($destination, WWW_ROOT . 'img/biens/thumbnails/' . $name);
+
+    }
+
     private function _saveImagesBiens($bien_id, $images)
     {
         $listImage = explode(",", $images);
-        $data = array();
+        if (count($listImage) > 0) {
+            $ImagesTable = TableRegistry::get('Images');
 
-        foreach ($listImage as $imageId) {
-            $data[] = [
-                'bien_id' => $bien_id,
-                'image_id' => $imageId
-            ];
+            $ImagesTable->updateAll(
+                array('bien_id' => $bien_id),
+                array('id IN' => $listImage)
+            );
+            $this->Flash->success(__('Le bien a été sauvegardé'));
+
+            return $this->redirect('/admin/biens/edit/' . $bien_id);
+        } else {
+            $this->Flash->success(__('Le bien a été sauvegardé'));
+            return $this->redirect('/admin/biens/edit/' . $bien_id);
         }
-        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
-        $entities = $ImagesBiensTable->newEntities($data);
-        $result = $ImagesBiensTable->saveMany($entities);
-
-        $this->Flash->success(__('Le bien a été sauvegardé'));
-
-        return $this->redirect('/admin/biens/edit/' . $bien_id);
     }
 
     private function _stringToSlug($title)
     {
-        $slug = preg_replace("/-$/","",preg_replace('/[^a-z0-9]+/i', "-", strtolower($title)));
+        $slug = preg_replace("/-$/", "", preg_replace('/[^a-z0-9]+/i', "-", strtolower($title)));
 
         $query = $this->Biens->find();
         $query
             ->select(['count' => $query->func()->count('*')])
-            ->where(['slug like' => '%'.$slug.'%'])
+            ->where(['slug like' => '%' . $slug . '%'])
             ->order(['created' => 'DESC']);
         $result = $query->toList();
         $numHits = $result[0]['count'];

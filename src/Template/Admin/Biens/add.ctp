@@ -34,7 +34,7 @@
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('room', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de chambre', 'label' => 'Chambres']); ?></div>
         <div
-            class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('kitchen', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de cuisines', 'label' => 'Cuisines']); ?></div>
+            class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('kitchen', ['class' => 'form-control', 'placeholder' => 'Indiquez la surface', 'label' => 'Surface']); ?></div>
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('shower', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de salles de bain', 'label' => 'Salle de bains']); ?></div>
         <div

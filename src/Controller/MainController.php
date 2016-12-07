@@ -48,6 +48,8 @@ class MainController extends AppController
         $price = '';
 
         $queryParams = [];
+        $queryParams[] = ['sold' => 0,
+            'online' => true];
 
         if (isset($this->request->data['sectors']) && $this->request->data['sectors_id'] != '') {
             $sectors_id_array = explode(',', $this->request->data['sectors_id']);
@@ -82,9 +84,8 @@ class MainController extends AppController
         ];
 
         $biens = TableRegistry::get('Biens');
-        $biens = $biens->find('all',
-            array('conditions' => $queryParams))
-            ->contain(['ImagesBiens.Images']);
+
+        $biens = $biens->searchAllBiens($queryParams);
         $biens = $this->paginate($biens);
 
 
@@ -102,24 +103,23 @@ class MainController extends AppController
         $bien = $biens->find('all',
             [
                 'conditions' => ['slug' => $slug],
-                'contain' => ['Towns', 'Agents', 'Dpes']
+                'contain' => ['Towns', 'Agents', 'Dpes', 'Images']
             ]);
         $bien = $bien->first();
 
-        $ImagesBiensTable = TableRegistry::get('ImagesBiens');
 
-        $imagesBiens = $ImagesBiensTable->find('all',
-            [
-                'limit' => 200,
-                'fields' => ['id', 'Images.name', 'Images.path'],
-                'conditions' => ['ImagesBiens.bien_id ' => $bien->id]
-            ])
-            ->innerJoinWith('Images');
+        if (count($bien->images) > 0) {
+            $imgFB = $bien->images[0];
+            $imgFB = PATH_ADMIN . '/img/biens/thumbnails/' . $imgFB->name;
+        } else {
+            $imgFB = PATH_ADMIN . '/img/template/default-house.png';
+        }
+
         //https://developers.facebook.com/docs/plugins/share-button
         $metasFB = [
             'title' => $bien->title,
             'description' => $bien->description,
-            'image' => 'http://jungle.local/img/biens/1424169825-112082_7sdcm.jpg'
+            'image' => $imgFB
         ];
 
         $identicalBiens = $biens->getIdenticalBiens($bien->type_of_bien, $bien->price, $bien->secteur_id, $bien->id);
@@ -133,52 +133,59 @@ class MainController extends AppController
     {
         $this->viewBuilder()->layout('header_footer');
         $agents = TableRegistry::get('Agents');
-        $resultsAgents = $agents->find('all');
-        $this->set(compact('resultsAgents'));
+        $agents = $agents->find('all');
+        $this->set(compact('agents'));
     }
 
     public function sendEstimation()
     {
-
-
         $this->viewBuilder()->layout(false);
         $this->render(false);
         $this->autoRender = false;
 
-        $message = '';
-        $message .= $this->request->data['civility'] . ' ' . $this->request->data['name'] . '<br />';
-        $message .= 'de ' . $this->request->data['town'] . '<br />';
-        $message .= 'pour ' . $this->request->data['type-bien'] . '<br />';
-        $message .= 'Email : ' . $this->request->data['email'] . '<br />';
-        $message .= 'Téléphone : ' . $this->request->data['tel'] . '<br />';
+        try {
 
-        $email = new Email('default');
+            $message = '';
+            $message .= $this->request->data['civility'] . ' ' . $this->request->data['name'] . '<br />';
+            $message .= 'de ' . $this->request->data['town'] . '<br />';
+            $message .= 'pour ' . $this->request->data['type-bien'] . '<br />';
+            $message .= 'Email : ' . $this->request->data['email'] . '<br />';
+            $message .= 'Téléphone : ' . $this->request->data['tel'] . '<br />';
 
-        $email->from(['mickael.poulachon@gmail.com' => 'My Site'])
-            ->to('mickael.poulachon@gmail.com')
-            ->subject('About')
-            ->emailFormat('html')
-            ->send($message);
+            $email = new Email('default');
+            $email->from([$this->request->data['email'] => $this->request->data['civility'] . ' ' . $this->request->data['name']])
+                ->to('contact@jungleimmobilier.com')
+                ->subject('Demande de renseignement')
+                ->emailFormat('html')
+                ->send($message);
+        } catch (Exception $error) {
+            echo $error;
+        }
     }
 
-    public function sendAgentEmail() {
+    public function sendAgentEmail()
+    {
         $this->viewBuilder()->layout(false);
         $this->render(false);
         $this->autoRender = false;
 
-        $message = '';
-        $message .= 'de : ' . $this->request->data['clientName'] . '<br />';
-        $message .= 'email : ' . $this->request->data['clientEmail'] . '<br />';
-        $message .= 'Téléphone : ' . $this->request->data['clientTel'] . '<br />';
-        $message .= 'Message : <br /> ---------------------------------------------<br/>' . $this->request->data['clientMessage'] . '<br />---------------------------------------------';
+        try {
+            $message = '';
+            $message .= 'de : ' . $this->request->data['clientName'] . '<br />';
+            $message .= 'email : ' . $this->request->data['clientEmail'] . '<br />';
+            $message .= 'Téléphone : ' . $this->request->data['clientTel'] . '<br />';
+            $message .= 'Message : <br /> ---------------------------------------------<br/>' . $this->request->data['clientMessage'] . '<br />---------------------------------------------';
 
-        $email = new Email('default');
+            $email = new Email('default');
 
-        $email->from(['mickael.poulachon@gmail.com' => 'My Site'])
-            ->to('mickael.poulachon@gmail.com')
-            ->subject('Demande de renseignement')
-            ->emailFormat('html')
-            ->send($message);
+            $email->from([$this->request->data['clientEmail'] => $this->request->data['clientName']])
+                ->to('contact@jungleimmobilier.com')
+                ->subject('Demande de renseignement')
+                ->emailFormat('html')
+                ->send($message);
+        } catch (Exception $error) {
+            echo $error;
+        }
     }
 
     private function saveStats($bienId)

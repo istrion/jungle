@@ -76,7 +76,7 @@
                     <div id="msg-estimation">
                         <p class="text-bold">Merci. <br/>
                             Nous nous engageons à vous rappeler au plus vite ! <br/>
-                            Maintenant nous allons vous donner toutes les cartes en main pour vendre dans les
+                            Vous allez maintenant avoir toutes les cartes en main pour vendre dans les
                             meilleurs delais et au meilleur prix.
                         </p>
                         <button class="btn btn-success btn-lg pull-right" data-dismiss="modal">Fermer</button>

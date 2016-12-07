@@ -40,11 +40,14 @@ class ImagesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsToMany('Biens', [
-            'foreignKey' => 'image_id',
-            'targetForeignKey' => 'bien_id',
-            'joinTable' => 'images_biens'
+        $this->addAssociations([
+            'belongsTo' => [
+                'Biens' => ['className' => 'App\Model\Table\BiensTable']
+            ],
+            'hasMany' => ['Images']
         ]);
+
+
     }
 
     /**

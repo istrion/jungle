@@ -1,4 +1,4 @@
-<?php if(count($testimonies)) :?>
+<?php if(iterator_count($testimonies)) :?>
 <div class="temoignagnes">
     <div class="container">
         <h2>Témoignages</h2>

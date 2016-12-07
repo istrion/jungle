@@ -94,14 +94,17 @@
 
                     </div>
                     <div class="row">
-
                         <?php foreach ($biens as $bien): ?>
                             <!-- properties -->
                             <div class="col-lg-4 col-sm-6">
                                 <div class="properties">
                                     <div class="image-holder">
-                                        <a href="#" class="like"><?= $this->Html->image('/img/template/like.png') ?></a>
-                                        <?= $this->Html->image('/img/biens/' . $bien->images_bien->image->name, ["class" => "img-responsive"]); ?>
+                                        <!--<a href="#" class="like"><?= $this->Html->image('/img/template/like.png') ?></a>-->
+                                        <?php if($bien->images) : ?>
+                                            <?= $this->Html->image('/img/biens/thumbnails/' . $bien->images[0]->name, ["class" => "img-responsive"]); ?>
+                                            <?php else: ?>
+                                            <?= $this->Html->image('/img/template/default-house.png', ["class" => "img-responsive"]); ?>
+                                        <?php endif;?>
                                     </div>
                                     <h4>
                                         <a href="<?= PATH_ADMIN . '/details/' . $bien->slug ?>"><?= h($bien->title) ?></a>

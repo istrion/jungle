@@ -61,10 +61,12 @@ class BiensTable extends Table
             'foreignKey' => 'agent_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('ImagesBiens', [
-            'foreignKey' => 'id',
-            'joinType' => 'INNER'
+        $this->belongsToMany('Images', ['foreignKey' => 'bien_id']);
+
+        $this->hasMany('Images', [
+            'className' => 'Images'
         ]);
+        //$this->belongsToMany('ImagesBiens');
     }
 
     /**
@@ -130,65 +132,18 @@ class BiensTable extends Table
 
     public function getLastBiens()
     {
-        $imagesBiens = TableRegistry::get('ImagesBiens');
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all', [
-            'order' => ['Biens.created' => 'DESC']
-        ])
-            ->where([
-                'sold' => 0,
-                'online' => true,
-            ])
-            ->limit(15);
+        $queryBiens = $biens->find('all')->contain(['Images'])->where(['online' => true, 'sold' => 0])->limit(15);
 
-        $biens = [];
-
-        foreach ($queryBiens as $bien) {
-            $bien->images = [];
-
-            $images = $imagesBiens->find('all')
-                ->where(["ImagesBiens.bien_id" => $bien->id])
-                ->contain('Images');
-
-            foreach ($images as $img) {
-                array_push($bien->images, $img->image);
-            }
-
-            array_push($biens, $bien);
-        }
-        return $biens;
+        return $queryBiens;
     }
 
     public function getRecentSales()
     {
-        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all')->contain(['Images'])->where(['online' => true, 'sold' => 1])->limit(15);
 
-        $queryBiens = $this->find('all', [
-            'order' => ['Biens.modified' => 'DESC']
-        ])
-            ->where([
-                'sold' => 1,
-                'online' => true,
-            ])
-            ->limit(15);
-
-        $biens = [];
-
-        foreach ($queryBiens as $bien) {
-            $bien->images = [];
-
-            $images = $imagesBiens->find('all')
-                ->where(["ImagesBiens.bien_id" => $bien->id])
-                ->contain('Images');
-
-            foreach ($images as $img) {
-                array_push($bien->images, $img->image);
-            }
-
-            array_push($biens, $bien);
-        }
-
-        return $biens;
+        return $queryBiens;
     }
 
     public function getIdenticalBiens($type_of_bien, $price, $secteur_id, $exclude_id)
@@ -227,5 +182,72 @@ class BiensTable extends Table
         }
 
         return $biens;
+    }
+
+    public function getAllBiens()
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all', [
+            'order' => ['Biens.created' => 'DESC']
+        ])
+            ->where([
+                'sold' => 0,
+                'online' => true,
+            ]);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+
+        return $biens;
+    }
+
+    /*public function searchAllBiens($params)
+    {
+        $imagesBiens = TableRegistry::get('ImagesBiens');
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all', [
+            'order' => ['Biens.created' => 'DESC']
+        ])
+            ->where($params);
+
+        $biens = [];
+
+        foreach ($queryBiens as $bien) {
+            $bien->images = [];
+
+            $images = $imagesBiens->find('all')
+                ->where(["ImagesBiens.bien_id" => $bien->id])
+                ->contain('Images');
+
+            foreach ($images as $img) {
+                array_push($bien->images, $img->image);
+            }
+
+            array_push($biens, $bien);
+        }
+
+        return $biens;
+    }*/
+
+    public function searchAllBiens($params)
+    {
+        $biens = TableRegistry::get('Biens');
+        $queryBiens = $biens->find('all')->contain(['Images'])->where($params);
+
+        return $queryBiens;
     }
 }

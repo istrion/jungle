@@ -1,4 +1,4 @@
-var PATH_ADMIN = "";
+var PATH_ADMIN = "http://jungleimmobilier.com";
 
 $(document).ready(function() {
     $('#slider').responsiveSlides({

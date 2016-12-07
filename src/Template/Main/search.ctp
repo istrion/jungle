@@ -51,13 +51,13 @@
                     <div class="row">
                         <div class="col-md-6 text-center">
                             <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Trouvez avant <br/>
-                                les autres !!
+                                les autres !
                             </button>
                         </div>
                         <div class="col-md-6 text-center">
                             <button class="btn btn-info" data-toggle="modal" data-target="#addBien">
                                 Éxigez le bon prix ! <br/>
-                                Faites estimer votre <br/>bien en 3 clicks
+                                Faites estimer <br /> votre <br/>bien en 3 clics
                             </button>
                         </div>
                     </div>

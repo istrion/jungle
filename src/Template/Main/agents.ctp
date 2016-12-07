@@ -21,14 +21,17 @@
             </div>
 
             <div class="equipe clearfix">
-                <h2>Nos agents</h2>
+                <h2>Nos collaborateurs</h2>
 
+                <?php foreach ($agents as $agent): ?>
                 <div class="pull-left cadre">
                     <div class="information">
-                        <span class="nom">JOSEPH<br>GALLIOT</span><br><br>Directeur général
+                        <span class="nom"><?= $agent->last_name ?><br><?= $agent->first_name ?></span><br><br><?= $agent->description ?>
                     </div>
-                    <img src="<?= PATH_ADMIN . '/img/agents/joseph.jpg' ?>" alt="JOSEPH - GALLIOT Directeur général">
+                    <img src="<?= PATH_ADMIN . '/img/agents/'.$agent->photo ?>" alt="<?= $agent->last_name ?> - <?= $agent->first_name ?> <?= $agent->description ?>">
                 </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </div>

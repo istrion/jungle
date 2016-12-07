@@ -11,7 +11,6 @@
 
 <?= $this->Flash->render() ?>
 
-
 <div class="margin-bottom"></div>
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -34,7 +33,7 @@
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('room', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de chambre', 'label' => 'Chambres']); ?></div>
         <div
-            class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('kitchen', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de cuisines', 'label' => 'Cuisines']); ?></div>
+            class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('kitchen', ['class' => 'form-control', 'placeholder' => 'Indiquez la surface', 'label' => 'Surface']); ?></div>
         <div
             class="form-group col-lg-6 col-sm-6 col-sx-6"><?= $this->Form->input('shower', ['class' => 'form-control', 'placeholder' => 'Indiquez le nombre de salles de bain', 'label' => 'Salle de bains']); ?></div>
         <div
@@ -155,10 +154,9 @@
             <ul id="list-img">
 
                 <?php
-                foreach ($imagesBiens as $imgBien): ?>
-                    <?php $img = $imgBien['_matchingData']['Images']; ?>
-                    <?= '<li><img src="'.PATH_ADMIN.'/img/biens/' . $img['name'] . '">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="' . $imgBien['id'] . '"></span>
+                foreach ($bien->images as $imgBien): ?>
+                    <?= '<li><img src="'.PATH_ADMIN.'/img/biens/thumbnails/' . $imgBien->name . '">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="' . $imgBien->id . '"></span>
                         </li>'; ?>
                 <?php endforeach; ?>
             </ul>
