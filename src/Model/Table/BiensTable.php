@@ -59,7 +59,7 @@ class BiensTable extends Table
         ]);
         $this->belongsTo('Agents', [
             'foreignKey' => 'agent_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsToMany('Images', ['foreignKey' => 'bien_id']);
 

@@ -1,16 +1,17 @@
 <?php
-    $currentLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-    $offer = '';
-    if($bien->offer == 1) $offer = 'Acheter';
-    if($bien->offer == 2) $offer = 'Louer';
-    if($bien->offer == 3) $offer = 'Viager';
+$currentLink = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$offer = '';
+if ($bien->offer == 1) $offer = 'Acheter';
+if ($bien->offer == 2) $offer = 'Louer';
+if ($bien->offer == 3) $offer = 'Viager';
 ?>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.7";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
@@ -41,7 +42,7 @@
                             <!-- Slider Starts -->
                             <div id="myCarousel" class="carousel slide">
                                 <?php
-                                if(count($bien->images) > 0) {
+                                if (count($bien->images) > 0) {
                                     foreach ($bien->images as $imgBien) {
                                         echo '<div><a href="' . PATH_ADMIN . '/img/biens/' . $imgBien->name . '" data-lightbox="details"><span class="detail-slider-img" data-lightbox="image-1" style="background-image:url(\'' . PATH_ADMIN . '/img/biens/thumbnails/' . $imgBien->name . '\');"></span></a></div>';
                                     }
@@ -60,13 +61,25 @@
 
                         </div>
                         <div class="share">
-                            Partager cette annonce sur : <br />
+                            Partager cette annonce sur : <br/>
                             <div class="fb-share-button"
                                  data-href="<?= $currentLink ?>"
                                  data-layout="button_count" data-size="large"
                                  data-mobile-iframe="false" style="margin-right:20px;vertical-align:bottom;">
-                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>
-                            <a href="https://twitter.com/share" class="twitter-share-button" style="vertical-align:bottom;">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                <a class="fb-xfbml-parse-ignore" target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a>
+                            </div>
+                            <a href="https://twitter.com/share" class="twitter-share-button"
+                               style="vertical-align:bottom;">Tweet</a>
+                            <script>!function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                    if (!d.getElementById(id)) {
+                                        js = d.createElement(s);
+                                        js.id = id;
+                                        js.src = p + '://platform.twitter.com/widgets.js';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }
+                                }(document, 'script', 'twitter-wjs');</script>
                         </div>
 
                     </div>
@@ -76,11 +89,13 @@
                                 <p class="price"><?= $bien->price ?> €</p>
                                 <p class="area"><span
                                         class="glyphicon glyphicon-map-marker"></span> <?= $bien->town->title ?></p>
-
-                                <div class="profile">
-                                    <span class="glyphicon glyphicon-user"></span> Contact
-                                    <p><?= $bien->agent->last_name . ' ' .  $bien->agent->first_name?><br><?= $bien->agent->telephone ?></p>
-                                </div>
+                                <?php if ($bien->agent): ?>
+                                    <div class="profile">
+                                        <span class="glyphicon glyphicon-user"></span> Contact
+                                        <p><?= $bien->agent->last_name . ' ' . $bien->agent->first_name ?>
+                                            <br><?= $bien->agent->telephone ?></p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <h6><span class="glyphicon glyphicon-home"></span> Prestations</h6>
@@ -112,19 +127,35 @@
                         </div>
                         <div class="col-lg-12 col-sm-6 ">
                             <div class="enquiry">
-                                <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à </h6>
-                                <div class="photo-agent text-center"><?= $this->Html->image('/img/agents/'.$bien->agent->photo) ?></div>
-                                <div class="agent-name"><?= $bien->agent->last_name . ' ' .  $bien->agent->first_name ?></div>
+                                <?php if ($bien->agent): ?>
+                                    <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message à </h6>
+                                    <div
+                                        class="photo-agent text-center"><?= $this->Html->image('/img/agents/' . $bien->agent->photo) ?></div>
+                                    <div
+                                        class="agent-name"><?= $bien->agent->last_name . ' ' . $bien->agent->first_name ?></div>
+                                <?php else: ?>
+                                    <h6><span class="glyphicon glyphicon-envelope"></span> Envoyer un message</h6>
+                                <?php endif; ?>
                                 <form role="form" id="sendMessage">
-                                    <input type="text" class="form-control" placeholder="Votre nom complet" name="clientName" id="clientName">
-                                    <input type="text" class="form-control" placeholder="Email" name="clientEmail" id="clientEmail">
-                                    <input type="text" class="form-control" placeholder="Téléphone" name="clientTel" id="clientTel">
+                                    <input type="text" class="form-control" placeholder="Votre nom complet"
+                                           name="clientName" id="clientName">
+                                    <input type="text" class="form-control" placeholder="Email" name="clientEmail"
+                                           id="clientEmail">
+                                    <input type="text" class="form-control" placeholder="Téléphone" name="clientTel"
+                                           id="clientTel">
                                     <textarea rows="6" class="form-control"
                                               placeholder="Message" id="clientMessage" name="clientMessage"></textarea>
-                                    <input type="hidden" name="agentEmail" value="<?= $bien->agent->email ?>">
+                                    <?php if ($bien->agent): ?>
+                                        <input type="hidden" name="agentEmail" value="<?= $bien->agent->email ?>">
+                                    <?php else: ?>
+                                        <input type="hidden" name="agentEmail" value="contact@jungleimmobilier.com">
+                                    <?php endif; ?>
                                     <input type="hidden" name="mandat" value="<?= $bien->mandat ?>">
-                                    <p style="color: red;text-align: center;display: none;" id="sendError">Veuillez remplir tous les champs</p>
-                                    <button type="submit" class="btn btn-primary" name="Submit" id="sendEmailAgent">Envoyer</button>
+                                    <p style="color: red;text-align: center;display: none;" id="sendError">Veuillez
+                                        remplir tous les champs</p>
+                                    <button type="submit" class="btn btn-primary" name="Submit" id="sendEmailAgent">
+                                        Envoyer
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -136,10 +167,11 @@
 </div>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>

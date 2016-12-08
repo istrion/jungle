@@ -7,10 +7,10 @@
                 <div class="col-md-4">
                     <div class="pull-left cadre">
                         <div class="information">
-                            <span class="nom">JOSEPH<br>GALLIOT</span><br><br>Directeur général
+                            <span class="nom">JOSEPH<br>GALLIOT</span><br><br>Gérant Fondateur
                         </div>
                         <img src="<?= PATH_ADMIN . '/img/agents/joseph.jpg' ?>"
-                             alt="JOSEPH - GALLIOT Directeur général">
+                             alt="JOSEPH - GALLIOT Gérant Fondateur">
                     </div>
                 </div>
                 <div class="col-md-8">
