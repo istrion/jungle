@@ -22,12 +22,12 @@
                             <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                 <thead>
                                 <tr role="row">
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('id') ?></th>
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('title') ?></th>
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('price') ?></th>
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('secteur_id') ?></th>
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('created') ?></th>
-                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= $this->Paginator->sort('modified') ?></th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"id</th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1">title</th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1">price</th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1">secteur_id</th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1">created</th>
+                                    <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1">modified</th>
                                     <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1"><?= __('Actions') ?></th>
                                 </tr>
                                 </thead>

@@ -42,7 +42,7 @@
         <div class="form-group col-lg-6 col-sm-6 col-sx-6">
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">
                 <?= $this->Form->label('Dpe'); ?>
-                <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control']); ?>
+                <?= $this->Form->select('dpe_id', $dpes, ['empty' => '(Sélectionnez un dpe)', 'class' => 'form-control', 'id' => 'dpe_id']); ?>
             </div>
 
             <div class="form-group col-lg-4 col-sm-4 col-sx-4">

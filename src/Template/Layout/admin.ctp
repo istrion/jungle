@@ -23,6 +23,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="<?= PATH_ADMIN ?>/admin/css/custom.css">
 
     <?= $this->fetch('css') ?>
@@ -274,6 +277,7 @@ desired effect
 
 <!-- jQuery 2.2.3 -->
 <script src="<?= PATH_ADMIN ?>/admin/js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= PATH_ADMIN ?>/admin/js/jQuery/jquery-ui.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= PATH_ADMIN ?>/admin/js/bootstrap/bootstrap.min.js"></script>
 <!-- AdminLTE App -->

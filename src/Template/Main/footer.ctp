@@ -8,13 +8,10 @@
                 <h4>Information</h4>
                 <ul class="row">
                     <li class="col-lg-12 col-sm-12 col-xs-3"><a
-                            href="#">A propos</a>
+                            href="/equipe/">L'équipe</a>
                     </li>
                     <li class="col-lg-12 col-sm-12 col-xs-3"><a
-                            href="#">L'équipe</a>
-                    </li>
-                    <li class="col-lg-12 col-sm-12 col-xs-3"><a
-                            href="#">Tous nos biens</a>
+                            href="/liste/">Tous nos biens</a>
                     </li>
                     <li class="col-lg-12 col-sm-12 col-xs-3"><a
                             href="#">Mentions Légales</a>

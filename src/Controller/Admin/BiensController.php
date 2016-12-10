@@ -5,6 +5,7 @@ use App\Controller\Admin\AppAdminController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
+use Cake\Datasource\ConnectionManager;
 
 
 /**
@@ -83,8 +84,9 @@ class BiensController extends AppAdminController
         //Chargement ou nouveau bien
         if ($id) {
             $bien = $this->Biens->get($id, [
-                'contain' => ['Images']
+                'contain' => ['Images' => ['sort' => ['Images.sort_order' => 'ASC']]]
             ]);
+
         } else {
             $bien = $this->Biens->newEntity();
         }
@@ -184,11 +186,11 @@ class BiensController extends AppAdminController
         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
         $fileName = pathinfo($fileName, PATHINFO_FILENAME);
         $s = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
-        $fileNameFinal = $fileName . '_' . $s . '.' . $ext;
+        $fileNameFinal = $this->_renameImage($fileName) . '_' . $s . '.' . $ext;
         $uploadDir = WWW_ROOT . 'img/biens/' . $fileNameFinal;
 
         if ($this->request->is('post')) {
-            $this->_createThumbnail($tmpName,$fileNameFinal);
+            $this->_createThumbnail($tmpName, $fileNameFinal);
 
             move_uploaded_file($tmpName, $uploadDir);
 
@@ -206,7 +208,8 @@ class BiensController extends AppAdminController
         }
     }
 
-    public function removeImage() {
+    public function removeImage()
+    {
         $this->viewBuilder()->layout('');
         $this->render(false);
 
@@ -215,7 +218,7 @@ class BiensController extends AppAdminController
         $entity = $imagesTable->get($imageId);
         $result = $imagesTable->delete($entity);
 
-        if($result) {
+        if ($result) {
             $response = ["id" => $imageId, "deleted" => true];
 
             $this->response->body(json_encode($response));
@@ -225,7 +228,28 @@ class BiensController extends AppAdminController
         }
     }
 
-    private function _createThumbnail($path, $name){
+    public function orderImage(){
+        $this->viewBuilder()->layout('');
+        $this->render(false);
+
+        $imageIdList = $this->request->data['imageIdList'];
+        $imageIdList = implode(',',$imageIdList);
+
+        $connection = ConnectionManager::get('default');
+        $results = $connection->execute("UPDATE images SET sort_order = FIND_IN_SET(id, '$imageIdList') WHERE id in ($imageIdList)");
+
+        if ($results) {
+            $response = ["updated" => true];
+
+            $this->response->body(json_encode($response));
+            $this->response->type('application/json');
+
+            return $this->response;
+        }
+    }
+
+    private function _createThumbnail($path, $name)
+    {
 
         $source = imagecreatefromjpeg($path); // La photo est la source
         $destination = imagecreatetruecolor(520, 330); // On crée la miniature vide
@@ -277,5 +301,12 @@ class BiensController extends AppAdminController
 
 
         return ($numHits > 0) ? ($slug . '-' . $numHits) : $slug;
+    }
+
+    private function _renameImage($string)
+    {
+        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
     }
 }

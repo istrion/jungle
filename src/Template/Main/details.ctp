@@ -116,13 +116,14 @@ if ($bien->offer == 3) $offer = 'Viager';
                                         data-original-title="superficie"><?= $bien->m2; ?>m2</span>
                                 <?php endif; ?>
                             </div>
-
+                            <?php if(!in_array($bien->dpe_id, [11,12,13]) && $bien->dpe): ?>
                             <h6><span class="glyphicon glyphicon-home"></span> DPE</h6>
                             <div class="dpe">
                                 <span class="indice <?= strtolower($bien->dpe->title) ?>"><div class="arrow-left"></div>
                                     <?= $bien->dpeValue ?></span>
                                 <img src="<?= PATH_ADMIN ?>/img/template/dpe.png">
                             </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="col-lg-12 col-sm-6 ">

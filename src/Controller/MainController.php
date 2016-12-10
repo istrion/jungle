@@ -103,7 +103,7 @@ class MainController extends AppController
         $bien = $biens->find('all',
             [
                 'conditions' => ['slug' => $slug],
-                'contain' => ['Towns', 'Agents', 'Dpes', 'Images']
+                'contain' => ['Towns', 'Agents', 'Dpes', 'Images'=> ['sort' => ['Images.sort_order' => 'ASC']]]
             ]);
         $bien = $bien->first();
 

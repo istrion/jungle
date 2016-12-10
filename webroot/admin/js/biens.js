@@ -40,4 +40,53 @@ $(function() {
             });
         }
     });
+
+    $("select[name='dpe_id']").change(function(){
+        if($.inArray($(this).val(),["11","12","13"]) != -1) {
+            $('#dpevalue').closest('div').hide();
+            $('#dpevalue').val('');
+        } else {
+            $('#dpevalue').closest('div').show();
+        }
+    });
+
+    $('#type_of_bien .btn').click(function() {
+        if($(this).find('input').val() == 4) {
+            $('#room, #kitchen, #shower, #parking, #dpe_id, #dpevalue').closest('div.form-group').hide();
+        } else{
+            $('#room, #kitchen, #shower, #parking, #dpe_id, #dpevalue').closest('div.form-group').show();
+        }
+    });
+
+    if($('#type_of_bien .btn.btn-default.active input').val() == 4){
+        $('#room, #kitchen, #shower, #parking, #dpe_id, #dpevalue').closest('div.form-group').hide();
+    } else{
+        $('#room, #kitchen, #shower, #parking, #dpe_id, #dpevalue').closest('div.form-group').show();
+    }
+
+    //Drag and drop
+    $( "#list-img" ).sortable({
+        cursor: "move",
+        helper: "clone",
+        tolerance: 'pointer',
+        containment: "parent",
+        stop: function( event, ui ) {
+
+            var dataList = $("#list-img li span").map(function() {
+                return $(this).data("id");
+            }).get();
+
+            $.ajax({
+                url :PATH_ADMIN +'/admin/biens/orderImage',
+                method : 'POST',
+                data : {
+                    'imageIdList' : dataList
+                }
+            }).success(function(response){
+                console.log('ok');
+            });
+        }
+    });
+    $( "#list-img" ).disableSelection();
+
 });

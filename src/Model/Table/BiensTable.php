@@ -47,7 +47,7 @@ class BiensTable extends Table
 
         $this->belongsTo('Secteurs', [
             'foreignKey' => 'secteur_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Towns', [
             'foreignKey' => 'town_id',
@@ -55,7 +55,7 @@ class BiensTable extends Table
         ]);
         $this->belongsTo('Dpes', [
             'foreignKey' => 'dpe_id',
-            'joinType' => 'INNER'
+            'joinType' => 'LEFT'
         ]);
         $this->belongsTo('Agents', [
             'foreignKey' => 'agent_id',
@@ -90,26 +90,6 @@ class BiensTable extends Table
             ->requirePresence('price', 'create')
             ->notEmpty('price');
 
-        $validator
-            ->integer('room')
-            ->requirePresence('room', 'create')
-            ->notEmpty('room');
-
-        $validator
-            ->integer('kitchen')
-            ->requirePresence('kitchen', 'create')
-            ->notEmpty('kitchen');
-
-        $validator
-            ->integer('shower')
-            ->requirePresence('shower', 'create')
-            ->notEmpty('shower');
-
-        $validator
-            ->integer('parking')
-            ->requirePresence('parking', 'create')
-            ->notEmpty('parking');
-
         return $validator;
     }
 
@@ -133,7 +113,7 @@ class BiensTable extends Table
     public function getLastBiens()
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'])->where(['online' => true, 'sold' => 0])->limit(15);
+        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 0])->limit(15);
 
         return $queryBiens;
     }
@@ -141,7 +121,7 @@ class BiensTable extends Table
     public function getRecentSales()
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'])->where(['online' => true, 'sold' => 1])->limit(15);
+        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 1])->limit(15);
 
         return $queryBiens;
     }
@@ -153,9 +133,9 @@ class BiensTable extends Table
         $priceMin = $price - (10 * $price) / 100;
         $priceMax = $price + (10 * $price) / 100;
 
-        $queryBiens = $this->find('all', [
+        $biens = $this->find('all', [
             'order' => ['Biens.modified' => 'DESC']
-        ])
+        ])->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])
             ->where([
                 'type_of_bien' => $type_of_bien,
                 'price BETWEEN ' . $priceMin . ' and ' . $priceMax,
@@ -164,22 +144,6 @@ class BiensTable extends Table
                 'id != ' . $exclude_id
             ])
             ->limit(5);
-
-        $biens = [];
-
-        foreach ($queryBiens as $bien) {
-            $bien->images = [];
-
-            $images = $imagesBiens->find('all')
-                ->where(["ImagesBiens.bien_id" => $bien->id])
-                ->contain('Images');
-
-            foreach ($images as $img) {
-                array_push($bien->images, $img->image);
-            }
-
-            array_push($biens, $bien);
-        }
 
         return $biens;
     }
@@ -215,38 +179,10 @@ class BiensTable extends Table
         return $biens;
     }
 
-    /*public function searchAllBiens($params)
-    {
-        $imagesBiens = TableRegistry::get('ImagesBiens');
-        $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all', [
-            'order' => ['Biens.created' => 'DESC']
-        ])
-            ->where($params);
-
-        $biens = [];
-
-        foreach ($queryBiens as $bien) {
-            $bien->images = [];
-
-            $images = $imagesBiens->find('all')
-                ->where(["ImagesBiens.bien_id" => $bien->id])
-                ->contain('Images');
-
-            foreach ($images as $img) {
-                array_push($bien->images, $img->image);
-            }
-
-            array_push($biens, $bien);
-        }
-
-        return $biens;
-    }*/
-
     public function searchAllBiens($params)
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'])->where($params);
+        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where($params);
 
         return $queryBiens;
     }
