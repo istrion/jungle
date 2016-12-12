@@ -43,6 +43,17 @@ class AppAdminController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Biens',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'users',
+                'action' => 'login'
+            ]
+        ]);
     }
 
     /**
@@ -53,14 +64,20 @@ class AppAdminController extends Controller
      */
     public function beforeRender(Event $event)
     {
-        $this->viewBuilder()->layout('admin');
-        $this->set('adminMenus', $this->_getMenu($this->name));
+
+        if($this->name != 'Users' && $this->request->params['action'] != 'login') {
+            $this->viewBuilder()->layout('admin');
+            $this->set('adminMenus', $this->_getMenu($this->name));
+        }
 
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
         }
+
+        $this->Auth->allow(['index', 'view', 'display']);
+
     }
 
     private function _getMenu($activeMenu) {
