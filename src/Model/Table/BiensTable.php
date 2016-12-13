@@ -113,7 +113,9 @@ class BiensTable extends Table
     public function getLastBiens()
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 0])->limit(15);
+        $queryBiens = $biens->find('all')
+            ->order(['created' => 'DESC'])
+            ->contain(['Images' => ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 0])->limit(15);
 
         return $queryBiens;
     }
@@ -121,7 +123,9 @@ class BiensTable extends Table
     public function getRecentSales()
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 1])->limit(15);
+        $queryBiens = $biens->find('all')
+            ->order(['created' => 'DESC'])
+            ->contain(['Images' => ['sort' => ['Images.sort_order' => 'ASC']]])->where(['online' => true, 'sold' => 1])->limit(15);
 
         return $queryBiens;
     }
@@ -135,7 +139,7 @@ class BiensTable extends Table
 
         $biens = $this->find('all', [
             'order' => ['Biens.modified' => 'DESC']
-        ])->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])
+        ])->contain(['Images' => ['sort' => ['Images.sort_order' => 'ASC']]])
             ->where([
                 'type_of_bien' => $type_of_bien,
                 'price BETWEEN ' . $priceMin . ' and ' . $priceMax,
@@ -182,7 +186,9 @@ class BiensTable extends Table
     public function searchAllBiens($params)
     {
         $biens = TableRegistry::get('Biens');
-        $queryBiens = $biens->find('all')->contain(['Images'=> ['sort' => ['Images.sort_order' => 'ASC']]])->where($params);
+        $queryBiens = $biens->find('all')
+            ->order(['created' => 'DESC'])
+            ->contain(['Images' => ['sort' => ['Images.sort_order' => 'ASC']]])->where($params);
 
         return $queryBiens;
     }

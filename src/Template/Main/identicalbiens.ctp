@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-8 col-sm-9">
             <h5><a href="<?= PATH_ADMIN . '/details/' . $identical->slug ?>"><?= $identical->title ?></a></h5>
-            <p class="price"><?= $identical->price ?> €</p></div>
+            <p class="price"><?= $this->Number->format($identical->price, ['locale' => 'fr_FR']); ?> €</p></div>
     </div>
     <?php endforeach; ?>
 

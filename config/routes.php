@@ -80,14 +80,13 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
-    $routes->fallbacks('DashedRoute');
+    //$routes->fallbacks('DashedRoute');
 });
 
 Router::prefix('admin', function ($routes) {
     // Toutes les routes ici seront préfixées avec `/admin` et auront
     // l'élément de route prefix => admin ajouté.
-    $routes->fallbacks(DashedRoute::class);
-    $routes->connect('/', ['controller' => 'Biens', 'action' => 'index']);
+    $routes->fallbacks('InflectedRoute');
 
 });
 

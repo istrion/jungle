@@ -110,7 +110,7 @@
                                         <a href="<?= PATH_ADMIN . '/details/' . $bien->slug ?>"><?= h($bien->title) ?></a>
                                     </h4>
 
-                                    <p class="price"><?= $this->Number->format($bien->price) ?></p>
+                                    <p class="price"><?= $this->Number->format($bien->price, ['locale' => 'fr_FR']); ?></p>
 
                                     <div class="listing-detail">
                             <span data-toggle="tooltip" data-placement="bottom"

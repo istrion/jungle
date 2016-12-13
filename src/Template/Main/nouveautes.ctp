@@ -20,7 +20,7 @@
                             </div>
                             <h4><a href="details/<?= $bien->slug; ?>"><?= $bien->title ?></a></h4>
 
-                            <p class="price"><?= $bien->price; ?> €</p>
+                            <p class="price"><?= $this->Number->format($bien->price, ['locale' => 'fr_FR']); ?> €</p>
 
                             <div class="listing-detail">
                                 <span data-toggle="tooltip" data-placement="bottom"

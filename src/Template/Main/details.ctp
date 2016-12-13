@@ -86,7 +86,7 @@ if ($bien->offer == 3) $offer = 'Viager';
                     <div class="col-lg-4 color-white">
                         <div class="col-lg-12  col-sm-6">
                             <div class="property-info">
-                                <p class="price"><?= $bien->price ?> €</p>
+                                <p class="price"><?= $this->Number->format($bien->price, ['locale' => 'fr_FR']); ?> €</p>
                                 <p class="area"><span
                                         class="glyphicon glyphicon-map-marker"></span> <?= $bien->town->title ?></p>
                                 <?php if ($bien->agent): ?>

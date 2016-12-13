@@ -18,7 +18,7 @@
                             </div>
                             <h4 style="color:#666;"><?= $bien->title ?></h4>
 
-                            <p class="price"><?= $bien->price; ?> €</p>
+                            <p class="price"><?= $this->Number->format($bien->price, ['locale' => 'fr_FR']); ?> €</p>
 
                             <div class="listing-detail">
                                 <span data-toggle="tooltip" data-placement="bottom"
