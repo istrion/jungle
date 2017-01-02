@@ -207,4 +207,26 @@ class MainController extends AppController
 
 
     }
+
+    public function sendExclu()
+    {
+        $this->viewBuilder()->layout(false);
+        $this->render(false);
+        $this->autoRender = false;
+
+        $name = $this->request->data['name'];
+        $email = $this->request->data['email'];
+
+        $exclusivitiesTable = TableRegistry::get('Exclusivities');
+        $exclu = $exclusivitiesTable->newEntity();
+
+        $exclu = $exclusivitiesTable->patchEntity($exclu, [
+            'name' => $name,
+            'email' => $email
+        ]);
+
+        $exclusivitiesTable->save($exclu);
+
+
+    }
 }

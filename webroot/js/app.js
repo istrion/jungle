@@ -123,5 +123,27 @@ $(document).ready(function() {
         $('#msg-estimation').show();
     });
 
+    $('#exclu').submit(function(event) {
+        var data = {};
+        event.preventDefault();
+
+        $(this).find('*').filter(':input').each(function(){
+            if($(this).attr("name")) {
+                data[$(this).attr("name")] = $(this).val();
+            }
+        });
+
+        $.ajax({
+            url :'sendExclu',
+            data : data,
+            method: 'POST'
+        }).done(function(retu){
+            console.log(retu)
+        });
+
+        $('#exclu').hide();
+        $('#msg-exclu').show();
+    });
+
 
 });
