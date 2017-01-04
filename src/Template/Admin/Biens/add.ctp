@@ -180,4 +180,4 @@
     <?php echo $this->Html->script('/admin/js/dropzone.js', ['block' => 'scriptBottom']); ?>
     <?php echo $this->Html->script('/admin/js/biens.js', ['block' => 'scriptBottom']); ?>
 
-<?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false});", ['block' => 'scriptBottom']); ?>
+<?php $this->Html->scriptBlock("tinymce.init({ selector:'textarea',menubar: false, plugins: 'paste',paste_as_text: true});", ['block' => 'scriptBottom']); ?>

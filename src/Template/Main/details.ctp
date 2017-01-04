@@ -123,7 +123,25 @@ if ($bien->offer == 3) $offer = 'Viager';
                                     <?= $bien->dpeValue ?></span>
                                 <img src="<?= PATH_ADMIN ?>/img/template/dpe.png">
                             </div>
+                                <?php elseif (in_array($bien->dpe_id, [11,12,13])): ?>
+                                <h6><span class="glyphicon glyphicon-home"></span> DPE</h6>
+
+                                <?php
+                                    switch ($bien->dpe_id) {
+                                        case 11:
+                                            echo '<p>En cours</p>';
+                                            break;
+                                        case 12:
+                                            echo '<p>Vierge</p>';
+                                            break;
+                                        case 13:
+                                            echo '<p>Non assujetti</p>';
+                                            break;
+                                    }
+                                ?>
                             <?php endif; ?>
+
+
 
                         </div>
                         <div class="col-lg-12 col-sm-6 ">

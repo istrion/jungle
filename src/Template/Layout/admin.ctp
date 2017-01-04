@@ -164,7 +164,7 @@ desired effect
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer" style="clear:both;">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
             Réalisé par Mick

@@ -87,7 +87,8 @@ class AppAdminController extends Controller
                 ['link' => '/admin/agents', 'title' => 'Agents' , 'active' => ($activeMenu == 'Agents') ? true:false],
                 ['link' => '/admin/sliders', 'title' => 'Sliders' , 'active' => ($activeMenu == 'Sliders') ? true:false],
                 ['link' => '/admin/towns', 'title' => 'Villes' , 'active' => ($activeMenu == 'towns') ? true:false],
-                ['link' => '/admin/testimonies', 'title' => 'Témoignages' , 'active' => ($activeMenu == 'testimonies') ? true:false]
+                ['link' => '/admin/testimonies', 'title' => 'Témoignages' , 'active' => ($activeMenu == 'testimonies') ? true:false],
+                ['link' => '/admin/exclusivities', 'title' => 'Exclusivités' , 'active' => ($activeMenu == 'exclusivities') ? true:false]
             );
     }
 }

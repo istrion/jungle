@@ -54,6 +54,8 @@ $cakeDescription = 'Jungle immobilier';
 
     <?= $this->Element('../Main/modals/add-bien') ?>
     <?= $this->Element('../Main/modals/selectsectors') ?>
+    <?= $this->Element('../Main/modals/exclusivite') ?>
+
 
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
